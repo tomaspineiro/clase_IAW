@@ -1,6 +1,6 @@
 <?php
-	$titulo="Inicio";
-	$pagina="index";
+	$titulo="Sobre min";
+	$pagina="Sobre min";
 ?>
 <?php require_once("./inc/encabezado.php");?>
 
@@ -9,10 +9,13 @@
 
 		<!-- Principal -->
 		<div id="principal">
-			<!-- /titulo -->
+			
+            <!-- /titulo -->
 			<div class="articulo">
                 <h2><?= $titulo ?></h2>                
             </div> <!-- /titulo -->
+            <!-- Articulo -->
+
             <!-- Articulo -->
             <div class="articulo">
                 <h2><a href="#">Lorem ipsum dolor sit amet</a></h2>

@@ -48,12 +48,12 @@
     <!-- Menú principal -->
      <div id="menu">
             <ul>
-                <li><a href="index.php" class="seleccionado">Inicio</a></li>
-                <li><a href="blog.php" class="">Blog</a></li>
-                <li><a href="sobremin.php" class="">Sobre min</a></li>
-                <li><a href="fotos.php" class="">Fotos</a></li>
-                <li><a href="contacto.php" class="">Contacto</a></li>
-                <li><a href="enlaces.php" class="">Enlaces</a></li>
+                <li><a href="index.php"<?php if($pagina=="index"){ echo 'class="seleccionado"';} ?>>Inicio</a></li>
+                <li><a href="blog.php" <?php if($pagina=="blog"){ echo 'class="seleccionado"';}?>>Blog</a></li>
+                <li><a href="sobremin.php" <?php if($pagina=="sobremin"){ echo 'class="seleccionado"';}?>>Sobre min</a></li>
+                <li><a href="fotos.php" <?php if($pagina=="fotos"){ echo 'class="seleccionado"';}?>>Fotos</a></li>
+                <li><a href="contacto.php" <?php if($pagina=="contacto"){ echo 'class="seleccionado"';}?>>Contacto</a></li>
+                <li><a href="enlaces.php" <?php if($pagina=="enlaces"){ echo 'class="seleccionado"';}?>>Enlaces</a></li>
             </ul>
 
         <div class="clear"></div>

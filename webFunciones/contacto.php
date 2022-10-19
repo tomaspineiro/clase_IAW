@@ -1,6 +1,6 @@
 <?php
-	$titulo="Inicio";
-	$pagina="index";
+	$miTitulo="contacto";
+	$pagina="contacto";
 ?>
 <?php require_once("./inc/encabezado.php");?>
 
@@ -11,8 +11,9 @@
 		<div id="principal">
 			<!-- /titulo -->
 			<div class="articulo">
-                <h2><?= $titulo ?></h2>                
+                <h2><?= $miTitulo ?></h2>                
             </div> <!-- /titulo -->
+			
             <!-- Articulo -->
             <div class="articulo">
                 <h2><a href="#">Lorem ipsum dolor sit amet</a></h2>
