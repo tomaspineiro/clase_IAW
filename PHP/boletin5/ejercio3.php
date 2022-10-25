@@ -18,14 +18,26 @@
 			foreach ($numero as $i => $v) {
 				
 			}
+			echo '</br>';
+			$long =  count($numero);
+			for ($i=0 ; $i < ($long-1); $i++) { 
+				$trnasito = $numero[$i + 1];
+				$numero[$i + 1] = $numero[$i ];
+				$numero[$i] = $trnasito;
+				#print_r($numero);
+				#echo '</br>';
+			}
 			*/
 
-			for ($i=0 ; $i < count($numero); $i++) { 
-				$trnasito = $numero[$i];
-				$numero[$i] = $numero[$i + 1];
-				$numero[$i + 1] = $trnasito;
-				print_r($numero);
+			echo '</br>';
+			$long =  count($numero);
+			for ($i=0 ; $i < ($long-1); $i++) { 
+				$trnasito = $numero[$i + 1];
+				$numero[$i + 1] = $numero[$i ];
+				$numero[$i] = $trnasito;
+		
 			}
+			echo '</br>';
 			print_r($numero);
 		?>		
 			
