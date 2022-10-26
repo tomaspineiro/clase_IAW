@@ -31,12 +31,10 @@
 				for ($i=0; $i < $temperatura ; $i++) { 
 					echo "<td>#</td>";
 				};
-				
+
 				/*
 				for ($i=$temperatura; $i < ($temperatura + 10); $i++) { 
-					
 					echo '<td>&nbsp</td>';
-					
 				}
 				*/
 				echo '</tr>';
