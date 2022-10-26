@@ -2,6 +2,7 @@
 <html lang="es">
 	<head>
 		<title>Boletin 5 de PHP</title>
+		<?php include("funciones.php") ?>
 	</head>
 	<body>
 		<h1>Boletin 5 de PHP</h1>
