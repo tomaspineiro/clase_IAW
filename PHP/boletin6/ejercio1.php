@@ -14,6 +14,7 @@
 			dicha división, o dicho de otro modo, calculamos el módulo 23 del DNI
 			*/
 			
+			$letra = array('T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E')
 		?>		
 			
 	</body>
