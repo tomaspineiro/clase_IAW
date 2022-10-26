@@ -14,19 +14,37 @@
 			
 			$numero = arrayNumeros(10);
 		
-			print_r($numero);
-			echo '</br>';
+			#print_r($numero);
+			
+			$max = 0;
+			$min = $numero[0];
 
-			
-			
 			foreach($numero as $i){
-				echo $i . '</br>';
-				if (
+				
+				if ($i > $max) {
+					$max = $i;
+				}
+				
+				if ($i < $min) {
+					$min = $i;
+				}
+
 			};
 			
-			print_r($numero);
-			echo 'max: ' . $max . ' min: ' . .'</br>';
-			
+			echo 'max: ' . $max . ' min: ' . $min .'</br>';
+			echo '</br>';
+
+			/*
+				$orenada = arrayOrden($numero);
+				#print_r($orenada);
+				
+
+				echo ' esto es para comprobar que funcina todo bien </br>';
+				$p1 = max($numero);
+				$p2 = min($numero);
+				
+				echo'max: ' . $p1  . ' min: ' . $p2 .'</br>';
+			*/
 		?>		
 			
 	</body>

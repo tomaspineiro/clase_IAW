@@ -27,34 +27,37 @@
 				#print($i. ' </br>');
 				$cubo[] = $i ** 3;
 			};
-			/*
-			print('Los nuneros en el array numeros son: ');
-			print_r($numero);
-			echo '</br> </br> ';
-			
-			print('Los nuneros en el array cuadrado son: ');
-			print_r($cuadrado);
-			echo '</br> </br>';
-			
-			print('Los nuneros en el array cubo son: ');
-			print_r($cubo);
-			echo '</br> </br>';
-			*/
 			
 			echo "<table border=\" black solid 1px \" > \n
-					<tbody> \n
-						<tr> 
-							<th>Posición</th> <th>Numero</th> <th>Cuadrado</th> <th>Cubo</th>
-						</tr>";
-					
+				<tbody> \n
+					<tr> 
+						<th>Posición</th> <th>Numero</th> <th>Cuadrado</th> <th>Cubo</th>
+					</tr>";
+			
 			for ($i = 0; $i < 20; $i++){
 				echo '<tr>';
-					echo " <td>$i</td> <td>$numero[$i]</td> <td>$cuadrado[$i]</td> <td>$cubo[$i] </td>";
+				echo " <td>$i</td> <td>$numero[$i]</td> <td>$cuadrado[$i]</td> <td>$cubo[$i] </td>";
 				echo '</tr>';
 			}
-			echo "</table> \n
-					</tbody> \n ";
-		?>		
+
+			echo "</tbody> \n
+				</table> \n ";
 			
-	</body>
+			/*
+				print('Los nuneros en el array numeros son: ');
+				print_r($numero);
+				echo '</br> </br> ';
+				
+				print('Los nuneros en el array cuadrado son: ');
+				print_r($cuadrado);
+				echo '</br> </br>';
+				
+				print('Los nuneros en el array cubo son: ');
+				print_r($cubo);
+				echo '</br> </br>';
+			*/
+
+				?>		
+			
+		</body>
 </html>
