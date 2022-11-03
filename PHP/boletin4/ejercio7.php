@@ -15,9 +15,9 @@
 					 @@@@@
 					@@@@@@@
 			*/
-			define('NUMmIN',3);
-			define('NUMmAX', 10);
-			/*	
+			define('NUMmIN',5);
+			define('NUMmAX', 20);
+				
 			$tabla='';
 			
 			do {
@@ -25,22 +25,17 @@
 
 				if ($base%2 == 1){
 				
-					$centro = round(($base / 2),0);
+					$centro = round(($base / 2),0) -1;
 
-					for ($i=0; $i <= $base; $i++) {
+					for ($i=0; $i < $centro; $i++) {
 	
 						$tabla .= "<tr> \n ";
 			
-						for ($j = 0; $j <= $base; $j++) {
+						for ($j = 0; $j < $base; $j++) {
 							
 							#for ($k=0; $k < ; $k++) { 
 								
-								if ($j == ($centro + $i)) {
-									
-									$tabla .= " <td> \n @ </td> \n";
-									
-								}
-								elseif ($j == ($centro - $i)){
+								if ( ($j <= ($centro + $i)) and (($centro - $i) <= $j) ){
 									
 									$tabla .= " <td>  @ </td> \n";
 									
@@ -61,19 +56,19 @@
 
 				};
 			} while ($base%2 == 0);			
-			*/ 
-			do {
-				$base = rand(NUMmIN,NUMmAX);
+			/*
+				do {
+					$base = rand(NUMmIN,NUMmAX);
 
-				if ($base%2 == 1){
-				
-					$centro = round(($base / 2),0);				
-					echo "Esto marcha bien.  $centro  , $base ";
+					if ($base%2 == 1){
+					
+						$centro = round(($base / 2),0);				
+						echo "Esto marcha bien.  $centro  , $base ";
 
-				};
-				
-			} while ($base%2 == 0);	
-
+					};
+					
+				} while ($base%2 == 0);	
+			*/
 
 			echo "\n e salido";	
 
