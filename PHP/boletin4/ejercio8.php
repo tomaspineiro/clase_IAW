@@ -18,8 +18,8 @@
 			define('NUMmIN',5);
 			define('NUMmAX', 20);
 				
-			$tabla='';
-			
+			$tabla = '';
+			$cont = 1;
 			do {
 				$base = rand(NUMmIN,NUMmAX);
 
@@ -27,54 +27,59 @@
 				
 					$centro = round(($base / 2),0) -1;
 
-					for ($i=0; $i < $centro; $i++) {
+					for ($i=0; $i < $base; $i++) {
 	
 						$tabla .= "<tr> \n ";
-			
+
 						for ($j = 0; $j < $base; $j++) {
 							
-							#for ($k=0; $k < ; $k++) { 
+							if ($i < $centro){ 
 								
 								if ( ($j <= ($centro + $i)) and (($centro - $i) <= $j) ){
 									
 									$tabla .= " <td>  @ </td> \n";
 									
-								}
-								else {
+								} else {
 									
 									$tabla .= " <td>  &nbsp </td> \n";
 									
 								};
-							#};
 
+							} elseif ($i == $centro ) {
+
+								$tabla .= " <td>  @ </td> \n";
+							
+							} else {	
+
+								if ( ($cont  <=  $j) and ( $j <= ($base - $cont-1)) ){
+									
+									$tabla .= " <td>  @  </td> \n";
+									
+								} else {
+									
+									$tabla .= " <td>  &nbsp </td> \n";
+									
+								};	
+								
+							};
+
+						};
+
+						if ($i > $centro) {
+
+							$cont++;
+							
 						};
 
 						$tabla .= "</tr> \n";
 					};
 				
-					echo "Esto marcha bien.  $centro  , $base ";
+					echo "Esto marcha bien.  $centro  , $base.  ";
 
 				};
 			} while ($base%2 == 0);			
-			/*
-				do {
-					$base = rand(NUMmIN,NUMmAX);
-
-					if ($base%2 == 1){
-					
-						$centro = round(($base / 2),0);				
-						echo "Esto marcha bien.  $centro  , $base ";
-
-					};
-					
-				} while ($base%2 == 0);	
-			*/
-
-			echo "\n e salido";	
-
-			print "<h2> FILAS círculos </h2> \n";
 			
-			print "<table class=\"conborde\"> \n
+			print "<table> \n
 					<tbody> \n
 						$tabla						 
 					</table> \n
