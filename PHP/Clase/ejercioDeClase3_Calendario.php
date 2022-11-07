@@ -28,7 +28,7 @@
 				
 				
 				
-				
+				/*
 				echo "<table border='1'> \n
 						<tbody> \n";
 				#cuerpo del caledario	
@@ -56,7 +56,30 @@
 				echo "	</tbody>\n
 					 </table>  \n ";					 
 						
-
+				*/
+					
+				echo "<table border='1'> \n
+						<tbody> \n";
+				#cuerpo del caledario	
+				
+				#Cabecera del calendario 
+				echo "<tr>  <th>L</th> <th>M</th> <th>M</th> <th>J</th> <th>V</th> <th>S</th>  <th>D</th> </tr>";
+				
+				for ( $i = 1; $i <= $dias; $i+=7){
+					#semanas 
+					echo  "<tr> \n ";
+					
+					for ($j = $i; $j < ($i +7) AND $j <= $dias)	{
+						#cada dia 
+						echo " <td>  $j </td> \n";
+					
+					};
+						
+					echo "</tr> \n ";
+				}
+		
+				echo "	</tbody>\n
+					 </table>  \n ";	
 			}
 		?>
 	</head>
@@ -69,7 +92,7 @@
 			$mes = rand(1,12);
 			$anio = rand(1920, 2020);
 			
-			echo  $mes . ' ' . $anio;
+			echo  diasMes($mes,$anio) . ' ' . $mes . ' ' . $anio;
 			
 			echo '</br>';
 			echo '----------------------------------------------------';
