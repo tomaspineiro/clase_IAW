@@ -71,7 +71,7 @@
 				if ($edad==""){
 						$errores .= "<li>Debes introducir un edad </li>";
 				}
-				if ($aficiones==""){ # estp es iun array y esta mal 
+				if (empty($aficiones)){ # estp es iun array y esta mal 
 				
 						$errores .= "<li>Debes introducir un aficiones </li>";
 				}
