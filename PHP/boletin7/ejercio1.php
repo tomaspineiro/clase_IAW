@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php include("funciones.php");?>
 <?php
 	function traductor(string $word, array $dictionary) {	
@@ -32,8 +31,6 @@
 	$palabrasWords = array("mazo" => "deck", "nuevo" => "new", "gratis" => "free", "papa" => "dad", "mama" => "mom", "simbolo" => "symbol", "mas" => "plus", "regalo" => "gift", "servidor" => "server", "hermano" => "brother", "mundo" => "world", "palabra" => "word", "vente" => "come", "programa" => "program", "usuario" => "user", "numero" => "number", "animal" => "animal", "perro" => "dog", "gato" => "cat", "pez" => "fish");
 	
 ?>
-=======
->>>>>>> e0e97fa27a0f0a1022ff94d34ca2a9b5591601a6
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -43,7 +40,6 @@
 		<h1>Boletin 7 de PHP</h1>
 		<h5>ejercio 1 </h5>
 		<?php
-<<<<<<< HEAD
 			if (!isset($_REQUEST['enviar'])) { // MONSTRAMOS EL FORM 
 			
 				formulario();
@@ -72,13 +68,3 @@
 	
 	</body>
 </html>
-
-<br /><b>Warning</b>:  Undefined variable $word in <b>C:\xampp\htdocs\git\clase_IAW\PHP\boletin7\ejercio1.php</b> on line <b>17</b><br />
-=======
-			//
-			
-		?>		
-			
-	</body>
-</html>
->>>>>>> e0e97fa27a0f0a1022ff94d34ca2a9b5591601a6
