@@ -56,6 +56,13 @@
 		<arcticle>	
 			zxv<zdv
 		</arcticle>
+							<th>Ingles</th>
+						</tr>
+						<tr>
+							<td><?= $word; ?></td>
+							<td><?= $palabrasWords[$word]; ?></td>
+						</tr>
+					</table>
 		
 		<?php 
 				}
