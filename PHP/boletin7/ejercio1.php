@@ -53,9 +53,9 @@
 				
 				} else {
 		?>
-		<arcticle>	
-			zxv<zdv
-		</arcticle>
+					</table>
+						</tr>
+							<th>Español</th>
 							<th>Ingles</th>
 						</tr>
 						<tr>
