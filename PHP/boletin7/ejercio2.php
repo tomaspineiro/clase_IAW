@@ -2,7 +2,6 @@
 <?php 
 	function formulario($contador = 0, $numTotal = 0) {  // formulario
 ?>
-
 		<form action="" method="GET">
 			<p>
 				<label for="numero">Numero: </label>
@@ -30,8 +29,8 @@
 		<h1>Boletin 7 de PHP</h1>
 		<h5>ejercio 2 </h5>
 
-
 		<?php
+
 			if (!isset($_REQUEST['enviar'])) {
 
 				formulario();
@@ -39,17 +38,17 @@
 			} elseif ((intval($_REQUEST['numero']) > 0) && isset($_REQUEST['enviar'])) {
 
 				$numero = recoge('numero');
-				$contador = intval(recoge('contador'));
-				$numTotal = intval(recoge('numTotal'));
-				
+				$contador = (int)recoge('contador');
+				$numTotal = (int)recoge('numTotal');
+
 				$contador = $contador + 1;
 				$numTotal = $numTotal + $numero;
 
 				formulario($contador, $numTotal);
 				
 			} elseif ($_REQUEST['numero'] < 0)  {	
-				$contador = intval(recoge('contador'));
-				$numTotal = intval(recoge('numTotal'));
+				$contador = (int)recoge('contador');
+				$numTotal = (int)recoge('numTotal');
 		?>	
 			<article>
 				<p>
