@@ -4,13 +4,8 @@
 ?>
 		<form action="" method='GET'>
 			<p>
-<<<<<<< HEAD
-				<label for="numero">Numero:</label>
-				<input type="number" name='numero' id='numero'>
-=======
 				<label for="numero">Numero: </label>
 				<input type="number" name="numero" id="numero"/>
->>>>>>> 73e7ce80adfcd82b7a83193218aa9ff702b9fe7a
 			</p>
 			<p>
 				<input type="hadden" name="contador" id="contadar" value="<?= $contador; ?>">
