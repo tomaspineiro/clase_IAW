@@ -5,7 +5,7 @@
 		<form action="" method="GET">
 			<p>
 				<label for="numero">Numero: </label>
-				<input type="namber" name="numero" id="numero"/>
+				<input type="number" name="numero" id="numero"/>
 			</p>
 			<p>
 				<input type="hidden" nume='contador' id='contador' value='<?= $contador; ?>'>

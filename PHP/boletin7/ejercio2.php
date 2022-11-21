@@ -5,11 +5,11 @@
 		<form action="" method="GET">
 			<p>
 				<label for="numero">Numero: </label>
-				<input type="namber" name="numero" id="numero"/>
+				<input type="number" name="numero" id="numero"/>
 			</p>
 			<p>
-				<input type="hidden" nume='contador' id='contador' value='<?= $contador; ?>'>
-				<input type="hidden" nume='numTotal' id='numTotal' value='<?= $numTotal; ?>'>
+				<input type="hidden" name='contador' id='contador' value='<?= $contador; ?>'>
+				<input type="hidden" name='numTotal' id='numTotal' value='<?= $numTotal; ?>'>
 			</p>
 			<p>
 				<button type="submit" name="enviar" value="enviar">Enviar datos</button> 
@@ -27,20 +27,25 @@
 	</head>
 	<body>
 		<h1>Boletin 7 de PHP</h1>
-		<h5>ejercio 2 </h5>
+		<article>
+			<h5>ejercio 2 </h5>
+			<p>
+				Escribe un programa que calcule la media de un conjunto de números positivos introducidos por teclado. A priori, el programa no sabe cuántos números se introducirán. El usuario indicará que ha terminado de introducir los datos cuando meta un número negativo.
+			</p>
+		</article>
 
 		<?php
-
 			if (!isset($_REQUEST['enviar'])) {
 
 				formulario();
 
-			} elseif ((intval($_REQUEST['numero']) > 0) && isset($_REQUEST['enviar'])) {
+			} elseif (((int)$_REQUEST['numero'] > 0) && isset($_REQUEST['enviar'])) {
 
-				$numero = recoge('numero');
+				$numero = (int)recoge('numero');
 				$contador = (int)recoge('contador');
 				$numTotal = (int)recoge('numTotal');
 
+				
 				$contador = $contador + 1;
 				$numTotal = $numTotal + $numero;
 
