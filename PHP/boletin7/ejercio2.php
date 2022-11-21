@@ -28,6 +28,12 @@
 	<body>
 		<h1>Boletin 7 de PHP</h1>
 		<h5>ejercio 2 </h5>
+		<article>
+			<h5>ejercio 2 </h5>
+			<p>
+				Escribe un programa que calcule la media de un conjunto de números positivos introducidos por teclado. A priori, el programa no sabe cuántos números se introducirán. El usuario indicará que ha terminado de introducir los datos cuando meta un número negativo.
+			</p>
+		</article>
 
 		<?php
 
@@ -38,9 +44,17 @@
 			} elseif ((intval($_REQUEST['numero']) > 0) && isset($_REQUEST['enviar'])) {
 
 				$numero = recoge('numero');
+			} elseif (((int)recoge('numero') > 0) && isset($_REQUEST['enviar'])) {
+
+
+
+=======
+
+				$numero = (int)recoge('numero');
 				$contador = (int)recoge('contador');
 				$numTotal = (int)recoge('numTotal');
 
+				
 				$contador = $contador + 1;
 				$numTotal = $numTotal + $numero;
 
