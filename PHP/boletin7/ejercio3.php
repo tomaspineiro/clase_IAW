@@ -1,6 +1,6 @@
 <?php include("funciones.php");?>
 <?php
-	function formulario($contador = 0, $totalImpar = 0, $contInpar = 0, $maxPar = 0) {
+	function formulario($contador = 0, $totalImpar = 0, $contImpar = 0, $maxPar = 0) {
 ?>
 		<form action="" method='GET'>
 			<p>
@@ -8,10 +8,10 @@
 				<input type="number" name="numero" id="numero"/>
 			</p>
 			<p>
-				<input type="hadden" name="contador" id="contadar" value="<?= $contador; ?>">
-				<input type="hadden" name="totalImpar" id="totalImpar" value="<?= $totalImpar; ?>">
-				<input type="hadden" name="contInpar" id="contInpar" value="<?= $contInpar; ?>">
-				<input type="hadden" name="maxPar" id="maxPar" value="<?= $maxPar; ?>">
+				<input type="hidden" name="contador" id="contadar" value="<?= $contador; ?>">
+				<input type="hidden" name="totalImpar" id="totalImpar" value="<?= $totalImpar; ?>">
+				<input type="hidden" name="contImpar" id="contImpar" value="<?= $contImpar; ?>">
+				<input type="hidden" name="maxPar" id="maxPar" value="<?= $maxPar; ?>">
 			</p>
 			<p>
 				<button type='submit' name='enviar' value='enviar' > Enviar Formulario</button>
@@ -22,11 +22,32 @@
 	} //fin Formulario
 ?>
 <?php
-	function parOImpar($numero) {
+	function parOImpar($numero) { // esto funcion es para saber que nuemros son pares o impares
+		
 		if ( ($numero%2) == 0) {
+			
+			//entra aqui si es par
 			return TRUE;
+	
 		}
+
+		//  Impar 
 		return FALSE;
+
+	}
+
+	function procesoDatos() { // Esta es una funcion para procesar los datos. 
+		
+		#proceso de datos 
+		$numero = (int)recoge('numero');
+		$contador = (int)recoge('contador');
+		$totalImpar = (int)recoge('totalImpar');
+		$contImpar = (int)recoge('contImpar');
+		$maxPar = (int)recoge('maxPar');
+	
+		$lista = ['numero' => $numero, 'totalImpar' => $totalImpar, 'contImpar' => $contImpar,'maxPar' => $maxPar, 'contador' => $contador ];
+
+		return $lista;
 	}
 ?>
 <!DOCTYPE html>
@@ -45,21 +66,41 @@
 		
 		<?php  
 			if (!isset($_REQUEST['enviar'])) {
+				
 				formulario();
+			
 			} elseif (((int)recoge('numero') > 0 ) 	&& (isset($_REQUEST['enviar']))) {
-				$numero = (int)recoge('numero');
-				$totalImpar = (int)recoge('totalImpar');
-				$contImpar = (int)recoge('contImpar');
-				$maxPar = (int)recoge('max$maxPar');
+				
+				$lista = procesoDatos();
 
+				if (parOImpar($lista['numero']) && ($lista['numero'] > $lista['maxPar'])) {
+					
+					$lista['maxPar'] = $lista['numero'];
+			
+				} elseif (!parOImpar($lista['numero'])){
+			
+					$lista['contImpar']++;
+					$lista['totalImpar'] += $lista['numero'];
 
-				formulario($contador, $totalImpar, $contInpar, $maxPar);
+				}
+				
+				formulario($lista['contador'], $lista['totalImpar'], $lista['contImpar'], $lista['maxPar']);
 
+			} elseif (isset($_REQUEST['enviar']) && (int)recoge('numero') < 0 ) {
+
+				$lista = procesoDatos();
+	 
+		?>
+				<article>
+					<h1>Resultado</h1>
+					<ul>
+						<li> La media de los impares: <?= $lista['totalImpar'] / $lista['contImpar'] ?> </li>
+						<li> El mayor de los pares: <?= $lista['maxPar'] ?> </li>
+						<li> Se an introducido un total de numeros: <?= $lista['contador'] ?> </li>
+					</ul>
+				</article>
+		<?php
 			}
 		?>
-		
-			
-			
-			
 	</body>
 </html>
