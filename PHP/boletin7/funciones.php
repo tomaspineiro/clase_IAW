@@ -1,6 +1,6 @@
 <?php
-	function recoge($var, $m = "")
-	{
+	function recoge($var, $m = "")  {
+	
 		$tmp = is_array($m) ? [] : "";
 		if (isset($_REQUEST[$var])) {
 			if (!is_array($_REQUEST[$var]) && !is_array($m)) {
@@ -29,4 +29,26 @@
 
         return $list;
     }
+
+	#estas son las varibles del ejercio 4 
+		function cajaFuerte($password) {
+
+		if ($password == '1234') {
+
+			#la contrasena es correcta 
+			return TRUE;
+		
+		}
+
+		#la contrasena no es correcta
+		return FALSE;
+
+	}
+
+	function contador($contador = 0 ) {
+		
+		return $contador++;
+	
+	}
+
 ?>
