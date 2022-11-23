@@ -18,7 +18,8 @@
 			$num1 = rand(NUMmIN, NUMmAX);
 			$num2 = rand(NUMmIN, NUMmAX);
 			
-			 echo 'los numeros son:' 
+			 echo 'los numeros son:';
+			 
 			if(($num1 * $num2) > ($num1 + $num2)){
 				echo 'El producto es mayor que la suma';
 			}

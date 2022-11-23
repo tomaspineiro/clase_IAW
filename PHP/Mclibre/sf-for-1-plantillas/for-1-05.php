@@ -37,7 +37,7 @@
 			
 			$color = substr(md5(rand()), 0, 3);
 			$num = rand(NUMmIN, (NUMmAX - 1));
-			$ratacion = rand()
+			$ratacion = rand();
 			
 			#echo $color, ' - ', $num,' | ';			
 			
@@ -45,7 +45,7 @@
 			$circulos .= "<td> \n
 							<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"70\" height=\"70\"  font-size=\"45\"> \n 
 								<circle cx=\"35\" cy=\"35\" r=\"30\" fill=\"#$color\"/>\n
-								 <text x=\"35\" y=\"50\" text-anchor=\"middle\"".'transform="rotate(-9 35 35)" >'$num."</text>
+								 <text x=\"35\" y=\"50\" text-anchor=\"middle\"".'transform="rotate(-9 35 35)" >'.$num."</text>
 							</svg> \n 
 						 </td> \n";
 	

@@ -69,7 +69,7 @@
 					#semanas 
 					echo  "<tr> \n ";
 					
-					for ($j = $i; $j < ($i +7) AND $j <= $dias)	{
+					for ($j = $i; $j < ($i +7) AND  $j <= $dias; $j++ )	{
 						#cada dia 
 						echo " <td>  $j </td> \n";
 					

@@ -26,7 +26,7 @@
 				};					
 			}			
 		}
-        return $list;
+        return $guardar;
     }
 
     function maxMI($array) {
