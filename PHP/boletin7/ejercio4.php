@@ -1,11 +1,14 @@
 <?php include("funciones.php");?><!DOCTYPE html>
 <?php
-	function formulario() {
+	function formulario($contador = 0) {
 ?>
 	<form action="" method='GET'>
 			<p>
 				<label for="combinacion">Combinacion: </label>
 				<input type="text" name="combinacion" id='combinacion'>
+			</p>
+			<p>
+				<input type="hidden" name="contador" id='contador' value='<?= $contador;?>' >
 			</p>
 			<p>
 				<button type='submit' name='enviar' value='enviar'> Enviar
@@ -32,37 +35,56 @@
 		</article>
 		
 		<?php
-			$contador = contador();
 			
-			if (!isset($_REQUEST['enviar']) && $contador == 0) {
+			
+			if (!isset($_REQUEST['enviar'])) {
 		?>
 
 			<article>
-			 	<?php formulario() ?>
+				<?php formulario(); ?>
 			</article>
 				
 		<?php
 						   
-			} elseif (isset($_REQUEST['enviar']) && ($contador < 4) && !cajaFuerte(recoge('combinacion'))) { 
-
-			$contador = contador($contador);
-			 			
+			} elseif (isset($_REQUEST['enviar']) && ((int)recoge('contador') < 4) && !cajaFuerte(recoge('combinacion'))) { 
+				
+				$contador = contador((int)recoge('contador'));
+													 			
 		?>				
 			<article>
 				<p>
 					Lo siento, esa no es la combinación 
-					<?= $contador; ?>
+					<!--
+						<?= $contador; ?>
+					-->
 				</p>
-				<?php formulario() ?>
+				<?php 
+				 
+					
+					formulario($contador);
+				
+				?>
 			</article>
 		<?php 		
-			} elseif (isset($_REQUEST['enviar']) && ($contador <= 4) && cajaFuerte(recoge('combinacion'))) {
+			} elseif (isset($_REQUEST['enviar']) && ((int)recoge('contador') < 4) && cajaFuerte(recoge('combinacion'))) {
 		?>
 			<article>
 				<p>
 					La caja fuerte se ha abierto satisfactoriamente
 				</p>
 			</article>
+		<?php
+			} else {
+				$contador = contador((int)recoge('contador'));
+		?>
+				<article>
+					<p>
+						Lo siento, esa no es la combinación 
+						<!-- 
+							<?= $contador; ?> 
+						-->
+					</p>
+				</article>
 		<?php
 			}
 		?>

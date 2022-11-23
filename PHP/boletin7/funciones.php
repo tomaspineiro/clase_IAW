@@ -30,8 +30,10 @@
         return $list;
     }
 
+###########################################################################################
+
 	#estas son las varibles del ejercio 4 
-		function cajaFuerte($password) {
+	function cajaFuerte($password) {
 
 		if ($password == '1234') {
 
@@ -46,9 +48,19 @@
 	}
 
 	function contador($contador = 0 ) {
-		
-		return $contador++;
+		$contador++;
+		return $contador;
 	
+	}
+
+###########################################################################################
+
+	# EJERCIO 5
+	function randNumero($inicio = 1, $final =100) {
+
+		$numero = rand($inicio, $final);
+		return $numero;
+		
 	}
 
 ?>
