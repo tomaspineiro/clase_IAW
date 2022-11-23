@@ -21,35 +21,6 @@
 <?php
 	} //fin Formulario
 ?>
-<?php
-	function parOImpar($numero) { // esto funcion es para saber que nuemros son pares o impares
-		
-		if ( ($numero%2) == 0) {
-			
-			//entra aqui si es par
-			return TRUE;
-	
-		}
-
-		//  Impar 
-		return FALSE;
-
-	}
-
-	function procesoDatos() { // Esta es una funcion para procesar los datos. 
-		
-		#proceso de datos 
-		$numero = (int)recoge('numero');
-		$contador = (int)recoge('contador');
-		$totalImpar = (int)recoge('totalImpar');
-		$contImpar = (int)recoge('contImpar');
-		$maxPar = (int)recoge('maxPar');
-	
-		$lista = ['numero' => $numero, 'totalImpar' => $totalImpar, 'contImpar' => $contImpar,'maxPar' => $maxPar, 'contador' => $contador ];
-
-		return $lista;
-	}
-?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -69,37 +40,44 @@
 				
 				formulario();
 			
-			} elseif (((int)recoge('numero') > 0 ) 	&& (isset($_REQUEST['enviar']))) {
+			} else {
 				
-				$lista = procesoDatos();
+				$numero = (int)recoge('numero');
+				$contador = (int)recoge('contador');
+				$totalImpar = (int)recoge('totalImpar');
+				$contImpar = (int)recoge('contImpar');
+				$maxPar = (int)recoge('maxPar');
+			
+				if ($numero > 0 ) {
+				
+					$contador++;
+				
+					if  (($numero > $maxPar) && ($numero%2 == 0)){
 
-				if (parOImpar($lista['numero']) && ($lista['numero'] > $lista['maxPar'])) {
+						$maxPar = $numero;
 					
-					$lista['maxPar'] = $lista['numero'];
-			
-				} elseif (!parOImpar($lista['numero'])){
-			
-					$lista['contImpar']++;
-					$lista['totalImpar'] += $lista['numero'];
+					} else {
+					
+						$contImpar++;
+						$totalImpar += $numero;
 
-				}
+					}
 				
-				formulario($lista['contador'], $lista['totalImpar'], $lista['contImpar'], $lista['maxPar']);
+					formulario($contador, $totalImpar, $contImpar, $maxPar);
 
-			} elseif (isset($_REQUEST['enviar']) && (int)recoge('numero') < 0 ) {
-
-				$lista = procesoDatos();
+				} else {
 	 
 		?>
 				<article>
 					<h1>Resultado</h1>
 					<ul>
-						<li> La media de los impares: <?= $lista['totalImpar'] / $lista['contImpar'] ?> </li>
-						<li> El mayor de los pares: <?= $lista['maxPar'] ?> </li>
-						<li> Se an introducido un total de numeros: <?= $lista['contador'] ?> </li>
+						<li> La media de los impares: <?= $totalImpar / $contImpar ?> </li>
+						<li> El mayor de los pares: <?= $maxPar ?> </li>
+						<li> Se an introducido un total de numeros: <?= $contador ?> </li>
 					</ul>
 				</article>
 		<?php
+				}
 			}
 		?>
 	</body>

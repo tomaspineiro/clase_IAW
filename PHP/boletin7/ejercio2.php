@@ -39,32 +39,30 @@
 
 				formulario();
 
-			} elseif (((int)$_REQUEST['numero'] > 0) && isset($_REQUEST['enviar'])) {
-
+			} else {
+				
+				#RECOGEMOS LOS DATOS DE LOS FOMULARIOS 
 				$numero = (int)recoge('numero');
 				$contador = (int)recoge('contador');
 				$numTotal = (int)recoge('numTotal');
-
+			
+				if ($numero > 0) { // Mientras el usuario quiera introducir numeros 
 				
-				$contador = $contador + 1;
-				$numTotal = $numTotal + $numero;
+					$contador = $contador + 1;
+					$numTotal = $numTotal + $numero;
 
-				formulario($contador, $numTotal);
+					formulario($contador, $numTotal);
 				
-			} elseif ($_REQUEST['numero'] < 0)  {	
-				$contador = (int)recoge('contador');
-				$numTotal = (int)recoge('numTotal');
+				} elseif ($numero < 0) { // cuando quiere dejar de meter datos el usuatio 
 		?>	
-			<article>
-				<p>
-					<?php 
-						$media = $numTotal / $contador ;
-						echo 'La media es ' . $media ;
-					?>
-				</p>
-			</article>
+				<article>
+					<p>
+						La media es <?= 				$numTotal/$contador;?>
+					</p>
+				</article>
 		<?php
-			}
+				}
+			}		
 		?>		
 			
 	</body>

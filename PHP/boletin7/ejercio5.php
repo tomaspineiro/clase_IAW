@@ -1,6 +1,6 @@
 <?php include("funciones.php");?>
 <?php 
-	function formularioEje5($contador = 0) {
+	function formularioEje5($contador, $numAdivinar) {
 ?>
 	<form action="" method="GET">
 		<p>
@@ -9,6 +9,7 @@
 		</p>
 		<p>
 			<input type="hidden" name="contador" id="contador" value="<?= $contador; ?>">
+			<input type="hidden" name="numAdivinar" id="numAdivinar" value="<?= $numAdivinar; ?>">
 		</p>
 		<p>
 			<button type="submit" name="submit" id="submit">Enviar</button>
@@ -34,22 +35,51 @@
 		</article>
 		<?php
 			if (!isset($_REQUEST['submit'])) {
+				$numAdivinar = rand(1,100);
+				$contador = 0
 		?>
 				<article>
-					<?php formularioEje5(); ?>
+					<?php formularioEje5($contador, $numAdivinar); ?>
 				</article>
 		<?php
-			}elseif (isset($_REQUEST['submit']) && ((int)recoge('contador') < 5) && (!escorrecto()) ) {
-				
-				#esta funcion incremeta en uno el valor introduciado, se hizo para el ejercio 4
-				$contador = contador((int)recoge('contador'));
+			}else {
+		
+				$contador = (int)recoge('contador');
+				$numUser = (int)recoge('numUser');
+				$numAdivinar = (int)recoge('numAdivinar');
+				$contador++;
+
+				if ( ($contador < 5) && ($numUser != $numAdivinar) ) {
+		?>
+					<article>
+						<?php if ($numUser > $numAdivinar){ ?>
+						
+							<p>
+								Te pasate.	
+							</p>
+							
+						<?php } else { ?>  
+							<p>
+								Te quedaste corto. 
+							</p>
+						<?php 
+							}
+
+							formularioEje5($contador, $numAdivinar); 
+						?>
+						<?=  $numAdivinar?>
+					</article>
+		<?php	
+				} elseif ( $numUser == $numAdivinar)  {
 		?>
 				<article>
-					<?php formularioEje5($contador); ?>
+					<p>
+						Es el numero correcto, acertaste. 
+					</p>
 				</article>
-		
-		<?php	
-			}	
+		<?php
+				}
+			}
 		?>
 			
 	</body>
