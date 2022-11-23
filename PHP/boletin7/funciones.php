@@ -62,5 +62,18 @@
 		return $numero;
 		
 	}
+	
+	function escorrecto($numIntento, $numMisterioso) {
+
+			if ($numIntento == $numMisterioso) {
+
+				#coinciden los valores
+				return TRUE;
+			}
+
+			#no coinciden 
+			return FALSE;
+
+	}
 
 ?>
