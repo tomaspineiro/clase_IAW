@@ -39,8 +39,16 @@
 					<?php formularioEje5(); ?>
 				</article>
 		<?php
-			}elseif (isset($_REQUEST['submit']) && ((int)recoge('contador') < 5) ) {
-				# code...
+			}elseif (isset($_REQUEST['submit']) && ((int)recoge('contador') < 5) && (!escorrecto()) ) {
+				
+				#esta funcion incremeta en uno el valor introduciado, se hizo para el ejercio 4
+				$contador = contador((int)recoge('contador'));
+		?>
+				<article>
+					<?php formularioEje5($contador); ?>
+				</article>
+		
+		<?php	
 			}	
 		?>
 			
