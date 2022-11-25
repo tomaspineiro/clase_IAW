@@ -11,9 +11,26 @@
 </head>
 
 <body>
-  <h1>Irregular verbs 2 (Formulario)</h1>
+  <article>
+    <h1>Irregular verbs 2 (Formulario)</h1>
+    <p>
+      Escriba un programa que conste de dos páginas para practicar los verbos irregulares ingleses:
+    </p>
+    <ul>
+      <li>
+        En la primera página se solicita una forma verbal, elegida al azar.
+      </li>
+      <li>
+        En la segunda página se indica si se ha contestado correctamente.
+      </li>
+    </ul>
 
-  <form action="irregular_verbs_2_2.php" method="get">
+    <h6>Enuciado</h6>
+    <p>
+      <a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html" target="_blank">Enuciados</a>
+    </p>
+  </article>
+  <form action="irregular-verbs-2-2.php" method="get">
 
 <?php
 
