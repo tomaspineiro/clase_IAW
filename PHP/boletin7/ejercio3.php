@@ -42,41 +42,59 @@
 			
 			} else {
 				
-				$numero = (int)recoge('numero');
+				$numero = recoge('numero');
 				$contador = (int)recoge('contador');
 				$totalImpar = (int)recoge('totalImpar');
 				$contImpar = (int)recoge('contImpar');
 				$maxPar = (int)recoge('maxPar');
-			
-				if ($numero > 0 ) {
-				
-					$contador++;
-				
-					if  (($numero > $maxPar) && ($numero%2 == 0)){
 
-						$maxPar = $numero;
-					
-					} else {
-					
-						$contImpar++;
-						$totalImpar += $numero;
-
-					}
+				$errores = '';
 				
+				if ($numero == '') {
+					
+					$errores .= '<li>tienes que introducir un numero</li>';
+
+				}
+
+				if ($errores != '') {
+
+					echo "<lu>$errores</lu>";
 					formulario($contador, $totalImpar, $contImpar, $maxPar);
 
 				} else {
+
+				
+
+					if ($numero > 0 ) {
+					
+						$contador++;
+					
+						if  (($numero > $maxPar) && ($numero%2 == 0)){
+
+							$maxPar = $numero;
+						
+						} else {
+						
+							$contImpar++;
+							$totalImpar += $numero;
+
+						}
+					
+						formulario($contador, $totalImpar, $contImpar, $maxPar);
+
+					} else {
 	 
 		?>
-				<article>
-					<h1>Resultado</h1>
-					<ul>
-						<li> La media de los impares: <?= $totalImpar / $contImpar ?> </li>
-						<li> El mayor de los pares: <?= $maxPar ?> </li>
-						<li> Se an introducido un total de numeros: <?= $contador ?> </li>
-					</ul>
-				</article>
+					<article>
+						<h1>Resultado</h1>
+						<ul>
+							<li> La media de los impares: <?= $totalImpar / $contImpar ?> </li>
+							<li> El mayor de los pares: <?= $maxPar ?> </li>
+							<li> Se an introducido un total de numeros: <?= $contador ?> </li>
+						</ul>
+					</article>
 		<?php
+					}
 				}
 			}
 		?>

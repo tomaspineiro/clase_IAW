@@ -42,25 +42,40 @@
 			} else {
 				
 				#RECOGEMOS LOS DATOS DE LOS FOMULARIOS 
-				$numero = (int)recoge('numero');
+				$numero = recoge('numero');
 				$contador = (int)recoge('contador');
 				$numTotal = (int)recoge('numTotal');
-			
-				if ($numero > 0) { // Mientras el usuario quiera introducir numeros 
 				
-					$contador = $contador + 1;
-					$numTotal = $numTotal + $numero;
+				$errores = '';
 
-					formulario($contador, $numTotal);
+				if ($numero == '') {
+					
+					$errores .= '<li>tienes que introducir un nuemor</li>';
+				}
 				
-				} elseif ($numero < 0) { // cuando quiere dejar de meter datos el usuatio 
-		?>	
-				<article>
-					<p>
-						La media es <?= 				$numTotal/$contador;?>
-					</p>
-				</article>
+				if ($errores != '' ) {
+
+					echo "<lu>$errores</lu>";
+					formulario($contador, $numTotal);
+					
+				} else {
+
+					if ((int)$numero > 0) { // Mientras el usuario quiera introducir numeros 
+					
+						$contador = $contador + 1;
+						$numTotal = $numTotal + $numero;
+
+						formulario($contador, $numTotal);
+					
+					} elseif ($numero < 0) { // cuando quiere dejar de meter datos el usuatio 
+			?>	
+					<article>
+						<p>
+							La media es <?= $numTotal/$contador;?>
+						</p>
+					</article>
 		<?php
+					}
 				}
 			}		
 		?>		
