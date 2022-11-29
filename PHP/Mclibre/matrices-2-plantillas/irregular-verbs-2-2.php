@@ -30,12 +30,32 @@
       <a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html" target="_blank">Enuciados</a>
     </p>
   </article>
-<?php
+  <article>
+    <?php  
+      $respuesta = recoge('respuesta');
+      $tiempoVerbal = recoge("tiempoVerbal");
+      $spanisVerbal = recoge("spanisVerbal");
+      $verboIngles = recoge('verboIngles');
 
-print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
+      if ($respuesta == $verboIngles) {
+    ?>
+      
+      <p>¡Respuesta correcta!</p>
 
-?>
-  <p><a href="irregular-verbs-2-1.php">Volver al formulario.</a></p>
+    <?php 
+      } else {
+    ?>
+        <p>¡Respuesta incorrecta!</p>
+
+    <?php
+      }
+    ?>
+
+    <p>El <strong><?= $verboLista[0];?></strong> de <strong><?= $verboLista[1];?></strong> es <strong><?= $verboIngles; ?></strong>.</p>
+    
+    <p><a href="irregular-verbs-2-1.php">Volver al formulario.</a></p>
+  
+  </article>
 
   <footer>
     <p>Tomás Piñeiro Alonso</p>

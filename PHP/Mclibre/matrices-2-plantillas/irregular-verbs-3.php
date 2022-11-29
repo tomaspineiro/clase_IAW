@@ -25,19 +25,63 @@
     <p><a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html" target="_blank">Enuciados</a> </p>
   </article>
   <form action="irregular_verbs_3.php" method="get">
+  <p>
+        <label for="respuesta">¿Cuál es el <strong><?= $verboLista[0];?></strong> de <strong><?= $verboLista[1];?></strong>?</label>
+        <input type="text" name="respuesta" id="respuesta">
+      </p>
+      <p>
+        <input type="hidden" name="verboIngles" id="verboIngles" value="<?= $verboLista[2];?>">
+        <input type="hidden" name="tiempoVerbal" id="tiempoVerbal" value='<?= $verboLista[0];?>'>
+        <input type="hidden" name="spanisVerbal" id="spanisVerbal" value='<?= $verboLista[1];?>'>
 
-<?php
+      </p>
+  <?php  
+      $respuesta = recoge('respuesta');
+      $tiempoVerbal = recoge("tiempoVerbal");
+      $spanisVerbal = recoge("spanisVerbal");
+      $verboIngles = recoge('verboIngles');
 
-print "    <p class=\"aviso\">Ejercicio incompleto</p>\n";
+      if ($respuesta == $verboIngles) {
+    ?>
+      
+      <p>¡Respuesta correcta!</p>
 
-?>
-
+    <?php 
+      } else {
+    ?>
+        <p>¡Respuesta incorrecta!</p>
+    <?php
+      }
+    ?>
     <p>
       <input type="submit" value="Corregir">
       <input type="reset" value="Borrar">
     </p>
   </form>
+  <?php  
+  if ()
+      $respuesta = recoge('respuesta');
+      $tiempoVerbal = recoge("tiempoVerbal");
+      $spanisVerbal = recoge("spanisVerbal");
+      $verboIngles = recoge('verboIngles');
 
+      if ($respuesta == $verboIngles) {
+    ?>
+      
+      <p>¡Respuesta correcta!</p>
+
+    <?php 
+      } else {
+    ?>
+        <p>¡Respuesta incorrecta!</p>
+    <?php
+      }
+    ?>
+    <p>
+      <input type="submit" value="Corregir">
+      <input type="reset" value="Borrar">
+    </p>
+  </form>
   <p><a href="irregular-verbs-3.php"><button>Reiniciar</button></a></p>
 
   <footer>

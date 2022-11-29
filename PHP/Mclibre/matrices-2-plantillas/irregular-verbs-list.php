@@ -111,3 +111,8 @@ $irregularVerbs = [
     ['win',       'won',       'won',       'ganar'],
     ['write',     'wrote',     'written',   'escribir'],
 ];
+
+
+$formaVerbalNombre = ["infinitivo", "pasado", "participio"];
+
+?>

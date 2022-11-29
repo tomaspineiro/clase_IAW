@@ -1,6 +1,4 @@
-<?php include "irregular-verbs-list.php"; ?>
-<?php $formaVerbalNombre = ["infinitivo", "pasado", "participio"]; ?>
-
+<?php include "funciones.php"; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,20 +22,20 @@
       <a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html" target="_blank">Enuciados</a>
     </p>
   </article>
-
-<?php
-$tiempo=rand(0, (count($formaVerbalNombre)- 1));
-$verbo=rand(0, (count($irregularVerbs) -1));
-?>
-  <p>El <strong><?= $formaVerbalNombre[$tiempo]; ?></strong> de <strong><?= $irregularVerbs[$verbo][3]; ?></strong> es <strong><?= $irregularVerbs[$verbo][$tiempo]; ?></strong> </p>
-  <p>
-    <a href="irregular-verbs-1.php">
-      <button>Mostrar otro</button>
-    </a>
-  </p>
+  
+  <article>
+    <?php $verboLista = tiemposVerboIngles(); ?>
+    <p>El <strong><?= $verboLista[0]; ?></strong> de <strong><?= $verboLista[1]; ?></strong> es <strong><?= $verboLista[2]; ?></strong>.</p>
+    <p>
+      <a href="irregular-verbs-1.php">
+        <button>Mostrar otro</button>
+      </a>
+    </p>
+  </article>
 
   <footer>
     <p>Tomás Piñeiro Alonso</p>
   </footer>
+
 </body>
 </html>
