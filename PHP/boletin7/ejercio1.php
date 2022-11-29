@@ -41,29 +41,40 @@
 		<h5>ejercio 1 </h5>
 		<?php
 			if (!isset($_REQUEST['enviar'])) { // MONSTRAMOS EL FORM 
-			
+				
+				echo "<hr>";
+				print_r($palabrasWords);
+				echo "<hr>";
+
 				formulario();
-		
-				// fin de FORM 
+
 			} else {
 				// RESPUESTA AL FORM 
 				$word = recoge($_REQUEST['word']);
+
+				$errores = '';
+
+				if ($word == '') {
+					$errores .= '<li>tienes que introducir una palabra </li>';
+				}
 				if (!traductor($word, $palabrasWords)){ // esto es si no tenemos la palabra para traductor
-					formulario();
+					
+					$errores .= '<li>La palabra tiene que estar en el dicionario</li>';
 				
+				}
+				
+				if ($errores != '') {
+					
+					echo "<lu>$errores</lu>";
+					formulario();
+
 				} else {
 		?>
-					</table>
-						</tr>
-							<th>Español</th>
-							<th>Ingles</th>
-						</tr>
-						<tr>
-							<td><?= $word; ?></td>
-							<td><?= $palabrasWords[$word]; ?></td>
-						</tr>
-					</table>
-		
+					<ul>
+						<li>Español: <?= $word; ?> </li>	
+						<li>Ingles: <?= $palabrasWords[$word]; ?></li>
+					</ul>	
+				
 		<?php 
 				}
 			} // Fin RESPUESTA AL FORM 

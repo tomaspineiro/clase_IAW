@@ -49,7 +49,14 @@
 				
 				$contador = (int)recoge('contador');
 				$combinacion = recoge('combinacion');
+				$clave = recoge('clave');
+
 				$contador++;
+
+				$errores = '' ;
+
+				
+
 
 				if (($contador < 4) && ($combinacion != $clave)) { 												 			
 		?>				
