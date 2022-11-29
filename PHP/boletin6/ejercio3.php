@@ -27,6 +27,7 @@
 			return NOCHE;
 		} 
 	}
+
 ?>		
 <!DOCTYPE html>
 <html lang="es">
@@ -46,12 +47,34 @@
 				formulario();
 			} else { 
 				$hora = recoge('hora');
+
+				$errores = "";
+
+				if ($hora != "") {
+
+					$errores .= "<li>Tienes que indicar una hora </li>";
+
+				} 
+
+				if (((int)$hora >= 0) && ((int)$hora <= 24)) {
+
+					$errores .= "<li> las hora pueden ser entre 0 a 24 </li>";
+				
+				}
+
+				if ($errores != ""){
+					
+					echo "<ul>$errores</ul>";
+					formulario();
+
+				} else {
 			?>
 				<p>
 					<?php montoDia($hora); ?>
 				</p>
 
-			<?php } ?>
+			<?php }
+			} ?>
 		</article>	
 	</body>
 </html>

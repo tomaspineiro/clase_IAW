@@ -13,18 +13,35 @@
 <?php } ?>
 <?php
 	function dniCorrecto($dni) {
-		$letra = array('T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E',);
-		if ((strlen($dni) != 9)	or (in_array($dni[8],$letra) == 0)) {
-			return false;
+		
+		if ((strlen($dni) != 8)) {
+			return FALSE;
 		}
-		$dniCorto = substr($dni, 0, -1);
-		$dniNum = (int)$dniCorto;
-		$comprobador = $dniNum % 23; 
-		if ($letra[$comprobador] == strtoupper($dni[8])){
-			return true;
-		} else {
-			return false;
+		
+		return TRUE;
+		
+	}
+	function digitosDNICorectos($dni){
+
+		$dni = (int)$dni;
+		$comprobador = $dni % 23; 
+
+		if (($comprobador >= 0) && ($comprobador < 23)) {
+			
+			return TRUE;
 		}
+
+		return FALSE;
+
+	}
+
+	function letraDNI($dni) {
+		$letra = 'TRWAGMYFPDXBNJZSQVHLCKE';
+
+		$dni = (int)$dni;
+		$comprobador = $dni % 23; 
+	
+		return $letra[$comprobador];
 	}
 ?>		
 <!DOCTYPE html>
@@ -46,15 +63,32 @@
 			
 			$dni = recoge('dni');	
 			
+			$errores = "";
+				
+			if ($dni == "") {
+					
+					$errores .= "<li>Debes introducir un dni </li>";
+						
+			} 
 			if (!dniCorrecto($dni)) {
+			
+				$errores .= "<li>El dni tiene 8 digitos </li>";
+			
+			}
+			if (!digitosDNICorectos($dni)) {
+				$errores .= "<li>Los digitos del dni no son corectos </li>";
+			}
+		
+			if ($errores != "") {
+				
+				echo "<lu>$errores</lu>";
 				formulario();
-		?>
-			<p>
-				esta mal 
-			</p>
-		<?php } else { ?>
-			<p>esta bien</p>		
-		<?php
+			
+		 	} else { ?>
+
+			<p> El DNi con digitos <?= $dni ?>tiene una letra <?= letraDNI($dni)?></p>		
+
+			<?php
 			}
 		}
 		?>	

@@ -43,21 +43,25 @@
 					 formulario();
 				} else {
 					$euros = recoge('euro');
-					$pesetas = eurosPesta($euros);
+					
+					$errores = "";
+
+					if ($euros == ""){
+
+						$errores .= "<li>tienes que meter una cantida de auros </li>";
+					}
+
+					if ($errores != ""){
+						
+						echo "<lu>$errores</lu>";
+						formulario();
+
+					}else {
 			?>
-				<table>
-					<thead>
-						<tr>
-							<th>Euros</th> <th>Pesetas</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><?= $euros; ?></td><td><?= $pesetas ?></td>
-						</tr>
-					</tbody>
-				</table>
+					<p> si tenemos estos <?= $euros; ?> euros, entoces antes tendriamos estas <?=eurosPesta($euros) ?> pesetas</p>
+						
 			<?php
+					}
 				}
 			?>
 		</article>

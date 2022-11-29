@@ -1,13 +1,13 @@
 <?php include('funciones.php'); ?>
-<?php function formulario() {?>
+<?php function formulario($hora = "", $minutos = "") {?>
 	<form action="" method="GET">
 		<p>
 			<label for="hora">Hora:</label>
-			<input type="number" name="hora" id="hora">
+			<input type="number" name="hora" id="hora" value="<?= $hora; ?>">
 		</p>
 		<p>
 			<label for="minutos">Minutos:</label>
-			<input type="number" name="minutos" id="minutos">
+			<input type="number" name="minutos" id="minutos" value="<?= $minutos; ?>">
 		</p>
 		<p>
 			<button type="submit" name="enviar" id="enviar">Enviar</button>
@@ -16,22 +16,28 @@
 <?php } ?>
 <?php
 	function mediaNocheEn($hora, $minutos){
-		return horasASegundos($hora) + minASegundos($minutos);
-	}
-	function horasASegundos($hora){
 		define('HMEDIANOCHE', 24);
-		define('SEGenHORA', 3600);
+		define('MINenHORA', 60);
+
 		$horasFaltan = HMEDIANOCHE - $hora;
-		$segundos = $horasFaltan * SEGenHORA;
+		$minFaltan = MINenHORA - $minutos;
+		
+		return horasASegundos($horasFaltan) + minASegundos($minFaltan);
+	}
+	function horasASegundos($horas){
+		
+		define('SEGenHORA', 3600);
+		
+		$segundos = $horas * SEGenHORA;
 		
 		return $segundos; 
 	}
 	function minASegundos($minutos){
-		define('MINenHORA', 60);
+		
 		define('SEGenMIN', 60);
 		
-		$minFaltan = MINenHORA - $minutos;
-		$segundos = $minFaltan * SEGenMIN;
+		
+		$segundos = $minutos * SEGenMIN;
 		
 		return $segundos;
 	} 
@@ -53,14 +59,49 @@
 			<?php if (!isset($_REQUEST['enviar'])) { 
 				formulario();
 			} else {
-				$hora = (int)recoge('hora');
-				$minutos = (int)recoge('minutos');
-				$segundos = mediaNocheEn($hora, $minutos)	
-			?>
+				$hora = recoge('hora');
+				$minutos =recoge('minutos');
+				
+				$errores = "";
+
+				if ($hora == "" ) {
+
+					$errores .= "<li> Tines que introducir una hora </li>";
+
+				}
+				if ($minutos == "") {
+
+					$errores .= "<li> Tines que introducir los minutos </li>";
+				
+				}
+				if (((int)$hora >= 0) && ((int)$hora <= 24)) {
+					
+					$errores .= "<li> Las horas no pueden ser menores de 0 o mas de 24 </li>";
+				
+				}
+				if (((int)$minutos >= 0) && ((int)$minutos <= 60)) {
+					
+					$errores .= "<li> los minutos no pueden ser menores de 0 o mas de 60 </li>";
+				
+				}
+				
+
+				if ($errores != "") {
+					
+					echo "<lu>$errores</lu>";
+					formulario($hora, $minutos);
+
+				} else {
+					
+					$segundos = mediaNocheEn((int)$hora, (int)$minutos)	
+					
+					?>
 			<p>
 				Este es el total de segundos <?= $segundos; ?>
 			</p>
-			<?php  } ?>
+			<?php  } 
+			} ?>
+		
 		</article>
 	</body>
 </html>
