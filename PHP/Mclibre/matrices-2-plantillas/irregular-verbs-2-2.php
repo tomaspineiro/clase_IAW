@@ -1,3 +1,4 @@
+<?php include 'funciones.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
-
 <body>
   <article>
     <h1>Irregular verbs 2 (Resultado)</h1>
@@ -46,12 +46,11 @@
       } else {
     ?>
         <p>¡Respuesta incorrecta!</p>
-
     <?php
       }
     ?>
 
-    <p>El <strong><?= $verboLista[0];?></strong> de <strong><?= $verboLista[1];?></strong> es <strong><?= $verboIngles; ?></strong>.</p>
+    <p>El <strong><?= $tiempoVerbal;?></strong> de <strong><?= $spanisVerbal;?></strong> es <strong><?= $verboIngles; ?></strong>.</p>
     
     <p><a href="irregular-verbs-2-1.php">Volver al formulario.</a></p>
   
