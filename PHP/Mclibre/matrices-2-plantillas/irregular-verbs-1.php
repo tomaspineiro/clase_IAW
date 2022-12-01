@@ -19,7 +19,7 @@
     </p>
     <h6>Enuciado</h6>
     <p>
-      <a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html" target="_blank">Enuciados</a>
+      <a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html#ejercicio-1" target="_blank">Enuciados</a>
     </p>
   </article>
   

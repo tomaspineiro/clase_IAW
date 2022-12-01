@@ -39,7 +39,7 @@
       <li>Si se recibe una respuesta, se indica si es correcta o no.</li>
     </ul>
 
-    <p><a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html" target="_blank">Enuciados</a> </p>
+    <p><a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html#ejercicio-3" target="_blank">Enuciados</a> </p>
   </article>
   <article>
     <?php  

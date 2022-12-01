@@ -1,3 +1,4 @@
+<?php include "funciones.php"; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,14 +14,14 @@
 <body>
   <article>
     <h1>Irregular verbs 4</h1>
+    <h4>Enuciado</h4>
     <p>Escriba un programa para practicar los verbos irregulares ingleses.</p>
     <ul>
       <li>Se pide una forma verbal elegida al azar mostrando las tres formas verbales del verbo y se pregunta cuál es la correcta.</li>
       <li>Si se recibe una respuesta, se indica si es correcta o no.</li>
     </ul>
 
-    <h6>Enuciado</h6>
-    <p><a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html" target="_blank">Enuciados</a> </p>
+    <p><a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html#ejercicio-4" target="_blank">Enuciados</a> </p>
   </article>
   <form action="irregular_verbs_4.php" method="get">
 
