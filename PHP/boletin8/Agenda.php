@@ -18,9 +18,15 @@
 	</form>
 <?php } ?>
 <?php function MostrarAgenda($agenda){
+	echo "<h3>Contactos</h3>
+	<lu>";
 	
-	print_r($agenda);
-	echo "<hr>";
+	foreach ($agenda as $nombre => $telefono) {
+
+		echo "<li><strong>$nombre</strong>: $telefono</li>";
+	}
+	
+	echo "</lu><hr>";
 	
 } ?>
 <!DOCTYPE html>
