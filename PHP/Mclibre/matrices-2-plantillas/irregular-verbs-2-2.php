@@ -11,51 +11,40 @@
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 <body>
-  <article>
-    <h1>Irregular verbs 2 (Resultado)</h1>
-    <p>
-      Escriba un programa que conste de dos páginas para practicar los verbos irregulares ingleses:
-    </p>
-    <ul>
-      <li>
-        En la primera página se solicita una forma verbal, elegida al azar.
-      </li>
-      <li>
-        En la segunda página se indica si se ha contestado correctamente.
-      </li>
-    </ul>
-
-    <h6>Enuciado</h6>
-    <p>
-      <a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html#ejercicio-2" target="_blank">Enuciados</a>
-    </p>
-  </article>
-  <article>
-    <?php  
-      $respuesta = recoge('respuesta');
-      $tiempoVerbal = recoge("tiempoVerbal");
-      $spanisVerbal = recoge("spanisVerbal");
-      $verboIngles = recoge('verboIngles');
-
-      if ($respuesta == $verboIngles) {
-    ?>
+  <section>
+    <article>
+      <h1>Irregular verbs 2 (Resultado)</h1>
+      <p>
+        Escriba un programa que conste de dos páginas para practicar los verbos irregulares ingleses:
+      </p>
+      <ul>
+        <li>
+          En la primera página se solicita una forma verbal, elegida al azar.
+        </li>
+        <li>
+          En la segunda página se indica si se ha contestado correctamente.
+        </li>
+      </ul>
       
-      <p>¡Respuesta correcta!</p>
-
-    <?php 
-      } else {
-    ?>
-        <p>¡Respuesta incorrecta!</p>
-    <?php
-      }
-    ?>
-
-    <p>El <strong><?= $tiempoVerbal;?></strong> de <strong><?= $spanisVerbal;?></strong> es <strong><?= $verboIngles; ?></strong>.</p>
-    
-    <p><a href="irregular-verbs-2-1.php">Volver al formulario.</a></p>
+      <h6>Enuciado</h6>
+      <p>
+        <a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html#ejercicio-2" target="_blank">Enuciados</a>
+      </p>
+    </article>
+    <article>
+      <?php  
+        $respuesta = recoge('respuesta');
+        $tiempoVerbal = recoge("tiempoVerbal");
+        $spanisVerbal = recoge("spanisVerbal");
+        $verboIngles = recoge('verboIngles');
+        ?>
+      <?php solcuion($respuesta, $verboIngles, $tiempoVerbal, $spanisVerbal); ?>
+      
+      <p><a href="irregular-verbs-2-1.php">Volver al formulario.</a></p>
+      
+    </article>
+  </section>
   
-  </article>
-
   <footer>
     <p>Tomás Piñeiro Alonso</p>
   </footer>

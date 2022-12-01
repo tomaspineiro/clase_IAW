@@ -4,7 +4,7 @@ use LDAP\Result; // que es esto? ?>
 
 
 $formaVerbalNombre = ["infinitivo", "pasado", "participio"];
-function tiemposVerboIngles()
+function tiemposVerboIngles($numVerbos = 1)
 {
     include "irregular-verbs-list.php";
 
@@ -16,7 +16,17 @@ function tiemposVerboIngles()
     $castellanoVer = $irregularVerbs[$verbo][3]; // verbo en castellano
     $inglesVer = $irregularVerbs[$verbo][$tiempo]; //verbo en ingles 
     
-    $verboLista = [$tiempoVer, $castellanoVer,  $inglesVer];
+    if ($numVerbos == 1 ){
+
+        $verboLista = [$tiempoVer, $castellanoVer,  $inglesVer];
+
+    } else {
+
+        $inglesVerLista = array_slice($irregularVerbs[$verbo], 0, 3);
+        
+        $verboLista = [$tiempoVer, $castellanoVer,  $inglesVer, $inglesVerLista ];
+
+    }
 
     return $verboLista;
 
@@ -37,5 +47,18 @@ function recoge($var, $m = "")  {
     }
     return $tmp;
 }
-
 ?>
+
+<?php function solcuion($respuesta, $verboIngles, $tiempoVerbal,$spanisVerbal ) {
+    if ($respuesta == $verboIngles) { ?>
+
+        <p>¡Respuesta correcta!</p>
+
+    <?php } else { ?>
+
+        <p>¡Respuesta incorrecta!</p>
+
+    <?php } ?>
+
+    <p>El <strong><?= $tiempoVerbal;?></strong> de <strong><?= $spanisVerbal;?></strong> es <strong><?= $verboIngles; ?></strong>.</p>
+<?php } ?>
