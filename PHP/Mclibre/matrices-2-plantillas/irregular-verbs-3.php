@@ -1,6 +1,6 @@
 <?php include 'funciones.php'; ?>
 <?php function formulario($tiempoVerbal, $verboIngles, $spanisVerbal) { ?>
-  <form action="irregular_verbs_3.php" method="get">
+  <form action="irregular-verbs-3.php" method="get">
     <p>
       <label for="respuesta">¿Cuál es el <strong><?= $tiempoVerbal;?></strong> de <strong><?= $spanisVerbal;?></strong>?</label>
       <input type="text" name="respuesta" id="respuesta">
@@ -30,6 +30,7 @@
 <body>
   <article>
     <h1>Irregular verbs 3</h1>
+    <h6>Enuciado</h6>
     <p>
     Escriba un programa que haga lo mismo que el del ejercicio anterior, pero que conste de una sola página:
     </p>
@@ -38,7 +39,6 @@
       <li>Si se recibe una respuesta, se indica si es correcta o no.</li>
     </ul>
 
-    <h6>Enuciado</h6>
     <p><a href="https://www.mclibre.org/consultar/php/ejercicios/con-formularios/matrices-2/index.html" target="_blank">Enuciados</a> </p>
   </article>
   <article>
@@ -59,9 +59,16 @@
         <p>¡Respuesta correcta!</p>
       
     <?php } else { ?>
+
         <p>¡Respuesta incorrecta!</p>
     <?php } ?>
-      <p>El <strong><?= $tiempoVerbal;?></strong> de <strong><?= $spanisVerbal;?></strong> es <strong><?= $verboIngles; ?></strong>.</p>
+      <p>
+        El <strong><?= $tiempoVerbal;?></strong> de <strong><?= $spanisVerbal;?></strong> es <strong><?= $verboIngles; ?></strong>.
+      </p>
+      <?php
+        $verboLista =  tiemposVerboIngles();
+        formulario($verboLista[0], $verboLista[2], $verboLista[1]);
+      ?>
     <p><a href="./irregular-verbs-3.php"><button>Reiniciar</button></a></p>
   <?php } ?>  
   </article>
