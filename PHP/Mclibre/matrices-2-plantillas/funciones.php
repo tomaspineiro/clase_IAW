@@ -22,9 +22,9 @@ function tiemposVerboIngles($numVerbos = 1)
 
     } else {
 
-        $inglesVerLista = array_slice($irregularVerbs[$verbo], 0, 3);
+        $inglesVerLista = $irregularVerbs[$verbo];
         
-        $verboLista = [$tiempoVer, $castellanoVer,  $inglesVer, $inglesVerLista ];
+        $verboLista = [$tiempoVer, $inglesVer, $inglesVerLista ];
 
     }
 
