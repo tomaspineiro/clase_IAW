@@ -58,7 +58,7 @@
       if (!isset($_REQUEST['Corregir'])) {
         
         $verbos = tiemposVerboIngles(4);
-        formulario($verbos[0], $verbos[1], $verbos[2], $verbos[3]);
+        formulario($verbos[0], $verbos[3][3], $verbos[2], $verbos[3]);
 
       } else {
 
@@ -70,7 +70,7 @@
         <?php solcuion($respuesta, $verboIngles, $tiempoVerbal, $spanisVerbal); ?>
         <?php
         $verbos = tiemposVerboIngles(4);
-        formulario($verbos[0], $verbos[1], $verbos[2], $verbos[3]);
+        formulario($verbos[0], $verbos[3][3], $verbos[2], $verbos[3]);
         ?>
       <?php } ?>
       <p><a href="irregular-verbs-4.php"><button>Reiniciar</button></a></p>
