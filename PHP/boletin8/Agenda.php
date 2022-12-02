@@ -52,29 +52,34 @@
 				$errores = '';
 
 				if ($nombre == '') {
-					$errores .= "<li>tienes que introducir un nombre</li>";
-				}
-				if ($tel == '' ) {
-					if ($nombre != "" && isset($agenda[$nombre]) ) {
-						unset($agenda[$nombre]);
-					} else {
-						$errores .= "<li>tienes que introducir el numero</li>";
-					}
-				}
-				if ($errores != '') {
 					
-					echo "<lu>$errores</lu>";
-					formularios($nombre, $tel, $agenda);
-					MostrarAgenda($agenda);
-				
+					$errores .= "<li>tienes que introducir un nombre</li>";
+
+				} elseif ($tel == '' AND !array_key_exists($nombre, $agenda) ) {
+
+					$errores .= "<li>tienes que introducir el numero</li>";
+
+				} elseif ($tel == '' AND array_key_exists($nombre, $agenda) ) {
+					
+					unset($agenda[$nombre]);
+
 				} else {
 					
 					$agenda[$nombre] = $tel;
-					
-					MostrarAgenda($agenda);
 
-					formularios($nombre, $tel, $agenda);
 				}
+				
+				if ($errores != '') {
+					
+					echo "<lu>$errores</lu>";
+					
+				} 
+					
+					
+				MostrarAgenda($agenda);
+					
+				formularios($nombre, $tel, $agenda);
+				
 
 
 			} ?>
