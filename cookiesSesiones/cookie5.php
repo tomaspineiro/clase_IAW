@@ -1,14 +1,36 @@
 <?php function formulario() { ?>
-    <form action="coo">
+    <form action="">
         <p>
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre">
-        </p>
-        <p>
-            <input type="submit" name="enviar" id="enviar" value="enviar">
+            <label for="color">color:</label>
+            <select name="color" id="color" >
+                <option value="red">rojo</option>
+                <option value="black">negro</option>
+                <option value="green">verder</option>
+                <option value="white">Blanco</option>
+                <option value="silver">gris</option>
+            </select>
+            <input type="submit" name="enviar" id="enviar" value="cambiar color ">
         </p>
     </form>
 <?php } ?>
+<?php 
+    if (isset($_REQUEST['enviar'])){
+        
+        $color = $_REQUEST['color'];
+        
+    } elseif (isset($_COOKIE['color'])) {
+        
+        $color = $_COOKIE['color'];
+        
+    } else {
+        
+        $color = "white";
+        
+    }
+    
+    setcookie("color", $color, time() + 60 * 60 * 24 * 365);
+    
+    ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body style="background-color:<?= $color;?>;">
     <section>
         <article>
             <h1>Holy, jiji</h1>
@@ -34,13 +56,13 @@
                 }
                 
                 $fecha = date("d/m/Y|H:i:s");
-
                 setcookie("fecha", $fecha, time() + 60 * 60 * 24 * 365);
                 setcookie('contador', $contador, time() + 60 * 60 * 24 * 365);
-                ?>   
-            </p>
-            <p>
                 
+                formulario();
+                
+                
+                ?>   
             </p>
         </article>
     </section>
