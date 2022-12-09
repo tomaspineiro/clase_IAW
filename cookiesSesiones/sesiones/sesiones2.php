@@ -23,8 +23,8 @@ if (!isset($_SESSION['nombre'])) {
         <article>
             <h1>Holy, jiji</h1>
             
-            <p>hola tu nombre de usauaro es: <?= $_SESSION['nombre'];?></p>
-            <p>Has estado en esta pagina un total de <?= $_SESSION['contador']; ?></p>
+            <p>Hola!, tu nombre de usauaro es: <?= $_SESSION['nombre'];?></p>
+            <p>Has estado en esta pagina un total de <?= $_SESSION['contador']; ?>.</p>
         </article>
     </section>
 </body>
