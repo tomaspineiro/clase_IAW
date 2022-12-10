@@ -20,9 +20,15 @@
 </head>
 
 <body>
-  <h1>Tres dados</h1>
+  <section>
+    <article>
 
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+    <h1>Tres dados</h1>
+    
+    <p>Actualice la página para mostrar una nueva tirada.</p>
+    <a href="https://www.mclibre.org/consultar/php/ejercicios/sin-formularios/if-else-1/index.html#ejercicio-2#ejercicio-4">Enunciado</a>
+    </article>
+  </section>
 
 <?php
 

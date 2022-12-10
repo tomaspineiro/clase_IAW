@@ -24,7 +24,7 @@
     <article>
       <h1>Juego: Tres dados más altos</h1>
       <p>Actualice la página para mostrar una nueva tirada.</p>
-      <a href="https://www.mclibre.org/consultar/php/ejercicios/sin-formularios/if-else-1/index.html#ejercicio-2#ejercicio-5"></a>
+      <a href="https://www.mclibre.org/consultar/php/ejercicios/sin-formularios/if-else-1/index.html#ejercicio-2#ejercicio-5">Enunciado</a>
     </article>
   </section>
 
