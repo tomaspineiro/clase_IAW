@@ -33,9 +33,7 @@
   </section>
   <section>
     <article>
-      <?php
-      $resultadoTirado = tiradaDados(2);
-      ?>
+      <?php $resultadoTirado = tiradaDados(2); ?>
       <table>
         <tr>
           <td><img src="./img/<?= $resultadoTirado[0]; ?>.svg" alt=""></td>
