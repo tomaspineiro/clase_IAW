@@ -1,3 +1,4 @@
+<?php include "funciones.php"; ?>
 <?php
 /**
  * if ... else ... (1) 1 - if-else-1-1.php
@@ -20,15 +21,47 @@
 </head>
 
 <body>
-  <h1>Dos dados</h1>
+  <section>
+    <article>
 
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+      <h1>Dos dados</h1>
+      
+      <p>Actualice la página para mostrar una nueva tirada.</p>
+      <a href="https://www.mclibre.org/consultar/php/ejercicios/sin-formularios/if-else-1/index.html#ejercicio-2#ejercicio-1">Enunciado</a>
 
-<?php
+    </article>
+  </section>
+  <section>
+    <article>
+      <?php
+      $resultadoTirado = tiradaDados(2);
+      ?>
+      <table>
+        <tr>
+          <td><img src="./img/<?= $resultadoTirado[0]; ?>.svg" alt=""></td>
+          <td><img src="./img/<?= $resultadoTirado[1]; ?>.svg" alt=""></td>
+        </tr>
+      </table>
+      <?php
+        if ($resultadoTirado[0] == $resultadoTirado[1]) {
+          
+          echo "<p>As sacado una pareja de $resultadoTirado[0]</p>";
+        
+        } elseif ($resultadoTirado[0] > $resultadoTirado[1]) {
+          
+          echo "<p>El mayor es $resultadoTirado[0]</p>";
+          
+        } else {
 
-print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
+          echo "<p>El mayor es $resultadoTirado[1]</p>";
 
-?>
+        }
+      ?> 
+
+    </article>
+  </section>
+
+
 
   <footer>
     <p>Tomás Piñeiro Alonso</p>
