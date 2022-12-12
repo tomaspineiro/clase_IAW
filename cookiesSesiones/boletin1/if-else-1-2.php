@@ -92,8 +92,12 @@
         <th>Resultado</th>
       </tr>
       <tr>
-        <td><img src="./img/<?= $resultadoTirado[0]; ?>.svg" alt=""></td>
-        <td><img src="./img/<?= $resultadoTirado[1]; ?>.svg" alt=""></td>
+        <td bgcolor="blue">
+          <img src="./img/<?= $resultadoTirado[0]; ?>.svg" alt="">
+        </td>
+        <td bgcolor="red">
+          <img src="./img/<?= $resultadoTirado[1]; ?>.svg" alt="">
+        </td>
         <td>
           <ul>
             <li>jugador1: <?= $jugador1; ?></li>
