@@ -7,28 +7,7 @@
  *
  */
 ?>
-<?php 
-  if ((isset($_REQUEST['reniciar'])) && ($_REQUEST['reniciar'] != "")) {
-    
-    $_REQUEST['renicaiar'] = "";
-    
-    setcookie('jugador1', 0, time()-60*60*2);
-    setcookie('jugador2', 0, time()-60*60*2);
-    setcookie('empates', 0, time()-60*60*2);
-    setcookie('tiradas', 0, time()-60*60*2);
-    
-  }
-  
-  if (!isset($_COOKIE['tiradas'])) {
-    
-    setcookie('jugador1', 0, time()+60*60*2);
-    setcookie('jugador2', 0, time()+60*60*2);
-    setcookie('empates', 0, time()+60*60*2);
-    setcookie('tiradas', 0, time()+60*60*2);
-    
-  }
-  
-?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -54,33 +33,50 @@
   </section>
   <section>
     <?php $resultadoTirado = tiradaDados(2); ?>
+    <?php 
+      if (!isset($_COOKIE['tiradas']) || ($_REQUEST['reiniciar'] == "reiniciar")) {
+        
+        setcookie('jugador1', 0, time()+60*60*2);
+        setcookie('jugador2', 0, time()+60*60*2);
+        setcookie('empates', 0, time()+60*60*2);
+        setcookie('tiradas', 0, time()+60*60*2);
+        ?>
+      <form action="">
+        <input type="hidden" value="" name="reiniciar" id="reiniciar">
+        <input type="submit" value="Empezar a jugar. " name="jugar" id="jugar">
+      </form>
     <?php
-      if ($resultadoTirado[0] == $resultadoTirado[1]) {
-        
-        $empates = $_COOKIE['empates'];
-        $empates = $empates + 1;
-        setcookie('empates',$empates, time() + 60*60*2);
-      
-      } elseif ($resultadoTirado[0] > $resultadoTirado[1]) {
-          
-        $jugador1 = $_COOKIE['jugador1'];
-        $jugador1 = $jugador1 +1;
-        setcookie('jugador1', $jugador1,time() + 60*60*2);
-        
       } else {
         
+        $empates = $_COOKIE['empates'];
+        $jugador1 = $_COOKIE['jugador1'];
         $jugador2 = $_COOKIE['jugador2'];
-        $jugador2 =  $jugador2 + 1;
-        setcookie('jugador2', $jugador2,time() + 60*60*2);
+        $tiradas = $_COOKIE['tiradas'];
+
+        if ($resultadoTirado[0] == $resultadoTirado[1]) {
+          
+          
+          $empates++;
+          setcookie('empates',$empates, time() + 60*60*2);
         
-      }
+        } elseif ($resultadoTirado[0] > $resultadoTirado[1]) {
+            
+         
+          $jugador1 = $jugador1 +1;
+          setcookie('jugador1', $jugador1,time() + 60*60*2);
+          
+        } else {
+          
+          
+          $jugador2 =  $jugador2 + 1;
+          setcookie('jugador2', $jugador2,time() + 60*60*2);
+          
+        }
 
-      $tiradas = $_COOKIE['tiradas'];
-      $tiradas =  $tiradas + 1;
-      setcookie('tiradas', $tiradas, time()+60*60*2);
-
+     
+        $tiradas =  $tiradas + 1;
+        setcookie('tiradas', $tiradas, time()+60*60*2);
     ?> 
-      
     <table>
       <tr>
         <th>Jugador 1</th>
@@ -92,10 +88,10 @@
         <td><img src="./img/<?= $resultadoTirado[1]; ?>.svg" alt=""></td>
         <td>
           <ul>
-            <li>jugador1: <?= $_COOKIE['jugador1']; ?></li>
-            <li>jugador2: <?= $_COOKIE['jugador2']; ?></li>
-            <li>Empates: <?= $_COOKIE['empates']; ?></li>
-            <li>Tiradas Total: <?= $_COOKIE['tiradas']; ?></li>
+            <li>jugador1: <?= $jugador1; ?></li>
+            <li>jugador2: <?= $jugador2; ?></li>
+            <li>Empates: <?= $empates; ?></li>
+            <li>Tiradas Total: <?= $tiradas; ?></li>
           </ul>  
         </td>
     </tr>
@@ -103,9 +99,10 @@
   <form action="if-else-1-2.php" method="post">
     <p>
       <input type="submit" value="Tirar!" name="tirar" id="tirar"> 
-      <input type="submit" value="Reniciar Partida" name="reniciar" id="reniciar">
+      <input type="submit" value="reiniciar" name="reiniciar" id="reiniciar">
     </p>
   </form>
+  <?php } ?>
 </section>
 
   <footer>
