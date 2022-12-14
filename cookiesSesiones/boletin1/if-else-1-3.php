@@ -1,5 +1,5 @@
-<?php include "funciones.php"; ?>
 <?php session_start(); ?>
+<?php include "funciones.php"; ?>
 <?php
 /**
  * if ... else ... (1) 3 - if-else-1-3.php
@@ -7,6 +7,40 @@
  * @author Tomás Piñeiro Alonso
  *
  */
+?>
+
+<?php 
+$resultadoTirado = tiradaDados(4);
+$TiradaJugador1 = $resultadoTirado[0] + $resultadoTirado[1];
+$TiradaJugador2 = $resultadoTirado[2] + $resultadoTirado[3];
+$jugador1 = $_SESSION['jugador1'];
+$jugador2 = $_SESSION['jugador2'];
+$tiradas = $_SESSION['tiradas'];
+$empates = $_SESSION['empates'];
+
+if ($TiradaJugador1 == $TiradaJugador2) {
+
+  $empates++;
+  $_SESSION['empates'] = $empates;
+
+} elseif ($TiradaJugador1 > $TiradaJugador2 ) {
+
+  $jugador1++;
+  $_SESSION['jugador1'] = $jugador1;
+
+} elseif ($TiradaJugador1 < $TiradaJugador2) {
+
+  $jugador2++;
+  $_SESSION['jugador2'] = $jugador2;
+
+}
+
+$tiradas++;
+$_SESSION['tiradas'] = $tiradas;
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -30,13 +64,8 @@
     <a href="https://www.mclibre.org/consultar/php/ejercicios/sin-formularios/if-else-1/index.html#ejercicio-2#ejercicio-3">Enunciado</a>
   </section>
   <section>
-    <?php 
-    $resultadoTirado = tiradaDados(4);
-    $jugador1 = $resultadoTirado[0] + $resultadoTirado[1];
-    $jugador2 = $resultadoTirado[2] + $resultadoTirado[3];
-    $empates = 0;
-    $tiradas = 0
-    ?>
+
+  
     <table>
       <tr>
         <th>Jugador 1</th>
