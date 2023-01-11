@@ -9,6 +9,15 @@
 ?>
 <?php
   
+  // creamos la variables de sesion si no exisrten 
+  if (!isset($_SESSION['jugador1'])) {
+    
+    $_SESSION['jugador1'] = 0;
+    $_SESSION['jugador2'] = 0;
+
+  }
+  
+  // generamos los valores para la partida.
   $monedas = [];
   $prediciones = [];
 
@@ -18,6 +27,25 @@
     $prediciones[$i] = rand(0, 6);
 
   }
+  
+  // Busacomos el ganador de la partida 
+  $monedasTotales = array_sum($monedas);
+  if (($prediciones[0]==$monedasTotales) && ($prediciones[1]==$monedasTotales)) {
+
+    $texto = "Empate";
+  
+  } elseif ($prediciones[0]==$monedasTotales) {
+    $texto = "Aganado el jugador 1";
+    $_SESSION['jugador1']++;
+  } elseif ($prediciones[1]==$monedasTotales) {
+    $texto = "Aganado el jugador 2";
+    $_SESSION['jugador2']++;
+  } else {
+  
+    $texto = "No agana ninguno";
+
+  }
+
 
 ?>
 <!DOCTYPE html>
@@ -65,6 +93,12 @@
             </g>
           </svg>
         </td>
+        <td>
+          <ul>
+            <li>Jugador 1: <?=  $_SESSION['jugador1'] ?></li>
+            <li>Jugador 2: <?=  $_SESSION['jugador2'] ?></li>
+          </ul>
+        </td>
       </tr>
       <tr>
         <td>
@@ -77,7 +111,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="3"> Ha ganado </td>
+        <td colspan="2" align="center"><?= $texto ?></td>
       </tr>
     </tfoot>
 
