@@ -102,10 +102,10 @@
       </tr>
       <tr>
         <td>
-          <img src="img/chinos-<?= $monedas[0]?>.svg" alt="chinos-<?= $monedas[0]?>">
+          <img src="img/chinos-<?= $monedas[0] ?>.svg" alt="chinos-<?= $monedas[0]?>">
         </td>
         <td>
-          <img src="img/chinos-<?= $monedas[1]?>.svg" alt="chinos-<?= $monedas[1]?>">
+          <img src="img/chinos-<?= $monedas[1] ?>.svg" alt="chinos-<?= $monedas[1]?>">
         </td>
       </tr>
     </tbody>
