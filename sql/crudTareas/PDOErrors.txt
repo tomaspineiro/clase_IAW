@@ -7,3 +7,7 @@
 13 January, 2023, 12:51 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
 13 January, 2023, 12:53 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
 13 January, 2023, 12:53 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 1:30 pm SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'prioridad' cannot be null
+13 January, 2023, 2:15 pm SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+13 January, 2023, 2:16 pm SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+13 January, 2023, 2:17 pm SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens

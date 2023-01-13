@@ -25,7 +25,186 @@ function conectarDB() {
 
 }
 
+// function desconectar BD
 
+function desconectarBD($con){
 
+    $con = NULL;
+    return $con;
+
+}
+
+// funcion instarTarea
+function instarTarea($nombre, $descripcion, $prioridad){
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "INSERT INTO tareas (nombre, descripcion, prioridad) VALUES (:nombre, :descripcion, :prioridad)";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':descripcion', $descripcion);
+        $stmt->bindParam(':prioridad', $prioridad);
+
+        //Ejecutamos la sentencia
+        $stmt->execute();
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    // si ha fallado la insercion debuelbe 0
+    return $con->lastInsertId();
+
+}
+
+// funcion actualizar los datos de una Tareas
+function actualizarTarea( $idTareas, $nombre, $descripcion, $prioridad){
+    
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "UPDATE tareas SET  nombre=:nombre, descripcion=:descripcion, prioridad=:prioridad WHERE idTareas=:idTareas";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':idTareas', $idTareas);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':descripcion', $descripcion);
+        $stmt->bindParam(':prioridad', $prioridad);
+
+        //Ejecutamos la sentencia
+        $stmt->execute();
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //Ejecutamos la sentcaia
+    return $stmt->rowCount();
+
+}
+
+//funcion seleccionar Tarea
+
+function seleccionarTarea($idTareas) {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT * FROM tareas WHERE idTareas=:idTareas";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':idTareas', $idTareas);
+        
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al selecionar una row: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //Ejecutamos la sentcaia
+    return $row;
+}
+
+//funcion seleccionar 
+function seleccionarTabla() {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT * FROM tareas";
+
+       
+        //Ejecutamos la sentencia
+        $stmt = $con->query($sql);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); // fetchAll para cuendo biene mas de una varible 
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al selacionar la tabla: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //Ejecutamos la sentcaia
+    return $rows;
+}
+
+// funcion borrar una tarea (fila de la tabla)
+function delecteTarea( $idTareas){
+    
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "DELETE FROM tareas WHERE idTareas=:idTareas";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':idTareas', $idTareas);
+        
+        //Ejecutamos la sentencia
+        $stmt->execute();
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al borrar una row de la tabla de la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //Ejecutamos la sentcaia
+    return $stmt->rowCount();
+
+}
 
 ?>
