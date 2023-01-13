@@ -1,0 +1,2 @@
+
+11 January, 2023, 1:01 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
