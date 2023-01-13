@@ -1,3 +1,9 @@
 
 11 January, 2023, 1:01 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
 13 January, 2023, 12:45 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:50 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:50 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:50 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:51 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:53 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:53 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
