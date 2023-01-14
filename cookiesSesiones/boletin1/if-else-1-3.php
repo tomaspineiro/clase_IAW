@@ -57,6 +57,7 @@ $_SESSION['tiradas'] = $tiradas;
 
 <body>
   <section>
+<<<<<<< Updated upstream
 
     <h1>Juego: Dos dados más altos</h1>
     
@@ -104,3 +105,31 @@ $_SESSION['tiradas'] = $tiradas;
   </body>
   </html>
   
+=======
+
+    <h1>Juego: Dos dados más altos</h1>
+    
+    <p>Actualice la página para mostrar una nueva tirada.</p>
+    <a href="https://www.mclibre.org/consultar/php/ejercicios/sin-formularios/if-else-1/index.html#ejercicio-2#ejercicio-3">Enunciado</a>
+  </section>
+  <table>
+    <tr>
+      <th>Jugador 1</th>
+      <th>Jugador 2</th>
+      <th>Resultado</th>
+    </tr>
+    <tr>
+<?php
+
+print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
+
+?>
+    </tr>
+  </table>
+
+  <footer>
+    <p>Tomás Piñeiro Alonso</p>
+  </footer>
+</body>
+</html>
+>>>>>>> Stashed changes
