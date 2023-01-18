@@ -65,12 +65,12 @@ if (!isset($_REQUEST["btnEnviar"])) {
     
     } else {
 
-        $idTareas = instarTarea($nombre, $descripcion, $prioridad);
+        $idTarea = instarTarea($nombre, $descripcion, $prioridad);
         
-        if ($idTareas) {
+        if ($idTarea) {
         ?>
             <div class="alert alert-success" role="alert">
-                <h2> Se a inssertado corectamente con el id: <?= $idTareas; ?></h2>
+                <h2> Se a inssertado corectamente con el id: <?= $idTarea; ?></h2>
             </div>
             <button type="button" class="btn btn-light"><a href="./listado.php">Tabla</a>  </button>
 

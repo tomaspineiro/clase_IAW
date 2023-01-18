@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tareas` (
-  `idTareas` int(11) NOT NULL,
+  `idTarea` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `descripcion` varchar(300) NOT NULL,
   `prioridad` varchar(50) NOT NULL
@@ -38,7 +38,7 @@ CREATE TABLE `tareas` (
 -- Volcado de datos para la tabla `tareas`
 --
 
-INSERT INTO `tareas` (`idTareas`, `nombre`, `descripcion`, `prioridad`) VALUES
+INSERT INTO `tareas` (`idTarea`, `nombre`, `descripcion`, `prioridad`) VALUES
 (1, 'boletin1_jer1', 'DHOVB<SVKHLBFJV', 'alta'),
 (2, 'boletin1-eje2', 'zvdv', 'media'),
 (3, 'boletin1-ejercio3', 'cadvc<sdv', 'baja'),
@@ -52,7 +52,7 @@ INSERT INTO `tareas` (`idTareas`, `nombre`, `descripcion`, `prioridad`) VALUES
 -- Indices de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  ADD PRIMARY KEY (`idTareas`);
+  ADD PRIMARY KEY (`idTarea`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -62,7 +62,7 @@ ALTER TABLE `tareas`
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `idTareas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idTarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

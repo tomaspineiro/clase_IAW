@@ -33,12 +33,12 @@ if ($idTarea) {
 }
 
 //actualizar datos 
-$idTareas = 5;
+$idTarea = 5;
 $nombre = "tarea ";
 $descripcion = "actualizar tarea";
 $prioridad = "bajo";
 
-$filasModificadas =  actualizarTarea( $idTareas, $nombre, $descripcion, $prioridad);
+$filasModificadas =  actualizarTarea( $idTarea, $nombre, $descripcion, $prioridad);
 
 if ($filasModificadas) {
     
@@ -52,9 +52,9 @@ if ($filasModificadas) {
 
 
 //selecionamos una tarea 
-$idTareas = 1;
+$idTarea = 1;
 
-$selectTarea =  seleccionarTarea( $idTareas);
+$selectTarea =  seleccionarTarea( $idTarea);
 
 if ($selectTarea) {
     
@@ -87,9 +87,9 @@ if ($selectTabla) {
 
 */
 //Borrar una row
-$idTareas = 5;
+$idTarea = 5;
 
-$borrarTarea =  delecteTarea( $idTareas);
+$borrarTarea =  delecteTarea( $idTarea);
 
 if ($borrarTarea) {
 

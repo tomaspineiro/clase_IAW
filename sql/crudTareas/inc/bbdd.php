@@ -1,7 +1,5 @@
 <?php include("configuracion.php"); ?>
-
 <?php
-
 // Funcion para conenctarnos ala base de datos 
 function conectarDB() {
 
@@ -24,16 +22,13 @@ function conectarDB() {
     return $con;
 
 }
-
 // function desconectar BD
-
 function desconectarBD($con){
 
     $con = NULL;
     return $con;
 
 }
-
 // funcion instarTarea
 function instarTarea($nombre, $descripcion, $prioridad){
 
@@ -69,22 +64,21 @@ function instarTarea($nombre, $descripcion, $prioridad){
     return $con->lastInsertId();
 
 }
-
 // funcion actualizar los datos de una Tareas
-function actualizarTarea( $idTareas, $nombre, $descripcion, $prioridad){
+function actualizarTarea( $idTarea, $nombre, $descripcion, $prioridad){
     
     $con = conectarDB();
     
     try {
 
         //creamos la sentiecia sql
-        $sql = "UPDATE tareas SET  nombre=:nombre, descripcion=:descripcion, prioridad=:prioridad WHERE idTareas=:idTareas";
+        $sql = "UPDATE tareas SET  nombre=:nombre, descripcion=:descripcion, prioridad=:prioridad WHERE idTarea=:idTarea";
 
         // Creamos y preparamos la senteica para compilarla 
         $stmt = $con->prepare($sql);
 
         // Vinculamos los valores 
-        $stmt->bindParam(':idTareas', $idTareas);
+        $stmt->bindParam(':idTarea', $idTarea);
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':descripcion', $descripcion);
         $stmt->bindParam(':prioridad', $prioridad);
@@ -106,23 +100,21 @@ function actualizarTarea( $idTareas, $nombre, $descripcion, $prioridad){
     return $stmt->rowCount();
 
 }
-
 //funcion seleccionar Tarea
-
-function seleccionarTarea($idTareas) {
+function seleccionarTarea($idTarea) {
 
     $con = conectarDB();
     
     try {
 
         //creamos la sentiecia sql
-        $sql = "SELECT * FROM tareas WHERE idTareas=:idTareas";
+        $sql = "SELECT * FROM tareas WHERE idTarea=:idTarea";
 
         // Creamos y preparamos la senteica para compilarla 
         $stmt = $con->prepare($sql);
 
         // Vinculamos los valores 
-        $stmt->bindParam(':idTareas', $idTareas);
+        $stmt->bindParam(':idTarea', $idTarea);
         
         //Ejecutamos la sentencia
         $stmt->execute();
@@ -142,7 +134,6 @@ function seleccionarTarea($idTareas) {
     //Ejecutamos la sentcaia
     return $row;
 }
-
 //funcion seleccionar 
 function seleccionarTodasTareas() {
 
@@ -172,22 +163,21 @@ function seleccionarTodasTareas() {
     //Ejecutamos la sentcaia
     return $rows;
 }
-
 // funcion borrar una tarea (fila de la tabla)
-function delecteTarea( $idTareas){
+function delecteTarea( $idTarea){
     
     $con = conectarDB();
     
     try {
 
         //creamos la sentiecia sql
-        $sql = "DELETE FROM tareas WHERE idTareas=:idTareas";
+        $sql = "DELETE FROM tareas WHERE idTarea=:idTarea";
 
         // Creamos y preparamos la senteica para compilarla 
         $stmt = $con->prepare($sql);
 
         // Vinculamos los valores 
-        $stmt->bindParam(':idTareas', $idTareas);
+        $stmt->bindParam(':idTarea', $idTarea);
         
         //Ejecutamos la sentencia
         $stmt->execute();
@@ -206,5 +196,4 @@ function delecteTarea( $idTareas){
     return $stmt->rowCount();
 
 }
-
 ?>
