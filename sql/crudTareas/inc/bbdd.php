@@ -144,7 +144,7 @@ function seleccionarTarea($idTareas) {
 }
 
 //funcion seleccionar 
-function seleccionarTabla() {
+function seleccionarTodasTareas() {
 
     $con = conectarDB();
     
