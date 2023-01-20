@@ -7,6 +7,9 @@
 <main class="container">
   
   <h1>Mis tareas</h1>
+  <div class="text-end">
+    <a href="./insertar.php" class="btn btn-secondary">Insertar</a>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -31,14 +34,14 @@
         <td><?= $descripcion ?></td>
         <td><?= $prioridad ?></td>
         <td>
-          <button type="button" class="btn btn-success"><a href="./editar.php?idTarea=<?= $idTarea; ?>">Editar</a></button>
-          <button type="button" class="btn btn-danger"><a href="./borrar.php?idTarea=<?= $idTarea; ?>">Borrar</a></button>
+          <a href="./editar.php?idTarea=<?= $idTarea; ?>" class="btn btn-success" >Editar</a>
+          <a href="./borrar.php?idTarea=<?= $idTarea; ?>" class="btn btn-danger" onclick="return confirm('Estás seguro de borrar la Tarea <?= $idTarea ?>?');">Borrar</a> <!-- -->
         </td>
       </tr>
       <?php } ?>
     </tbody>
   </table>
-  <button type="button" class="btn btn-light"><a href="./insertar.php">Insertar</a></button>
+  
 
 </main>
 
