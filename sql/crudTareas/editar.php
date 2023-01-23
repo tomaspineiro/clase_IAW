@@ -59,7 +59,6 @@ $prioridad = $tarea["prioridad"];
           $actualizado =  actualizarTarea( $idTarea, $nombre, $descripcion, $prioridad);
           
           if ($actualizado) {
-            mostrarTarea($idTarea, $nombre, $descripcion, $prioridad);
 ?>
             <div class="alert alert-success" role="alert">
               <h2> Se a inssertado corectamente con el id: <?= $actualizado; ?></h2>

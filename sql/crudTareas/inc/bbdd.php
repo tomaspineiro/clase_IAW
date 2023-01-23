@@ -196,4 +196,39 @@ function delecteTarea( $idTarea){
     return $stmt->rowCount();
 
 }
+
+//funcion seleccionar Tarea
+function seleccionarUsuario($user) {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT * FROM usuarios WHERE user=:user";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+        
+        // Vinculamos los valores 
+        $stmt->bindParam(':user', $user);
+        
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+    }catch(PDOException $e){
+        
+        echo "Error: Error al selecionar una row: " . $e->getMessage();
+        
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+        
+    }
+    
+    //Ejecutamos la sentcaia
+    return $row;
+}
 ?>
