@@ -1,5 +1,8 @@
 <?php include("configuracion.php"); ?>
 <?php
+##########################################
+##### funciones para la tabla Tareas #####
+##########################################
 // Funcion para conenctarnos ala base de datos 
 function conectarDB() {
 
@@ -197,7 +200,12 @@ function delecteTarea( $idTarea){
 
 }
 
-//funcion seleccionar Tarea
+
+###########################################
+##### funciones para la tabla usuario #####
+###########################################
+
+//funcion seleccionar un usuario
 function seleccionarUsuario($user) {
 
     $con = conectarDB();

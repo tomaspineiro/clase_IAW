@@ -1,7 +1,13 @@
+<?php session_start(); ?>
 <?php include("inc/bbdd.php") ?>
 <?php include("inc/funciones.php")?>
 <?php include("inc/encabezado.php") ?>
 <?php 
+if (!isset($_SESSION["usuario"]) ){
+  header("location: index.php?error=1");
+  exit;
+} 
+
 $tarea = seleccionarTarea(recoge("idTarea"));
 
 $idTarea = $tarea["idTarea"];
