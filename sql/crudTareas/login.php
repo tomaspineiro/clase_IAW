@@ -46,7 +46,7 @@ if (isset($_SESSION["usuario"]) ){
 
             $rowUser = seleccionarUsuario($inUser);
             
-            if ($rowUser['password'] == $ $inPassword ){
+            if ($rowUser['password'] == $inPassword ){
 
                 $_SESSION["usuario"] = $rowUser['user'];
 
