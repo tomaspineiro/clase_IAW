@@ -18,7 +18,7 @@ function recoge($var, $m = "")  {
 <?php
 function formulario($idTarea="", $nombre="", $descripcion="", $prioridad="") {
  ?>
-    <form action="" method="POST" >
+    <form action="" method="GET" >
         <div class="mb-3">
             <label for="idTarea" class="form-label">Id Tarea</label>
             <input type="text" class="form-control" id="idTarea"name="idTarea" value="<?= $idTarea; ?>" readonly="readonly">

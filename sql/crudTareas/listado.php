@@ -1,24 +1,27 @@
 <?php session_start(); ?>
 <?php include("inc/bbdd.php") ?>
+<?php include("inc/funciones.php")?>
 <?php
-if (!isset($_SESSION["usuario"]) ){
+if (!isset($_SESSION["usuario"])){
   header("location: index.php?error=1");
   exit;
 }
 
 $row_count = 6;
-
 if(isset($_REQUEST["pag"])) {
   
-  $pag = (  recoge("pag") - 1) * $row_count; 
-
+  $pag = recoge("pag"); 
+  $offset = ( $pag - 1) * $row_count; 
 } else {
   
   $pag = 0;
-
+  $offset = $pag;
 }
 
-$tareas = seleccionarTareasPaginadas($pag, $row_count);
+$tareas = seleccionarTareasPaginadas($offset, $row_count);
+$numeroRow = NumeroDeTareas()['numeroRow'];
+
+$numeroPag = ceil($numeroRow/$row_count);
 
 ?>
 
@@ -64,32 +67,75 @@ $tareas = seleccionarTareasPaginadas($pag, $row_count);
   </table>
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-      <?php if ($pag) {?>
+      <?php if (($pag) || ($pag != 1)) {?>
       <li class="page-item">
-        <a class="page-link" href="listado.php?pag=<?= $pag - 1; ?>" aria-label="Previous">
+        <a class="page-link" href="./listado.php?pag=<?= $pag - 1; ?>" aria-label="Previous">
           <span aria-hidden="true">
             &laquo;
           </span>
         </a>
       </li>
       <?php } ?>
+      
+      <?php if ($pag  > 1) {?>
       <li class="page-item">
-        <a class="page-link" href="#?pag=1">
+        <a class="page-link" href="listado.php?pag=1">
           1
         </a>
       </li>
+      <?php } ?>
+      
+    <?php
+    if ($pag >  2 ) {
+    ?>
+        <li class="page-item">
+          <span class="page-link" href="#">
+            ...
+          </span>
+        </li>
+    <?php 
+    } 
+    ?>
+    <?php 
+    for ($i=($pag); ($i < ($pag+4)) && ($i < $numeroPag); $i++) { 
+    ?>
       <li class="page-item">
-        <a class="page-link" href="#pag=2">
-          2
+        <a class="page-link" href="listado.php?pag=<?= $i; ?>">
+          <?= $i; ?>
         </a>
       </li>
+    <?php
+    }
+    ?>
+      <?php if ($pag < ( $numeroPag - 2) ) {?>
+        <li class="page-item">
+          <span class="page-link" href="#">
+            ...
+          </span>
+        </li>
+      <?php } ?>
+      <?php if ($pag == $numeroPag) {?>
+        
+        <li class="page-item">
+          <a class="page-link" href="listado.php?pag=<?= $numeroPag - 2; ?>">
+            <?= $numeroPag - 2; ?>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="listado.php?pag=<?= $numeroPag - 1; ?>">
+            <?= $numeroPag - 1; ?>
+          </a>
+        </li>
+      <?php } ?>
+      
       <li class="page-item">
-        <a class="page-link" href="#pag=3">
-          3
+        <a class="page-link" href="listado.php?pag=<?= $numeroPag; ?>">
+          <?= $numeroPag; ?>
         </a>
       </li>
+
       <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
+        <a class="page-link" href="listado.php?pag=<?= $pag + 1; ?>" aria-label="Next">
           <span aria-hidden="true">
             &raquo;
           </span>

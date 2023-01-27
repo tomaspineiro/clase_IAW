@@ -48,7 +48,7 @@ if (isset($_SESSION["usuario"]) ){
             
             if ($rowUser['password'] == $inPassword ){
 
-                $_SESSION["usuario"] = $rowUser['user'];
+                $_SESSION["usuario"] = $rowUser;
 
                 header("location: listado.php");
                 exit;
@@ -63,7 +63,7 @@ if (isset($_SESSION["usuario"]) ){
             } else {
     ?>
                 <div class="alert alert-danger" role="alert">
-                    <h1>usuario o contraseña incorecta</h1>
+                    <h1>usuario o contraseï¿½a incorecta</h1>
                 </div>
     <?php
                 formularioLogin();

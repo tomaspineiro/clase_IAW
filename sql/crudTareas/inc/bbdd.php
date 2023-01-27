@@ -172,7 +172,6 @@ function seleccionarTodasTareas() {
 
     }
 
-   
     //cerramos la sesion
     desconectarBD($con);
 
@@ -218,6 +217,37 @@ function seleccionarTareasPaginadas($offset, $row_count) {
     return $rows;
 
 }
+//funcion cuantas tareas hay
+function NumeroDeTareas() {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT count(*) AS numeroRow FROM tareas";
+
+        //Ejecutamos la sentencia
+        $stmt = $con->query($sql);
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al selecionar una row: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //cerramos la sesion
+    desconectarBD($con);
+
+    //devilvemos la tarea. 
+    return $row;
+}
 // funcion borrar una tarea (fila de la tabla)
 function delecteTarea( $idTarea){
     
@@ -260,7 +290,6 @@ function delecteTarea( $idTarea){
 ###########################################
 ##### funciones para la tabla usuario #####
 ###########################################
-
 //funcion seleccionar un usuario
 function seleccionarUsuario($user) {
 

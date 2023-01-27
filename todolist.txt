@@ -1,8 +1,3 @@
-· paginacion 
-    [hecho]- funcion de bd 
-    [hecho]- html de la paginacion
-    - logica de la ejecucion de la paginacion
-
 · Crear una pagina para registrar los usuarios (login.php)
     - nombre de usuario
     - pedir dos veces la password
@@ -15,5 +10,11 @@
 · pagina para subir achivos 
 
 · correcigir:  delecteTarea, instarTarea, Valber
+
+27/1/22
+·[hecho] paginacion 
+        [hecho]- logica de la ejecucion de la paginacion   
+        [hecho]- funcion de bd 
+        [hecho]- html de la paginacion
 
 [Hecho]· Hacer que se desconecte de la base de datos, al acabar cada funcion de cosulta a la base de datos 
