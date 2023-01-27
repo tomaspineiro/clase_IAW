@@ -3,7 +3,7 @@
 <?php include("inc/funciones.php")?>
 <?php
 if (!isset($_SESSION["usuario"]) ){
-    header("location: login.php");
+    header("location: index.php");
     exit;
 }
 

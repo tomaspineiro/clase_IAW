@@ -4,9 +4,21 @@
 if (!isset($_SESSION["usuario"]) ){
   header("location: index.php?error=1");
   exit;
-} 
+}
 
-$tareas = seleccionarTodasTareas();
+$row_count = 6;
+
+if(isset($_REQUEST["pag"])) {
+  
+  $pag = (  recoge("pag") - 1) * $row_count; 
+
+} else {
+  
+  $pag = 0;
+
+}
+
+$tareas = seleccionarTareasPaginadas($pag, $row_count);
 
 ?>
 
@@ -23,7 +35,7 @@ $tareas = seleccionarTodasTareas();
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Descripciï¿½</th>
+        <th scope="col">DescripciÃ³n</th>
         <th scope="col">Prioridad</th>
         <th scope="col">Acciones</th>
       </tr>
@@ -43,13 +55,48 @@ $tareas = seleccionarTodasTareas();
         <td><?= $prioridad ?></td>
         <td>
           <a href="./editar.php?idTarea=<?= $idTarea; ?>" class="btn btn-success" >Editar</a>
-          <a href="./borrar.php?idTarea=<?= $idTarea; ?>" class="btn btn-danger" onclick="return confirm('Estás seguro de borrar la Tarea <?= $idTarea ?>?');">Borrar</a> <!-- -->
+          <a href="./borrar.php?idTarea=<?= $idTarea; ?>" class="btn btn-danger" onclick="return confirm('Estï¿½s seguro de borrar la Tarea <?= $idTarea ?>?');">Borrar</a> <!-- -->
         </td>
       </tr>
       <?php } ?>
+
     </tbody>
   </table>
-  
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <?php if ($pag) {?>
+      <li class="page-item">
+        <a class="page-link" href="listado.php?pag=<?= $pag - 1; ?>" aria-label="Previous">
+          <span aria-hidden="true">
+            &laquo;
+          </span>
+        </a>
+      </li>
+      <?php } ?>
+      <li class="page-item">
+        <a class="page-link" href="#?pag=1">
+          1
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#pag=2">
+          2
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#pag=3">
+          3
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">
+            &raquo;
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
 </main>
 

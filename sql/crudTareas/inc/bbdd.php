@@ -64,7 +64,10 @@ function instarTarea($nombre, $descripcion, $prioridad){
     }
 
     // si ha fallado la insercion debuelbe 0
-    return $con->lastInsertId();
+    $idTarea =$con->lastInsertId();
+
+    desconectarBD($con);
+    return $idTarea;
 
 }
 // funcion actualizar los datos de una Tareas
@@ -99,8 +102,11 @@ function actualizarTarea( $idTarea, $nombre, $descripcion, $prioridad){
 
     }
 
-    //Ejecutamos la sentcaia
-    return $stmt->rowCount();
+    $num = $stmt->rowCount();
+    
+    desconectarBD($con);
+
+    return $num;
 
 }
 //funcion seleccionar Tarea
@@ -134,7 +140,10 @@ function seleccionarTarea($idTarea) {
 
     }
 
-    //Ejecutamos la sentcaia
+    //cerramos la sesion
+    desconectarBD($con);
+
+    //devilvemos la tarea. 
     return $row;
 }
 //funcion seleccionar 
@@ -163,8 +172,51 @@ function seleccionarTodasTareas() {
 
     }
 
-    //Ejecutamos la sentcaia
+   
+    //cerramos la sesion
+    desconectarBD($con);
+
+    //devilvemos las tareas. 
     return $rows;
+}
+// funcion de de ver las tareas paginadas 
+function seleccionarTareasPaginadas($offset, $row_count) {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT * FROM tareas LIMIT :offset, :row_count";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->bindParam(':row_count', $row_count, PDO::PARAM_INT);
+        
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); // fetchAll para cuendo biene mas de una varible 
+        
+    }catch(PDOException $e){
+
+        echo "Error: Error al selacionar la tabla: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //cerramos la sesion
+    desconectarBD($con);
+
+    //devolvemos las tareas, de la pagina que queramos. 
+    return $rows;
+
 }
 // funcion borrar una tarea (fila de la tabla)
 function delecteTarea( $idTarea){
@@ -195,11 +247,15 @@ function delecteTarea( $idTarea){
 
     }
 
-    //Ejecutamos la sentcaia
-    return $stmt->rowCount();
+    //el numero de row borradas.
+    $rowNumero = $stmt->rowCount();
+    
+    //cerramos la sesion
+    desconectarBD($con);
+
+    return $rowNumero;
 
 }
-
 
 ###########################################
 ##### funciones para la tabla usuario #####
@@ -235,8 +291,10 @@ function seleccionarUsuario($user) {
         exit;
         
     }
-    
-    //Ejecutamos la sentcaia
+    //cerramos la sesion
+    desconectarBD($con);
+
+    //devolvemos el usuario que toque. 
     return $row;
 }
 ?>

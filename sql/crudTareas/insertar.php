@@ -51,7 +51,7 @@ if (!isset($_SESSION["usuario"]) ){
             if ($idTarea) {
             ?>
                 <div class="alert alert-success" role="alert">
-                    <h2> Se a inssertado corectamente con el id: <?= $idTarea; ?></h2>
+                    <h2> Se ha insertado corectamente con el id: <?= $idTarea; ?></h2>
                 </div>
                 <button type="button" class="btn btn-light"><a href="./listado.php">Valber al listado</a>  </button>
 
