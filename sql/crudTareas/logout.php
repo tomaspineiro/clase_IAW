@@ -3,9 +3,12 @@
 <?php include("inc/funciones.php")?>
 <?php
 if (!isset($_SESSION["usuario"]) ){
-    header("location: listado.php");
+    header("location: login.php");
     exit;
-} 
+}
+
+unset($_SESSION["usuario"]);
+
 ?>
 <?php include("inc/encabezado.php") ?>
 

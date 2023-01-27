@@ -39,7 +39,7 @@ if (isset($_SESSION["usuario"]) ){
 
             formularioLogin();
 
-        }elseif (isset($_REQUEST["btnEnviar"])) {
+        } elseif (isset($_REQUEST["btnEnviar"])) {
             
             $inPassword = recoge('password');
             $inUser = recoge('usuario');
