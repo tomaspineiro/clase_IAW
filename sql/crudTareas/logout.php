@@ -19,9 +19,9 @@ unset($_SESSION["usuario"]);
     <div class="alert alert-secondary" role="alert">
         ha cerado sesion corectamente 
     </div>
-
-    
-
+    <div>
+        <a href="./index.php" class="btn btn-secondary text-end">Entrar</a>
+    </div>
 
 </main>
 <?php include("inc/footer.php") ?>

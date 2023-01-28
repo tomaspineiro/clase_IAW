@@ -72,3 +72,40 @@ function formulario($idTarea="", $nombre="", $descripcion="", $prioridad="") {
   </table>
 
 <?php } // cerrar fubncion mostrarTarea?>
+<?php function formularioLogin() { ?>
+    <form action="" method="GET" >
+        <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="usuario" name="usuario" value="">
+        </div>
+        
+        <div class="mb-3">
+            <label for="password" class="form-label">Password: </label>
+            <input type="text" class="form-control" id="password" name="password" value="">
+        </div> 
+        <dev class='text-center'>
+            <button type="submit" class="btn btn-primary" name="btnEnviar">Enviar</button>
+            <a href='login.php' class="btn btn-primary" name="btnEnviar">Registrase</a>
+        </dev>
+    </form>
+<?php } ?>
+<?php function registro($user='') { ?>
+    <form action="" method="GET">
+        <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="usuario" name="usuario" value="<?= $user; ?>">
+        </div>
+        
+        <div class="mb-3">
+            <label for="password1" class="form-label">Password: </label>
+            <input type="text" class="form-control" id="password1" name="password1" value="">
+        </div> 
+        <div class="mb-3">
+            <label for="password2" class="form-label">Password: </label>
+            <input type="text" class="form-control" id="password2" name="password2" value="">
+        </div> 
+        <dev class='text-center'>
+            <button type="submit" class="btn btn-primary" name="btnEnviar">Registrase</button>
+        </dev>
+    </form>
+<?php } // cierre de funcion de registro?> 

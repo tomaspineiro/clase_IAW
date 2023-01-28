@@ -1,6 +1,7 @@
 · Crear una pagina para registrar los usuarios (login.php)
-    - nombre de usuario
-    - pedir dos veces la password
+    - [hecho] nombre de usuario
+    - [hecho] pedir dos veces la password
+    - [hecho] funcionamiento de la sentecia
     - cifrar la password (password_hash) esto es lo que se envia a la vase de datos 
 
 · modificar la pagina de index para que se nevie la password de forma cifrada, con la funcion password_verify()
@@ -8,6 +9,8 @@
 · introducir en el formulario de login y de registro , la vrificacion de google de que no seamos un robot .
 
 · pagina para subir achivos 
+
+* mover el boton enviar del formulario de insecion y idecion 
 
 · correcigir:  delecteTarea, instarTarea, Valber
 

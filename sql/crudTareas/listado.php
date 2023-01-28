@@ -22,16 +22,22 @@ $tareas = seleccionarTareasPaginadas($offset, $row_count);
 $numeroRow = NumeroDeTareas()['numeroRow'];
 
 $numeroPag = ceil($numeroRow/$row_count);
-
+  
+echo $_SESSION["usuario"];
 ?>
 
 <?php include("inc/encabezado.php") ?>
 
 <main class="container">
   
+  
   <h1>Mis tareas</h1>
-  <div class="text-end">
-    <a href="./insertar.php" class="btn btn-secondary">Insertar</a>
+  
+
+  <div>
+      <a href="./insertar.php" class="btn btn-secondary">Insertar</a>
+
+      <a href="./logout.php" class="btn btn-secondary text-end">Salir</a>
   </div>
   <table class="table">
     <thead>
@@ -133,7 +139,7 @@ $numeroPag = ceil($numeroRow/$row_count);
           <?= $numeroPag; ?>
         </a>
       </li>
-      <?php if ($pag == $numeroPag) {?>
+      <?php if ($pag != $numeroPag) {?>
       <li class="page-item">
         <a class="page-link" href="listado.php?pag=<?= $pag + 1; ?>" aria-label="Next">
           <span aria-hidden="true">

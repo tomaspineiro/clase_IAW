@@ -7,21 +7,6 @@ if (isset($_SESSION["usuario"]) ){
     exit;
 } 
 ?>
-<?php function formularioLogin() { ?>
-    <form action="" method="GET" >
-        <div class="mb-3">
-            <label for="usuario" class="form-label">Usuario</label>
-            <input type="text" class="form-control" id="usuario" name="usuario" value="">
-        </div>
-        
-        <div class="mb-3">
-            <label for="password" class="form-label">Password: </label>
-            <input type="text" class="form-control" id="password" name="password" value="">
-        </div> 
-        
-        <button type="submit" class="btn btn-primary" name="btnEnviar">Enviar</button>
-    </form>
-<?php } ?>
 
 <?php include("inc/encabezado.php") ?>
 
@@ -30,12 +15,7 @@ if (isset($_SESSION["usuario"]) ){
   <h1>Mis tareas</h1>
  
     <?php
-        if (isset($_SESSION["usuario"]) ){
-        
-            echo "<h2>Conectado</h2>";
-            echo '<a href="./listado.php" class="btn btn-secondary">Ver el listado</a>'; 
-
-        } elseif (!isset($_REQUEST["btnEnviar"])) {
+        if (!isset($_REQUEST["btnEnviar"])) {
 
             formularioLogin();
 
@@ -46,7 +26,7 @@ if (isset($_SESSION["usuario"]) ){
 
             $rowUser = seleccionarUsuario($inUser);
             
-            if ($rowUser['password'] == $inPassword ){
+            if (($rowUser['password'] == $inPassword) &&  ($inPassword != '')){
 
                 $_SESSION["usuario"] = $rowUser;
 
