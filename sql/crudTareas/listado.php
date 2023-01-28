@@ -14,8 +14,8 @@ if(isset($_REQUEST["pag"])) {
   $offset = ( $pag - 1) * $row_count; 
 } else {
   
-  $pag = 0;
-  $offset = $pag;
+  $pag = 1;
+  $offset = 0;
 }
 
 $tareas = seleccionarTareasPaginadas($offset, $row_count);
@@ -67,7 +67,7 @@ $numeroPag = ceil($numeroRow/$row_count);
   </table>
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-      <?php if (($pag) || ($pag != 1)) {?>
+      <?php if (($pag) && ($pag != 1)) {?>
       <li class="page-item">
         <a class="page-link" href="./listado.php?pag=<?= $pag - 1; ?>" aria-label="Previous">
           <span aria-hidden="true">
@@ -133,7 +133,7 @@ $numeroPag = ceil($numeroRow/$row_count);
           <?= $numeroPag; ?>
         </a>
       </li>
-
+      <?php if ($pag == $numeroPag) {?>
       <li class="page-item">
         <a class="page-link" href="listado.php?pag=<?= $pag + 1; ?>" aria-label="Next">
           <span aria-hidden="true">
@@ -141,6 +141,7 @@ $numeroPag = ceil($numeroRow/$row_count);
           </span>
         </a>
       </li>
+      <?php } ?>
     </ul>
   </nav>
 
