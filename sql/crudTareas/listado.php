@@ -21,18 +21,15 @@ if(isset($_REQUEST["pag"])) {
 $tareas = seleccionarTareasPaginadas($offset, $row_count);
 $numeroRow = NumeroDeTareas()['numeroRow'];
 
-$numeroPag = ceil($numeroRow/$row_count);
-  
-echo $_SESSION["usuario"];
+$numeroPag = ceil($numeroRow/$row_count); 
+
 ?>
 
 <?php include("inc/encabezado.php") ?>
 
 <main class="container">
   
-  
   <h1>Mis tareas</h1>
-  
 
   <div>
       <a href="./insertar.php" class="btn btn-secondary">Insertar</a>
@@ -64,7 +61,7 @@ echo $_SESSION["usuario"];
         <td><?= $prioridad ?></td>
         <td>
           <a href="./editar.php?idTarea=<?= $idTarea; ?>" class="btn btn-success" >Editar</a>
-          <a href="./borrar.php?idTarea=<?= $idTarea; ?>" class="btn btn-danger" onclick="return confirm('Est�s seguro de borrar la Tarea <?= $idTarea ?>?');">Borrar</a> <!-- -->
+          <a href="./borrar.php?idTarea=<?= $idTarea; ?>" class="btn btn-danger" onclick="return confirm('Estï¿½s seguro de borrar la Tarea <?= $idTarea ?>?');">Borrar</a> <!-- -->
         </td>
       </tr>
       <?php } ?>

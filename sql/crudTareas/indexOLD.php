@@ -20,7 +20,7 @@ $nombre = "tarea nueba";
 $descripcion = "no olvides hacer las tareas";
 $prioridad = "media";
 
-$idTarea = instarTarea($nombre, $descripcion, $prioridad);
+$idTarea = insertarTarea($nombre, $descripcion, $prioridad);
 
 if ($idTarea) {
     
@@ -89,7 +89,7 @@ if ($selectTabla) {
 //Borrar una row
 $idTarea = 5;
 
-$borrarTarea =  delecteTarea( $idTarea);
+$borrarTarea =  deleteTarea( $idTarea);
 
 if ($borrarTarea) {
 

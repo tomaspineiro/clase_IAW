@@ -32,8 +32,8 @@ function desconectarBD($con){
     return $con;
 
 }
-// funcion instarTarea
-function instarTarea($nombre, $descripcion, $prioridad){
+// funcion insertarTarea
+function insertarTarea($nombre, $descripcion, $prioridad){
 
     $con = conectarDB();
     
@@ -249,7 +249,7 @@ function NumeroDeTareas() {
     return $row;
 }
 // funcion borrar una tarea (fila de la tabla)
-function delecteTarea( $idTarea){
+function deleteTarea( $idTarea){
     
     $con = conectarDB();
     

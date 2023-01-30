@@ -23,7 +23,7 @@ $tareas = seleccionarTodasTareas();
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Descripci�</th>
+        <th scope="col">Descripciï¿½</th>
         <th scope="col">Prioridad</th>
         <th scope="col">Acciones</th>
       </tr>
@@ -43,7 +43,7 @@ $tareas = seleccionarTodasTareas();
         <td><?= $prioridad ?></td>
         <td>
           <a href="./editar.php?idTarea=<?= $idTarea; ?>" class="btn btn-success" >Editar</a>
-          <a href="./borrar.php?idTarea=<?= $idTarea; ?>" class="btn btn-danger" onclick="return confirm('Est�s seguro de borrar la Tarea <?= $idTarea ?>?');">Borrar</a> <!-- -->
+          <a href="./borrar.php?idTarea=<?= $idTarea; ?>" class="btn btn-danger" onclick="return confirm('Estás seguro de borrar la Tarea <?= $idTarea ?>?');">Borrar</a> <!-- -->
         </td>
       </tr>
       <?php } ?>

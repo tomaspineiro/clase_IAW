@@ -27,14 +27,33 @@ if (isset($_SESSION["usuario"]) ){
             
             $errores = '';
 
-            if (($password1!=$password2) && ($password2 == "") && ($password1 == "")) {
+            if (($password1!=$password2)) {
 
                 $errores.= '<li>la contraseña tiene que ser la misma.</li>';
 
             }
 
+            if (($password2 == "") || ($password1 == "")) {
+
+                $errores.= '<li>Los campos de contraseña tiene que estar cubiertos.</li>';
+
+            }
+
             if (seleccionarUsuario($user)) {
+                
                 $errores.= '<li>El usuario ya existe</li>';
+            
+            } elseif ($user == "" ) {
+
+                $errores.= '<li>El campo usuario no puede ir vacio.</li>';
+
+
+            }
+
+            if (robotGoogle()) {
+
+                $errores.= '<li>No puedes ser un Robot.</li>';
+
             }
 
             if ($errores) {
@@ -44,10 +63,12 @@ if (isset($_SESSION["usuario"]) ){
                 registro();
             
             } else {
+                
+                $password = password_hash($password1, PASSWORD_DEFAULT);
 
-                $dato = instarUsuario($user, $password2);
+                $dato = instarUsuario($user, $password);
 
-                header("location: index.php");
+                header("location: index.php?user=<?= $user; ?>");
                 exit;
                 
             }

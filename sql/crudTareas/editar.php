@@ -23,7 +23,7 @@ $prioridad = $tarea["prioridad"];
   <?php
     if (!isset($_REQUEST["btnEnviar"])) {
 
-      formulario($idTarea, $nombre, $descripcion, $prioridad);
+      formularioTarea($idTarea, $nombre, $descripcion, $prioridad);
       
       echo '<a href="./listado.php" class="btn btn-secondary">cancelar</a>';
 
@@ -57,7 +57,7 @@ $prioridad = $tarea["prioridad"];
             </div>
   <?php
 
-            formulario($idTarea, $nombre, $descripcion, $prioridad);
+            formularioTarea($idTarea, $nombre, $descripcion, $prioridad);
             echo '<a href="./listado.php" class="btn btn-secondary">cancelar</a>';
         
         } else {
@@ -76,11 +76,11 @@ $prioridad = $tarea["prioridad"];
             <div class="alert alert-danger" role="alert">
                 <h1>No se ha actulizado la tarea con id: <?= $idTarea; ?></h1>
             </div>
-            <a href="./listado.php" class="btn btn-secondary">Valber al listado</a> 
+            <a href="./listado.php" class="btn btn-secondary">volver al listado</a> 
   <?php
           }
         }//else de insercion del campo. 
-      }// de comprobacion del formulario
+      }// de comprobacion del formularioTarea
   ?>
 
 </main>

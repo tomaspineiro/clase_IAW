@@ -13,7 +13,7 @@ if (!isset($_SESSION["usuario"]) ){
     <?php
     if (!isset($_REQUEST["btnEnviar"])) {
 
-        formulario();
+        formularioTarea();
         
         echo '<a href="./listado.php" class="btn btn-light">cancelar</a>';
 
@@ -41,24 +41,24 @@ if (!isset($_SESSION["usuario"]) ){
                 <ul><?= $errores; ?></ul>
             </div>
         <?php
-            formulario($nombre, $descripcion, $prioridad);
+            formularioTarea($nombre, $descripcion, $prioridad);
             echo '<a href="./listado.php" class="btn btn-light">cancelar</a>';
             
         } else {
 
-            $idTarea = instarTarea($nombre, $descripcion, $prioridad);
+            $idTarea = insertarTarea($nombre, $descripcion, $prioridad);
             
             if ($idTarea) {
             ?>
                 <div class="alert alert-success" role="alert">
                     <h2> Se ha insertado corectamente con el id: <?= $idTarea; ?></h2>
                 </div>
-                <button type="button" class="btn btn-light"><a href="./listado.php">Valber al listado</a>  </button>
+                <button type="button" class="btn btn-light"><a href="./listado.php">volver al listado</a>  </button>
 
             <?php
             }
         }//else de insercion del campo. 
-    }// de comprobacion del formulario
+    }// de comprobacion del formularioTarea
     ?>
 </main>
 <?php include("inc/footer.php") ?>

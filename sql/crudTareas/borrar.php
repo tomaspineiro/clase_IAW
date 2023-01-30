@@ -9,7 +9,7 @@
   
   $idTarea = recoge("idTarea");
   
-  $borrado = delecteTarea($idTarea);
+  $borrado = deleteTarea($idTarea);
 
 ?>
 <?php include("inc/encabezado.php") ?>
