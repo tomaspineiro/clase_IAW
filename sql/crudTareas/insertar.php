@@ -15,8 +15,6 @@ if (!isset($_SESSION["usuario"]) ){
 
         formularioTarea();
         
-        echo '<a href="./listado.php" class="btn btn-light">cancelar</a>';
-
     }  else {
         $nombre = recoge("nombre");
         $descripcion = recoge("descripcion");
@@ -42,7 +40,6 @@ if (!isset($_SESSION["usuario"]) ){
             </div>
         <?php
             formularioTarea($nombre, $descripcion, $prioridad);
-            echo '<a href="./listado.php" class="btn btn-light">cancelar</a>';
             
         } else {
 
@@ -51,9 +48,9 @@ if (!isset($_SESSION["usuario"]) ){
             if ($idTarea) {
             ?>
                 <div class="alert alert-success" role="alert">
-                    <h2> Se ha insertado corectamente con el id: <?= $idTarea; ?></h2>
+                    <h2>Se ha insertado correctamente la nueva Tarea</h2>
                 </div>
-                <button type="button" class="btn btn-light"><a href="./listado.php">volver al listado</a>  </button>
+                <button type="button" class="btn btn-light"><a href="./listado.php">Volver al listado</a>  </button>
 
             <?php
             }

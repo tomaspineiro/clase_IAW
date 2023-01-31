@@ -20,35 +20,40 @@ function formularioTarea($idTarea="", $nombre="", $descripcion="", $prioridad=""
  ?>
     <form action="" method="GET" >
         <div class="mb-3">
-            <label for="idTarea" class="form-label">Id Tarea</label>
+            <label for="idTarea" class="form-label"><h5>Id Tarea:</h5></label>
             <input type="text" class="form-control" id="idTarea"name="idTarea" value="<?= $idTarea; ?>" readonly="readonly">
         </div>
-        
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
+            <label for="nombre" class="form-label"><h5>Nombre:</h5></label>
             <input type="text" class="form-control" id="nombre"name="nombre" value="<?= $nombre; ?>">
         </div>
         <div class="mb-3">
-            <label for="descripcion" class="form-label">descripcion</label>
+            <label for="descripcion" class="form-label"><h5>Descripción:</h5></label>
             <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?= $descripcion; ?>">
         </div>
+        <div>
+            <h5>Prioridad</h5>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="prioridad" id="prioridad" value="baja"
+                <?php if ($prioridad=="baja") { echo "checked='checked'"; } ?>>
+                <label class="form-check-label" for="baja">baja</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="prioridad" id="prioridad" value="media"
+                <?php if ($prioridad=="media") { echo "checked='checked'"; } ?>>
+                <label class="form-check-label" for="media">media</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="prioridad" id="prioridad" value="alta"
+                <?php if ($prioridad=="alta") { echo "checked='checked'"; } ?>>
+                <label class="form-check-label" for="alta">alta</label>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" name="btnEnviar">Enviar</button>
+            <a href="./listado.php" class="btn btn-secondary">cancelar</a>
+        </div>
 
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="prioridad" id="prioridad" value="baja"
-            <?php if ($prioridad=="baja") { echo "checked='checked'"; } ?>>
-            <label class="form-check-label" for="baja">baja</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="prioridad" id="prioridad" value="media"
-            <?php if ($prioridad=="media") { echo "checked='checked'"; } ?>>
-            <label class="form-check-label" for="media">media</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="prioridad" id="prioridad" value="alta"
-            <?php if ($prioridad=="alta") { echo "checked='checked'"; } ?>>
-            <label class="form-check-label" for="alta">alta</label>
-        </div>
-        <button type="submit" class="btn btn-primary" name="btnEnviar">Enviar</button>
         
     </form>
 <?php } // montrar formularioTarea ?>

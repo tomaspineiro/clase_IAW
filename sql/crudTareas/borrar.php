@@ -17,15 +17,15 @@
   <h1>Borrar tarea</h1>
    <?php if ($borrado) {?>  
     <div class="alert alert-success" role="alert">
-      <h2> Se a borrado corectamente la tarea con el id: <?= $idTarea; ?></h2>
+      <h2> Se a borrado correctamente la tarea con el id: <?= $idTarea; ?></h2>
     </div>
     <?php } else { ?>
       <div class="alert alert-danger" role="alert">
-        <h2> No se a borrado la tarea <?= $idTarea; ?> corectamente. </h2>
+        <h2> No se a borrado la tarea <?= $idTarea; ?> correctamente. </h2>
       </div>
     <?php } ?>
 
-  <a href="./listado.php" class="btn btn-secondary">Valver al listado</a> 
+  <a href="./listado.php" class="btn btn-secondary">Volver al listado</a> 
 
 </main>
 

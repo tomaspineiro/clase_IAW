@@ -24,8 +24,6 @@ $prioridad = $tarea["prioridad"];
     if (!isset($_REQUEST["btnEnviar"])) {
 
       formularioTarea($idTarea, $nombre, $descripcion, $prioridad);
-      
-      echo '<a href="./listado.php" class="btn btn-secondary">cancelar</a>';
 
     }  else {
 
@@ -58,7 +56,6 @@ $prioridad = $tarea["prioridad"];
   <?php
 
             formularioTarea($idTarea, $nombre, $descripcion, $prioridad);
-            echo '<a href="./listado.php" class="btn btn-secondary">cancelar</a>';
         
         } else {
 
@@ -67,16 +64,16 @@ $prioridad = $tarea["prioridad"];
           if ($actualizado) {
 ?>
             <div class="alert alert-success" role="alert">
-              <h2> Se a inssertado corectamente con el id: <?= $actualizado; ?></h2>
+              <h2> Se a insertado correctamente con el id: <?= $actualizado; ?></h2>
             </div>
-            <a href="./listado.php" class="btn btn-secondary">Valver al listado</a> 
+            <a href="./listado.php" class="btn btn-secondary">Volver al listado</a> 
 <?php
           } else {
   ?>
             <div class="alert alert-danger" role="alert">
-                <h1>No se ha actulizado la tarea con id: <?= $idTarea; ?></h1>
+                <h1>No se ha actulizado la tarea con id: <?= $actualizado; ?></h1>
             </div>
-            <a href="./listado.php" class="btn btn-secondary">volver al listado</a> 
+            <a href="./listado.php" class="btn btn-secondary">Volver al listado</a> 
   <?php
           }
         }//else de insercion del campo. 

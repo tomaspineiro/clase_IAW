@@ -1,8 +1,10 @@
-· introducir en el formulario de login y de registro , la vrificacion de google de que no seamos un robot .
-
 · pagina para subir achivos 
 
+· introducir en el formulario de login y de registro , la vrificacion de google de que no seamos un robot .
+
 · crear un mensaje cuando se creo el usuario
+
+· Revisasr la paginacion la logica de php puede ser mejor.
 
 · mover el boton enviar del formulario de insecion y idecion 
 

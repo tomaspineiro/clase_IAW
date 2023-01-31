@@ -17,7 +17,7 @@ unset($_SESSION["usuario"]);
     <h1>Mis tareas</h1>
     
     <div class="alert alert-secondary" role="alert">
-        ha cerado sesion corectamente 
+        ha cerado sesion correctamente 
     </div>
     <div>
         <a href="./index.php" class="btn btn-secondary text-end">Entrar</a>

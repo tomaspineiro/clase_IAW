@@ -24,11 +24,11 @@ $idTarea = insertarTarea($nombre, $descripcion, $prioridad);
 
 if ($idTarea) {
     
-    echo "Tarea $idTarea se a insetado corectamente la tarea <br/>";
+    echo "Tarea $idTarea se a insetado correctamente la tarea <br/>";
     
 } else {
     
-    echo "Tarea $idTarea, no se a insetado corectamente la tarea <br/>";
+    echo "Tarea $idTarea, no se a insetado correctamente la tarea <br/>";
     
 }
 

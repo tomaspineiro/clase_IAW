@@ -29,31 +29,29 @@ if (isset($_SESSION["usuario"]) ){
 
             formularioLogin();
 
-        } elseif (isset($_REQUEST["btnEnviar"])) {
-            
-            $inPassword = recoge('password');
-            $inUser = recoge('usuario');
+    } elseif (isset($_REQUEST["btnEnviar"])) {
 
-            $rowUser = seleccionarUsuario($inUser);
+        $inPassword = recoge('password');
+        $inUser = recoge('usuario');
 
-            if (($rowUser) && password_verify($inPassword, $rowUser['password']) &&  ($inPassword != '')){
+        $rowUser = seleccionarUsuario($inUser);
 
-                $_SESSION["usuario"] = $rowUser["user"];
+        if (($rowUser) && password_verify($inPassword, $rowUser['password']) && ($inPassword != '')) {
 
-                header("location: listado.php");
-                exit;
-                
-            } 
-            
+            $_SESSION["usuario"] = $rowUser["user"];
+
+            header("location: listado.php");
+            exit;
+
         } else {
-    ?>
+            ?>
                 <div class="alert alert-danger" role="alert">
                     <h1>usuario o contraseña incorrecta</h1>
                 </div>
     <?php
-                formularioLogin();
+            formularioLogin();
         } // comporbacion de que el usuario se loguedo    
-       
+    }
     ?>
 </main>
 <?php include("inc/footer.php") ?>
