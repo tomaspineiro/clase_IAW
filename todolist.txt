@@ -1,7 +1,8 @@
 · introducir en el formulario de login y de registro , la vrificacion de google de que no seamos un robot .
 
-· crear un mensaje cuando se creo el usuario
 · pagina para subir achivos 
+
+· crear un mensaje cuando se creo el usuario
 
 · mover el boton enviar del formulario de insecion y idecion 
 

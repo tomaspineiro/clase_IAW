@@ -25,10 +25,8 @@ if (isset($_SESSION["usuario"]) ){
                     <h1>Tienes que estar logueado para aceder a esa pagiona.</h1>
                 </div>
         <?php
-            } elseif (isset($_REQUEST("user"))) {
-                # code...
             }
-            
+
             formularioLogin();
 
         } elseif (isset($_REQUEST["btnEnviar"])) {
@@ -38,22 +36,24 @@ if (isset($_SESSION["usuario"]) ){
 
             $rowUser = seleccionarUsuario($inUser);
 
-            if (($rowUser) && password_verify($inPassword, $rowUser['password']) &&  ($inPassword != '') && (robotGoogle())){
+            if (($rowUser) && password_verify($inPassword, $rowUser['password']) &&  ($inPassword != '')){
 
                 $_SESSION["usuario"] = $rowUser["user"];
 
                 header("location: listado.php");
                 exit;
+                
+            } 
             
-            } else {
+        } else {
     ?>
                 <div class="alert alert-danger" role="alert">
                     <h1>usuario o contraseña incorrecta</h1>
                 </div>
     <?php
                 formularioLogin();
-            } // comporbacion de que el usuario se loguedo    
-        }// recoger y tratar los datos del form de login
+        } // comporbacion de que el usuario se loguedo    
+       
     ?>
 </main>
 <?php include("inc/footer.php") ?>

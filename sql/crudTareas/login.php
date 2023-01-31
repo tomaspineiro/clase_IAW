@@ -50,11 +50,7 @@ if (isset($_SESSION["usuario"]) ){
 
             }
 
-            if (robotGoogle()) {
-
-                $errores.= '<li>No puedes ser un Robot.</li>';
-
-            }
+        
 
             if ($errores) {
 

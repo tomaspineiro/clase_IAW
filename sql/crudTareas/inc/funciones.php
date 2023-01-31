@@ -85,12 +85,19 @@ function formularioTarea($idTarea="", $nombre="", $descripcion="", $prioridad=""
             <input type="password" class="form-control" id="password" name="password" value="">
         </div> 
         <dev class='text-center'>
-            <button type="submit" class="btn btn-primary" name="btnEnviar">Enviar</button>
+            <button type="submit" class="btn btn-primary" name="btnEnviar">Enviar</button> 
+            <!-- 
+            <button type="submit"  class="g-recaptcha btn btn-primary" data-sitekey="6Lftfj4kAAAAAPG3-QdXrCCLUP4PMehvNq464W3E"  data-callback='onSubmit' data-action='submit' name="btnEnviar" id="btnEnviar">Submit</button>
+            -->
+
             <a href='login.php' class="btn btn-primary" name="registrase">Registrase</a>
+
         </dev>
-        <dev> <!--Para el cachap de google-->
+        <!--captcha de google
+        <div class="g-recaptcha" data-sitekey="6Lftfj4kAAAAAPG3-QdXrCCLUP4PMehvNq464W3E">
             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-        </dev>
+        </div>
+        -->
     </form>
 <?php } ?>
 <?php function registro($user='') { ?>
@@ -117,30 +124,5 @@ function formularioTarea($idTarea="", $nombre="", $descripcion="", $prioridad=""
         </dev>
     </form>
 <?php } // cierre de funcion de registro?> 
-
 <?php 
-function robotGoogle() {
-    if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
-        $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'; 
-        $recaptcha_secret = '6LclYDokAAAAAE3utYLPUwVjYD3RpUcgsW5kc3ou'; 
-        $recaptcha_response = $_POST['recaptcha_response']; 
-        $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response); 
-        $recaptcha = json_decode($recaptcha); 
-        if($recaptcha->score >= 0.1){
-    
-            $robot = FALSE;
-    
-        } else {
-    
-            $robot = TRUE;
-    
-        }
-    
-    }
 
-    return $robot;
-
-}
-
-
-?>

@@ -35,6 +35,7 @@ $numeroPag = ceil($numeroRow/$row_count);
       <a href="./insertar.php" class="btn btn-secondary">Insertar</a>
 
       <a href="./logout.php" class="btn btn-secondary text-end">Salir</a>
+      <a href="./fileCV.php" class="btn btn-secondary text-end">CV</a>
   </div>
   <table class="table">
     <thead>
@@ -61,7 +62,7 @@ $numeroPag = ceil($numeroRow/$row_count);
         <td><?= $prioridad ?></td>
         <td>
           <a href="./editar.php?idTarea=<?= $idTarea; ?>" class="btn btn-success" >Editar</a>
-          <a href="./borrar.php?idTarea=<?= $idTarea; ?>" class="btn btn-danger" onclick="return confirm('Estï¿½s seguro de borrar la Tarea <?= $idTarea ?>?');">Borrar</a> <!-- -->
+          <a href="./borrar.php?idTarea=<?= $idTarea; ?>" class="btn btn-danger" onclick="return confirm('Estás seguro de borrar la Tarea <?= $idTarea ?>?');">Borrar</a> <!-- -->
         </td>
       </tr>
       <?php } ?>
