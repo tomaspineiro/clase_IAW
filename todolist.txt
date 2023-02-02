@@ -1,14 +1,12 @@
-· pagina para subir achivos 
-
 · introducir en el formulario de login y de registro , la vrificacion de google de que no seamos un robot .
 
 · crear un mensaje cuando se creo el usuario
 
 · Revisasr la paginacion la logica de php puede ser mejor.
 
-· mover el boton enviar del formulario de insecion y idecion 
+30/1/2023:
+· [hecho] mover el boton enviar del formulario de insecion y idecion 
 
-30/1/2023
 · [hecho] correcigir:  delecteTarea-->deleteTarea, insertarTarea, Valber-->Volver
 
 · [hecho] cifrar la password (password_hash) esto es lo que se envia a la vase de datos, en la creacion de usuarios. 
