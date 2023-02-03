@@ -1,0 +1,14 @@
+
+11 January, 2023, 1:01 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:45 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:50 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:50 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:50 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:51 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:53 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 12:53 pm SQLSTATE[HY000] [1045] Access denied for user 'tareas'@'localhost' (using password: YES)
+13 January, 2023, 1:30 pm SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'prioridad' cannot be null
+13 January, 2023, 2:15 pm SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+13 January, 2023, 2:16 pm SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+13 January, 2023, 2:17 pm SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+27 January, 2023, 2:15 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''0', '6'' at line 1
