@@ -64,9 +64,17 @@
                 $apellidos = recoge("apellidos");
                 $dni = rocoge("dni");
 
+                $errores = "";
 
-                if ()
-
+                if ( $nombre == "") {
+                    $errores .= "<li>El campo nombres no puede estar vacio</li>";
+                }
+                if ( $apellidos == "" ) {
+                    $errores .= "<li>El campo apellidos no puede estar vacio</li>";
+                }
+                if ( $dni == "" ) {
+                    $errores .= "<li>El campo nombre no puede estar vacio</li>";
+                }
 
             }
         ?>
