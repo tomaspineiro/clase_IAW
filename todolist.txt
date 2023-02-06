@@ -1,3 +1,6 @@
+· crear subir archivos CV:
+    - nom ape dni y cv(file)
+     
 · introducir en el formulario de login y de registro , la vrificacion de google de que no seamos un robot .
 
 · crear un mensaje cuando se creo el usuario
@@ -10,6 +13,7 @@
 · [hecho] correcigir:  delecteTarea-->deleteTarea, insertarTarea, Valber-->Volver
 
 · [hecho] cifrar la password (password_hash) esto es lo que se envia a la vase de datos, en la creacion de usuarios. 
+
 · [hecho] modificar la pagina de index para que se nevie la password de forma cifrada, con la funcion password_verify()
 
 29/1/2023

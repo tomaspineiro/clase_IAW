@@ -1,3 +1,46 @@
+<?php function formularioSubirArchivos($nombre="", $apellidos="", $dni="") { ?>
+    <form action="" method="post" enctype="multipart/form-data">
+            <b>Campo de tipo texto:</b> 
+            <div class="mb-3">
+                <label for="nombre" class="form-label"><h5>Nombre:</h5></label>
+                <input type="text" class="form-control" id="nombre"name="nombre" value="<?= $nombre; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="apellidos" class="form-label"><h5>Apellidos:</h5></label>
+                <input type="text" class="form-control" id="apellidos"name="apellidos" value="<?= $apellidos; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="dni" class="form-label"><h5>DNI:</h5></label>
+                <input type="text" class="form-control" id="dni"name="dni" value="<?= $dni; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="cv" class="form-label"><h5>DNI:</h5></label>
+                <input type="file" class="form-control" id="cv"name="cv" value="">
+                <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+            </div>
+            <div class="mb-3">
+                <input type="submit" id="enviar" name="enviar" value="Enviar">
+            </div>
+        </form>
+<?php } ?>
+<?php
+	function recoge($var, $m = "")  {
+	
+		$tmp = is_array($m) ? [] : "";
+		if (isset($_REQUEST[$var])) {
+			if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+				$tmp = trim(htmlspecialchars($_REQUEST[$var]));
+			} elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+				$tmp = $_REQUEST[$var];
+				array_walk_recursive($tmp, function (&$valor) {
+					$valor = trim(htmlspecialchars($valor));
+				});
+			}
+		}
+		return $tmp;
+	}
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,31 +52,25 @@
 </head>
 <body>
     
-    <div class="center">
-        <form action="subearchivo.php" method="post" enctype="multipart/form-data">
-            <b>Campo de tipo texto:</b> 
-            <br><div class="mb-3">
-                <label for="nombre" class="form-label"><h5>Nombre:</h5></label>
-                <input type="text" class="form-control" id="nombre"name="nombre" value="">
-            </div>
-            <br><div class="mb-3">
-                <label for="apellidos" class="form-label"><h5>Apellidos:</h5></label>
-                <input type="text" class="form-control" id="apellidos"name="apellidos" value="">
-            </div>
-            <br><div class="mb-3">
-                <label for="nombre" class="form-label"><h5>DNI:</h5></label>
-                <input type="text" class="form-control" id="nombre"name="nombre" value="">
-            </div>
-            <input type="hidden" name="MAX_FILE_SIZE" value="100000">
-            <br>
-            <br>
-            <b>Enviar un nuevo archivo: </b>
-            <br>
-            <input name="userfile" type="file">
-            <br>
-            <input type="submit" value="Enviar">
-        </form>
-    </div>
+    <main class="container">
+        <?php
+            if (isset($_REQUEST["enviar"])) {
+                
+                formularioSubirArchivos();
+            
+            } else {
+
+                $nombre = rocoge("nombre");
+                $apellidos = recoge("apellidos");
+                $dni = rocoge("dni");
+
+
+                if ()
+
+
+            }
+        ?>
+    </main>
 </body>
 </html>
 
