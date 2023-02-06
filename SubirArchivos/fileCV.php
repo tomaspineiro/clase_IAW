@@ -1,5 +1,20 @@
+<?php function recoge($var, $m = "")  {
+	
+		$tmp = is_array($m) ? [] : "";
+		if (isset($_REQUEST[$var])) {
+			if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+				$tmp = trim(htmlspecialchars($_REQUEST[$var]));
+			} elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+				$tmp = $_REQUEST[$var];
+				array_walk_recursive($tmp, function (&$valor) {
+					$valor = trim(htmlspecialchars($valor));
+				});
+			}
+		}
+		return $tmp;
+	}?>
 <?php function formularioSubirArchivos($nombre="", $apellidos="", $dni="") { ?>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
             <b>Campo de tipo texto:</b> 
             <div class="mb-3">
                 <label for="nombre" class="form-label"><h5>Nombre:</h5></label>
@@ -22,25 +37,7 @@
                 <input type="submit" id="enviar" name="enviar" value="Enviar">
             </div>
         </form>
-<?php } ?>
-<?php
-	function recoge($var, $m = "")  {
-	
-		$tmp = is_array($m) ? [] : "";
-		if (isset($_REQUEST[$var])) {
-			if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-				$tmp = trim(htmlspecialchars($_REQUEST[$var]));
-			} elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-				$tmp = $_REQUEST[$var];
-				array_walk_recursive($tmp, function (&$valor) {
-					$valor = trim(htmlspecialchars($valor));
-				});
-			}
-		}
-		return $tmp;
-	}
-	
-?>
+<?php } // fin de Funcion del formulario ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,91 +50,87 @@
 <body>
     <main class="container">
        <?php 
-        if (!isset($_REQUEST['Enviar'])) {
-            formulario();
-        } else  {
+        
+        if (!isset($_REQUEST['enviar'])) {
+            
+            formularioSubirArchivos();
+        
+        } else {
             
             $nombre = rocoge("nombre");
             $apellidos = recoge("apellidos");
             $dni = rocoge("dni");
+            
+            $errores = "";
+
+            if ($nombre == "") {
+            
+                $errores .= "<li>El comapo nombres no puede estar vacio. </li>";
+            
+            }
+
+            if ($apellidos == "") {
+                
+                $errores .= "<li>El comapo apellidos  no puede estar vacio. </li>";
+            
+            }
+
+            if ($dni == "") {
+            
+                $errores .= "<li>El comapo dni no puede estar vacio. </li>";
+            
+            } elseif (strlen($dni) != 9) {// falta la funcionde comprobacion de letra de dni 
+            
+                $errores .= "<li>El dni no esta bien escrito. </li>";
+            
+            }
 
             //datos del arhivo
-            $nombre_archivo = $_FILES['userfile']['name'];
-            $tipo_archivo = $_FILES['userfile']['type'];
-            $tamano_archivo = $_FILES['userfile']['size'];
+            $nombre_archivo = $_FILES['cv']['name'];
+            $tipo_archivo = $_FILES['cv']['type'];
+            $tamano_archivo = $_FILES['cv']['size'];
                 
             //compruebo si las características del archivo son las que deseo
-            if (!((strpos($tipo_archivo, "gif") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < 100000))) {
-                echo "La extensión o el tamaño de los archivos no es correcta. <br><br><table><tr><td><li>Se permiten archivos .gif o .jpg<br><li>se permiten archivos de 100 Kb máximo.</td></tr></table>";
+            if (strpos($tipo_archivo, "pdf")) {
+            
+                $errores .= "<li>Solo se permiten archivos .pdf";
+            
             }else{
                 
-                if (move_uploaded_file($_FILES['userfile']['tmp_name'],  $nombre_archivo)){
-                        echo "El archivo ha sido cargado correctamente.";
-                }else{
-                        echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
-                }
-            }
-
-        }
-        if ($nombre == "") {
-                    $errores .= "<li>El comapo nombres no puede estar vacio. </li>";
-                }
-
-                if ($apellidos == "") {
-                    $errores .= "<li>El comapo apellidos  no puede estar vacio. </li>";
-                }
-
-                if ($dni == "") {
-
-                    $errores .= "<li>El comapo dni no puede estar vacio. </li>";
-
-                } elseif (strlen($dni) != 9) {
-
-                    $errores .= "<li>El dni no esta bien escrito. </li>";
-
-                }
-                //tomo el valor de un elemento de tipo texto del formulario
-                $cadenatexto = $_POST["cadenatexto"];
-                echo "Escribió en el campo de texto: " . $cadenatexto . "<br><br>";
-
-                //datos del arhivo
-                $nombre_archivo = $_FILES['userfile']['name'];
-                $tipo_archivo = $_FILES['userfile']['type'];
-                $tamano_archivo = $_FILES['userfile']['size'];
+                if (move_uploaded_file($_FILES['cv']['tmp_name'],  $nombre_archivo)){
                     
-                //compruebo si las características del archivo son las que deseo
-                if (strpos($tipo_archivo, "pdf")) {
-                    $errores .= "<li>Solo se permiten archivos .pdf";
+                    $corecto = "<li>El archivo ha sido cargado correctamente.</li>";
+                
                 }else{
-                    if (move_uploaded_file($_FILES['fileCV']['tmp_name'],  $nombre_archivo)){
-                            $errores .= "<li>El archivo ha sido cargado correctamente.</li>";
-                    }else{
-                            $errores .= "<li>Ocurrió algún error al subir el fichero. No pudo guardarse.</li>";
-                    }
-                }
-
-                if ($errores != "") {
-                    ?>
-                    <div class="alert alert-danger d-flex align-items-center" role="alert">
-                        <lu>
-                            <?= $errores; ?>
-                        </lu>
-                    </div> 
-                    <?php
-                    formularioArchivo();
-                } else {
-
-
+                
+                    $errores .= "<li>Ocurrió algún error al subir el fichero. No pudo guardarse.</li>";
+                
                 }
             }
+
+            /* if ($errores "") { */
+                ?>
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <lu>
+                        <?= $errores; ?>
+                    </lu>
+                </div> 
+                <?php
+                
+                formularioSubirArchivos($nombre, $apellidos, $dni);
+/* 
+            } else {
+                ?>
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                    <lu>
+                        <li><?= $corecto; ?></li>
+                    </lu>
+                </div> 
+                <?php
+            } */
+
+        } // FIN DEL DEL IF DE COMPROVACION DE QUE LOS DATOS DEL FORMULARIO ESTEN BIEN. 
         ?>
     </main>
-       ?>
-    
-
-
-                
-
 </body>
 </html>
-
