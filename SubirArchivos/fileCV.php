@@ -79,7 +79,59 @@
             }
 
         }
-       
+        if ($nombre == "") {
+                    $errores .= "<li>El comapo nombres no puede estar vacio. </li>";
+                }
+
+                if ($apellidos == "") {
+                    $errores .= "<li>El comapo apellidos  no puede estar vacio. </li>";
+                }
+
+                if ($dni == "") {
+
+                    $errores .= "<li>El comapo dni no puede estar vacio. </li>";
+
+                } elseif (strlen($dni) != 9) {
+
+                    $errores .= "<li>El dni no esta bien escrito. </li>";
+
+                }
+                //tomo el valor de un elemento de tipo texto del formulario
+                $cadenatexto = $_POST["cadenatexto"];
+                echo "Escribió en el campo de texto: " . $cadenatexto . "<br><br>";
+
+                //datos del arhivo
+                $nombre_archivo = $_FILES['userfile']['name'];
+                $tipo_archivo = $_FILES['userfile']['type'];
+                $tamano_archivo = $_FILES['userfile']['size'];
+                    
+                //compruebo si las características del archivo son las que deseo
+                if (strpos($tipo_archivo, "pdf")) {
+                    $errores .= "<li>Solo se permiten archivos .pdf";
+                }else{
+                    if (move_uploaded_file($_FILES['fileCV']['tmp_name'],  $nombre_archivo)){
+                            $errores .= "<li>El archivo ha sido cargado correctamente.</li>";
+                    }else{
+                            $errores .= "<li>Ocurrió algún error al subir el fichero. No pudo guardarse.</li>";
+                    }
+                }
+
+                if ($errores != "") {
+                    ?>
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <lu>
+                            <?= $errores; ?>
+                        </lu>
+                    </div> 
+                    <?php
+                    formularioArchivo();
+                } else {
+
+
+                }
+            }
+        ?>
+    </main>
        ?>
     
 
