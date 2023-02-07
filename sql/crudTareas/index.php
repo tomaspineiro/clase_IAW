@@ -19,10 +19,18 @@ if (isset($_SESSION["usuario"]) ){
         if (!isset($_REQUEST["btnEnviar"])) {
         
             if  (recoge('error') == 1) {
-        
         ?>
                 <div class="alert alert-danger" role="alert">
                     <h1>Tienes que estar logueado para aceder a esa pagiona.</h1>
+                </div>
+        <?php
+            }
+            
+            if (isset($_REQUEST["user"])) {
+                $user = recoge('user');
+        ?>
+                <div class="alert alert-success" role="alert">
+                    <h1>Se a creado corectamente el usuario: <?= $user; ?></h1>
                 </div>
         <?php
             }
