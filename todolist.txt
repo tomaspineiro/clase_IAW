@@ -1,11 +1,12 @@
-· crear subir archivos CV:
-    - nom ape dni y cv(file)
-     
 · introducir en el formulario de login y de registro , la vrificacion de google de que no seamos un robot .
 
-· crear un mensaje cuando se creo el usuario
-
 · Revisasr la paginacion la logica de php puede ser mejor.
+
+7/2/2023:
+· [hecho] crear subir archivos CV:
+    - [hecho]nom ape dni y cv(file)
+
+· [hecho]crear un mensaje cuando se creo el usuario
 
 30/1/2023:
 · [hecho] mover el boton enviar del formulario de insecion y idecion 
