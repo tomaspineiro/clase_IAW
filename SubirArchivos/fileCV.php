@@ -94,21 +94,7 @@ max_execution_time = 30 : Es el número máximo de segundos que se permite ejecu
             $errores = "";
             $corecto = '';
 
-<<<<<<< HEAD
-                $errores = "";
-
-                if ( $nombre == "") {
-                    $errores .= "<li>El campo nombres no puede estar vacio</li>";
-                }
-                if ( $apellidos == "" ) {
-                    $errores .= "<li>El campo apellidos no puede estar vacio</li>";
-                }
-                if ( $dni == "" ) {
-                    $errores .= "<li>El campo nombre no puede estar vacio</li>";
-                }
-=======
-            if ($nombre == "") {
-                
+            if ($nombre == "") {        
                 $errores .= "<li>El comapo nombres no puede estar vacio. </li>";
 
             }
@@ -118,7 +104,6 @@ max_execution_time = 30 : Es el número máximo de segundos que se permite ejecu
                 $errores .= "<li>El comapo apellidos  no puede estar vacio. </li>";
                 
             }
->>>>>>> subirArchivos
 
             if ($dni == "") {
                 
@@ -187,7 +172,7 @@ max_execution_time = 30 : Es el número máximo de segundos que se permite ejecu
                 
                 formularioSubirArchivos($nombre, $apellidos, $dni);
 
-            } else {
+            } elseif ($corecto != "") {
                 ?>
                 <div class="alert alert-success d-flex align-items-center" role="alert">
                     <lu>
@@ -195,7 +180,11 @@ max_execution_time = 30 : Es el número máximo de segundos que se permite ejecu
                     </lu>
                 </div> 
                 <?php
-            } 
+            } else {
+
+               formularioSubirArchivos();
+               
+            }
 
         } // FIN DEL DEL IF DE COMPROVACION DE QUE LOS DATOS DEL FORMULARIO ESTEN BIEN. 
         ?>
