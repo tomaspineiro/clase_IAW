@@ -1,0 +1,11 @@
+Datos Importantes:
+	-user: grupito2023
+	-Password: abc123.
+
+-crear la base de datos. 
+
+todas la imagenes que usemos siempre tiene que tener imgPequña:450x300 imagGrandes: 600x700
+
+maquetar el productos.php
+
+buscar 8 imagenes de  productos.  y añadir /img
