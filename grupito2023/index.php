@@ -1,7 +1,7 @@
-<?php include("./inc/header.php"); ?>
 <?php
 $nameSite="home";
 ?>
+<?php include("./inc/header.php"); ?>
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -34,11 +34,11 @@ $nameSite="home";
                                 </div>
                                 <!-- Product actions-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Más info..</a></div>
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="producto.php">Más info..</a></div>
                                 </div>
                             </div>
                         </div>
-                    <?php } //cierre del for de itens de ?>
+                    <?php } // cierre del for de itens de ?>
                 </div>
             </div>
         </section>

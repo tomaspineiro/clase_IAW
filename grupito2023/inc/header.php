@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content=" Pagina para clase de ejemplo" />
         <meta name="author" content="piñeiro.alonso.tomas@iesrodeira.gal"/>
-        <title>Grupito2023 -<?= $nameSite ?></title> <!-- if aqui -->
+        <title>Grupito2023 -<?= $nameSite; ?></title> <!-- if aqui -->
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -22,7 +22,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link <?php if($nameSite=="home"){ echo "active";} ?>" aria-current="page" href="index.php">Home</a></li> <!-- if aqui -->
-                        <li class="nav-item"><a class="nav-link <?php if($nameSite=="productos"){ echo "active";} ?>" href="#!">Productos:</a></li> <!-- if aqui -->
+                        <li class="nav-item"><a class="nav-link <?php if($nameSite=="producto"){ echo "active";} ?>" href="#!">Productos:</a></li> <!-- if aqui -->
                         <li class="nav-item"><a class="nav-link <?php if($nameSite=="nosotros"){ echo "active";} ?>" href="#!">Nosotros:</a></li> <!-- if aqui -->
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
