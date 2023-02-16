@@ -1,6 +1,7 @@
 Datos Importantes:
-	-user: grupito2023
-	-Password: abc123.
+	- BBDD: 'grupito2023'
+	- User: 'grupito2023'
+	- Password: 'abc123.'
 
 
 maquetar el productos.php
