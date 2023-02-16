@@ -1,9 +1,14 @@
-Datos Importantes:
-	- BBDD: 'grupito2023'
-	- User: 'grupito2023'
-	- Password: 'abc123.'
+- crear LAS TABLAS. 
+
+- Prepara la pagina de administracion. 
+
+- Buscar 8 imagenes de  productos.  y añadir /img (todas la imagenes que usemos siempre tiene que tener imgPequña:450x300 imagGrandes: 600x700)
 
 
-maquetar el productos.php
 
-buscar 8 imagenes de  productos.  y añadir /img (todas la imagenes que usemos siempre tiene que tener imgPequña:450x300 imagGrandes: 600x700)
+
+
+
+
+
+
