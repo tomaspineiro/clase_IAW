@@ -4,6 +4,24 @@
 
 - Buscar 8 imagenes de  productos.  y añadir /img (todas la imagenes que usemos siempre tiene que tener imgPequña:450x300 imagGrandes: 600x700)
 
+- Creamos una pagina carito.php, la maquetamos una tabla  con las columnas Productos(colspan=3), cantidad(para poner modificar los numeros tenemos que usar un <a href="">+/-</a>), precio y total. Tam
+
+- Creamos una pagina que es procesarCarito.php, no tiene head ni footer, 
+tiene que tener la sesion para la info del carrito. 
+    tengo tenern 
+    $id= producto 
+    $op= (add, remove, empty);
+    
+    ·add: estrucrua para guradar el carito en la sesion es $_SESSION['cart'][$id] = cantidad (en un if si no existe este campo lo inicializamos a uno)
+
+    ·remove: es que restamos una unidad 
+
+    ·empty: espara borrar la varible de unset($_SESSION["..."])
+
+
+
+
+
 
 
 

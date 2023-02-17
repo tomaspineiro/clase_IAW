@@ -11,15 +11,15 @@
     - imageP (VARCHAR(100))
     - imageG (VARCHAR(100))
     - precio (FLOAT(10,2))
-    - precioOferta (FLOAT(10,2))
+    - precioOferta (FLOAT(10,2) yes null) 
     - online(0,1) (BOOLEAN)
 
 · Tabla de pedidos:
 	- idPedido (PK)
 	- idUsuario  (FK de T. Usuarios)
 	- fecha (TIMESTAMP & CURRENT_TIMESTAMP)
-	- idEstado (FK de T. Estado )
-	- costeTotal ((10,2))
+	- idEstado (FK de T. Estado , yes null)
+	- costeTotal (FLOAT(10,2) ,yes null)
 
 · Tabla de detallesPedidos:
 	- idDetallesPedidos (PK)
@@ -30,14 +30,14 @@
 
 · Tabla de Usuarios:
 	- idUsuario (PK)
-	- email (VARCHAR(100), UNIQUE)
-	- password (VARCHAR(200))
 	- nombre (VARCHAR(50))
+	- password (VARCHAR(200))
+	- online(0,1) (BOOLEAN)
+	- email (VARCHAR(100), UNIQUE)
 	- apellidos (VARCHAR(100))
-	- direcion (VARCHAR(200))
+	- direccion (VARCHAR(200))
 	- telefono (VARCHAR(9))
 	- admin(0,1) (BOOLEAN)
-	- online(0,1) (BOOLEAN)
 
 · tabla Estado:
 	- idEstado (PK)
