@@ -1,0 +1,5 @@
+
+18 February, 2023, 2:40 pm SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imgenG' in 'field list'
+18 February, 2023, 2:41 pm SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imgenG' in 'field list'
+18 February, 2023, 2:41 pm SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imgenG' in 'field list'
+18 February, 2023, 2:41 pm SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imgenG' in 'field list'

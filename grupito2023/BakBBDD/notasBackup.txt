@@ -1,0 +1,31 @@
+*DATOS GURDDOS EN LOS BACKUOPS:*
+
+ejemplo de estructura:
+#dd/mm/yyyy-hh:mm
+    - grupito2023.X.sql{
+        productos: 22 (=)
+        pedidos: X ()
+        detallesPedidos: X ()
+        usuarios: X ()
+        estados: 5 (compeleta)
+    }
+
+historico:
+#18/02/2023-18:25
+    - grupito2023.1.sql {
+        productos: 22 (=)
+        pedidos: 0 ()
+        detallesPedidos: 0 ()
+        usuarios: 0 ()
+        estados: 5 (compeleta)
+    }
+
+#18/02/2023-10:17 me la ecargado ya contiena la info pero esta retocada
+    - grupito2023.1.sql {
+        productos: 22 (=)
+        pedidos: 0 ()
+        detallesPedidos: 0 ()
+        usuarios: 0 ()
+        estados: 5 (compeleta)
+    }
+

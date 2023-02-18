@@ -1,10 +1,25 @@
 - crear LAS TABLAS. 
 
+[Administacion]
 - Prepara la pagina de administracion. 
 
-- Buscar 8 imagenes de  productos.  y añadir /img (todas la imagenes que usemos siempre tiene que tener imgPequña:450x300 imagGrandes: 600x700)
+[*Fronto*]
+
+[productos]
+- no te olvides de que hay productos online 
+
+[usuario]
+- hacer la funciones de creacion de usauarios.
+
+- verificacion de usuarios.
+
+- en el toquetear el headre, para que indique el usuario logueado
+
+[carito]
+-el site producto.php tiene que tener linquedo a carito
 
 - Creamos una pagina carito.php, la maquetamos una tabla  con las columnas Productos(colspan=3), cantidad(para poner modificar los numeros tenemos que usar un <a href="">+/-</a>), precio y total. Tam
+
 
 - Creamos una pagina que es procesarCarito.php, no tiene head ni footer, 
 tiene que tener la sesion para la info del carrito. 
