@@ -27,16 +27,15 @@ if (isset($_REQUEST['idProducto'])) {
                         <div class="small mb-1">IDPRODUCTO:<?= $producto['idProducto']; ?></div>
                         <h1 class="display-5 fw-bolder"><?= $producto['nombre']; ?></h1>
                         <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through"><?= $producto['precio']; ?></span>
-                            <span><?= $producto['precioOferta']; ?></span>
+                            <span class="text-decoration-line-through"><?= $producto['precio']; ?>€</span>
+                            <span><?= $producto['precioOferta']; ?>€</span>
                         </div>
                         <p class="lead"><?= $producto['intoDescripcion']; ?></p>
                         <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <a class="btn btn-outline-dark flex-shrink-0" href="procesarCarrito.php?id=<?= $producto['idProducto']; ?>&op=add">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

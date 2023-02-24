@@ -106,6 +106,7 @@ function selectProdSiteProducto($idProducto) {
     return $row;
 }
 
+
 //funcion cuantas Productos tenemos en la vase de datos hay
 function listaProductosOnlen() {
 
@@ -218,7 +219,67 @@ function cantidadProductosOnlen() {
 ##########################################
 
 
+##########################################
+##### funciones de la tabla Pedidos: #####
+##########################################
+
+//Funcion insertarPedido
+function insertarPedido($idUsuario, $carrito, $total) {
+    $con = conectarDB();
+
+    try {
+        $con -> beginTransaction();
+
+        $sql = "INSERT  INTO pedidos (idUsuario, total) VALUES (:idUsuario, :total)";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':idUsuario', $idUsuario);
+        $stmt->bindParam(':total', $total);
+         
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+        $idPedido = $con ->lastInsertId();
+
+        foreach ($carrito as $idProducto => $cantidad) {
+
+            $producto = selectProdSiteProducto($idProducto); // cambiar pun una funcion selectPrecioOferta($idProducto)
+            
+            $precio = $producto["precioOfercta"];
+
+            $sql2 = "INSERT INTO detallesPedidos (idPedido, idProducto, cantidad, precio) VALUES (:idPedido, :idProducto, :cantidad, :precio)";
+
+            // Creamos y preparamos la senteica para compilarla 
+            $stmt = $con->prepare($sql);
+
+            // Vinculamos los valores 
+            $stmt->bindParam(':idPedido', $idPedido);
+            $stmt->bindParam(':idProducto', $idProducto);
+            $stmt->bindParam(':cantidad', $cantidad);
+            $stmt->bindParam(':precio', $precio);
+            
+            $stmt->execute();
+
+        }
+
+        $con -> commit();
+
+    } catch(PDOException $e){
+
+        $con -> rollback();
+
+        echo "Error: Error al selacionar la tabla: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
 
 
+}
 
 ?>

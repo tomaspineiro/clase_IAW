@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content=" Pagina para clase de ejemplo" />
         <meta name="author" content="piñeiro.alonso.tomas@iesrodeira.gal"/>
-        <title>Grupito2023 -<?= $nameSite; ?></title> <!-- if aqui -->
+        <title>Grupito2023 - <?= $nameSite; ?></title> <!-- if aqui -->
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->

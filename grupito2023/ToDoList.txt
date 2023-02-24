@@ -1,12 +1,43 @@
-- crear LAS TABLAS. 
+[Logica de la tabla]
+- indicar las FK
+- tenemos que crear una funcion que solo sea para selcionar el precion en oferta para llamar en la fucinion insertPedido.
 
 [Administacion]
 - Prepara la pagina de administracion. 
+- tabla productos: id, imagenP, nombre, precios y online. Luego en editar producto tiene que aparcer todo.
+- hacer las tablas de productos, pedidos, usuarios, 
+- pagina de los detalles pedidos tiene que mostrr la info de esta manera. 
++----------------------------------------------------+
+|       Pedido: idPedido(pedidos)                    |
+|nombre(usuario)                                     |
+|direcion(usuario)                                   |
+|telefono(usuario)                                   |
+|                                                    |
++----------------------------------------------------+
+|Fecha(Pedido)               Estado:(pedido(estados))|
+|                                                    |
+|         (detallesPedidos + pedidos)                |
+|       |Nombre|cantidad|subTotal|                   |
+|                           total                    |
+|                                                    |
+|                                                    |
++----------------------------------------------------+
+
+- Tenemos que tener esto para hacer los pediods bien 
+    Transacciones: 
+        - beginTransaction() : Hacemos todos los inserte de una 
+        -commit() : todo guay
+        -rollback() : si algo sale mal se cancela todo y no se gurda nada. 
+
 
 [*Fronto*]
 
+- opcional: en el index que aparezcan los 8 mas vendidos 
+- pagina Confirmar pedido: que va llamar a la funcion de insercion de la tabla detalles de pedidos y pedido. 
+
 [productos]
 - no te olvides de que hay productos online 
+
 
 [usuario]
 - hacer la funciones de creacion de usauarios.
@@ -15,23 +46,51 @@
 
 - en el toquetear el headre, para que indique el usuario logueado
 
-[carito]
--el site producto.php tiene que tener linquedo a carito
+[carrito]
+-el site producto.php tiene que tener linquedo a carrito
 
-- Creamos una pagina carito.php, la maquetamos una tabla  con las columnas Productos(colspan=3), cantidad(para poner modificar los numeros tenemos que usar un <a href="">+/-</a>), precio y total. Tam
+- Creamos una pagina carrito.php, la maquetamos una tabla  con las columnas Productos(colspan=3), cantidad(para poner modificar los numeros tenemos que usar un <a href="">+/-</a>), precio y total. Tam
 
+- hacer un botton que vacie todo el carrito. 
 
-- Creamos una pagina que es procesarCarito.php, no tiene head ni footer, 
+- Creamos una pagina que es procesarcarrito.php, no tiene head ni footer, 
 tiene que tener la sesion para la info del carrito. 
     tengo tenern 
     $id= producto 
     $op= (add, remove, empty);
     
-    ·add: estrucrua para guradar el carito en la sesion es $_SESSION['cart'][$id] = cantidad (en un if si no existe este campo lo inicializamos a uno)
+    ·add: estrucrua para guradar el carrito en la sesion es $_SESSION['cart'][$id] = cantidad (en un if si no existe este campo lo inicializamos a uno)
 
     ·remove: es que restamos una unidad 
 
     ·empty: espara borrar la varible de unset($_SESSION["..."])
+
+
+
+- En el carrito tenemos que tener las siguientes varibleos
+    $pagina = "carrito"
+    $titulo = "tu Compra"
+
+Tengo que tener una un if en el carrito
+ if isset($sesion['carrito]) && !empty($_SESSION["carrito"]) :: comprobando que exite y que tiene objetos la varible 
+
+- tengo que poner le encabezado negro del index en el carrito
+
+- si el carrito no tiene nada tenemos que indicarlo con un mensa(h1) que no lo hay productos. Si esta vacio tenemos que mostrar toda la tabla del carrito. 
+
+- para hacer la lista tenemos que recorrer toda la varible carito con el foreach
+    $total = 0
+    foreach ($carrito as $id => $cantidad)
+     $producto = funcion-Select-producto($id);
+     $precio= $producto[̈́'precioOferta'];
+     $nombre= $producto[̈́'nombre'];
+     $subTotal = $precio * $cantidad;
+     $total += $subTotal;
+
+     *completamos todo lo necesario en el dentro del <tr></tr>*
+
+
+
 
 
 
