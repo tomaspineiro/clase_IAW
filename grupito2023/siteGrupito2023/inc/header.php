@@ -34,14 +34,14 @@
                             </ul>
                         </li> -->
                     </ul>
-                    <form class="d-flex">
+                    <div class="d-flex">
                         <a class="btn btn-outline-dark" href="login.php">Login</a>
-                        <button class="btn btn-outline-dark" type="submit">
+                        <a class="btn btn-outline-dark" href="carrito.php">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>

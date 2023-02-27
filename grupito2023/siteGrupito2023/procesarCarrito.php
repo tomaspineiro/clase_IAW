@@ -1,43 +1,50 @@
 <?php session_start(); ?>
-<?php include('./inc/bbdd.php'); ?>
 <?php include('./inc/funciones.php'); ?>
 <?php
-if (!isset($_REQUEST["id"]) || !isset($_REQUEST["op"])) {
+if ((!isset($_REQUEST["op"])) || (($_REQUEST['op']!="empty") && !isset($_REQUEST['id']))){
 
     header("location: index.php");
     exit;
 
 }
 
-$idProducto = recoge("id");
 $op = recoge('op');
 
+if($op!="empty"){
+
+    $id = recoge("id");
+   
+}
 
 switch ($op) {
     
     case 'add':
-        # code...
+        if(isset($_SESSION['carrito'][$id])) {
+            $_SESSION['carrito'][$id]++;
+        } else {
+            $_SESSION['carrito'][$id]=1;
+        }
         break;
     
-    case '':
-        # code...
+    case 'remove':
+        if(isset($_SESSION['carrito'][$id])) {
+            $_SESSION['carrito'][$id]--;
+            if($_SESSION['carrito'][$id] <= 0) {
+                unset($_SESSION['carrito'][$id]);
+            }
+        }
         break;
     
-    case 'add':
-        # code...
+    case 'empty':
+        unset($_SESSION['carrito']);
         break;
-    case 'add':
-        # code...
-        break;
-    
     
     default:
-        # code...
+        header("Location: index.php");
         break;
+
 }
 
-
-echo "$idProducto $op";
-
-
+header("Location: carrito.php");
+exit;
 ?>
