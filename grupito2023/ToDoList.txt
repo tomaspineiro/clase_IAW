@@ -12,7 +12,7 @@
 |nombre(usuario)                                     |
 |direcion(usuario)                                   |
 |telefono(usuario)                                   |
-|                                                    |
+|correo(usuario)                                     |
 +----------------------------------------------------+
 |Fecha(Pedido)               Estado:(pedido(estados))|
 |                                                    |
@@ -28,6 +28,12 @@
         - beginTransaction() : Hacemos todos los inserte de una 
         -commit() : todo guay
         -rollback() : si algo sale mal se cancela todo y no se gurda nada. 
+
+- 1º despues de logearnos, tiene que aparcer alfo a parecido con cards (donde aparezcam todas las tablas y el numero total de aciones en curso en ese moneto.)
+
+- En la site de la tabla producto tenemos que crear una botton de insertar un nuevo producto.
+
+- En la site de la tabla usuarios tenemo que crear un botton crear uusario administrador. 
 
 
 [*Fronto*]
