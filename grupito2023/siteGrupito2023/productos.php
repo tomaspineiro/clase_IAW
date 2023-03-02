@@ -2,7 +2,12 @@
 <?php include('inc/bbdd.php'); ?>
 <?php include('inc/funciones.php'); ?>
 <?php // Indicamos el site 
-        $nameSite="productos";
+$nameSite="productos";
+if (isset($_SESSION['user'] ) ) {
+
+        $nombre = $_SESSION['user']; 
+        
+} 
 ?>
 <?php // paginacion
 // datos:

@@ -255,6 +255,7 @@ function seleccionarProductoCarrito($idProducto) {
 ##### funciones de la tabla usuarios #####
 ##########################################
 
+function instarUsuario($nombre, $password, $apellidos, $direccion, $telefono, $email) {
 
 ##########################################
 ##### funciones de la tabla Pedidos: #####
@@ -267,7 +268,8 @@ function insertarPedido($idUsuario, $carrito, $total) {
     try {
         $con -> beginTransaction();
 
-        $sql = "INSERT  INTO pedidos (idUsuario, total) VALUES (:idUsuario, :total)";
+        //creamos la sentiecia sql
+        $sql = "INSERT INTO usuarios (nombre, password, email, apellidos, direccion, telefono) VALUES (:nombre, :password, :email, :apellidos, :direccion, :telefono)";
 
         // Creamos y preparamos la senteica para compilarla 
         $stmt = $con->prepare($sql);
@@ -286,6 +288,68 @@ function insertarPedido($idUsuario, $carrito, $total) {
             $producto = selectProdSiteProducto($idProducto); // cambiar pun una funcion selectPrecioOferta($idProducto)
             
             $precio = $producto["precioOfercta"];
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':apellidos', $apellidos);
+        $stmt->bindParam(':direccion', $direccion);
+        $stmt->bindParam(':telefono', $telefono);
+
+        //Ejecutamos la sentencia
+        $stmt->execute();
+    
+    } catch(PDOException $e){
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    // si ha fallado la insercion debuelbe 0
+    $idUser =$con->lastInsertId();
+
+    desconectarBD($con);
+    return $idUser;
+
+}
+
+function seleccionarUsuarios($email) {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT password, nombre FROM usuarios WHERE email=:email";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':email', $email);
+
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    desconectarBD($con);
+    return $row;
+
+}
 
             $sql2 = "INSERT INTO detallesPedidos (idPedido, idProducto, cantidad, precio) VALUES (:idPedido, :idProducto, :cantidad, :precio)";
 

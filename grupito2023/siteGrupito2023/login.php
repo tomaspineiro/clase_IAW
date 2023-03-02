@@ -2,69 +2,65 @@
 <?php include("inc/bbdd.php") ?>
 <?php include("inc/funciones.php")?>
 <?php
-/* if (isset($_SESSION["usuario"]) ){
-    header("location: listado.php");
-    exit;
-}  */
+$nameSite = "Login";
+if (isset($_SESSION['user'] ) ) {
+    
+    $nombre = $_SESSION['user']; 
+    
+} 
 ?>
 <?php include("inc/header.php") ?>
 
 <main class="container">
   
-    <h1 class="col-md-3 offset-md-3">Registro</h1>
+    <h1 class="col-md-3 offset-md-3">Login</h1>
     <?php
         if (!isset($_REQUEST['btnEnviar'])) {
 
-            registro();
+            login();
 
         } else {
 
-            $user= recoge('usuario');
-            $password1= recoge('password1');
-            $password2= recoge('password2');
+            $email = recoge('email');
+            $password1 = recoge('password1');
             
             $errores = '';
 
-            if (($password1!=$password2)) {
+            if ($password1 == "") {
 
-                $errores.= '<li>la contraseña tiene que ser la misma.</li>';
-
-            }
-
-            if (($password2 == "") || ($password1 == "")) {
-
-                $errores.= '<li>Los campos de contraseña tiene que estar cubiertos.</li>';
+                $errores .= '<li>Los campos de contraseña tiene que estar cubiertos.</li>';
 
             }
 
-            if (seleccionarUsuario($user)) {
+            if (!seleccionarUsuarios($email)) {
                 
-                $errores.= '<li>El usuario ya existe</li>';
+                $errores .= '<li>El usuario no existe</li>';
             
-            } elseif ($user == "" ) {
+            } elseif ($email == "" ) {
 
-                $errores.= '<li>El campo usuario no puede ir vacio.</li>';
-
+                $errores .= '<li>El campo email no puede ir vacio.</li>';
 
             }
-
-        
 
             if ($errores) {
 
                 echo "<lu>$errores</lu>";
                 
-                registro();
+                login();
             
             } else {
-                
-                $password = password_hash($password1, PASSWORD_DEFAULT);
 
-                $dato = instarUsuario($user, $password);
+                $row = seleccionarUsuarios($email);
 
-                header("location: index.php?user=<?= $user; ?>");
-                exit;
+                if ($row['password'] == $password1) {
+                    
+                    $_SESSION['user'] = $row['nombre'];
+                    
+                    header("location: index.php");
+                    exit;
                 
+                }
+                           
             }
 
            

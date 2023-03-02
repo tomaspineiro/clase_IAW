@@ -14,15 +14,18 @@ function recoge($var, $m = "")  {
     }
     return $tmp;
 }
-
 ?>
 <!-- Funcion para registrar los usuarios -->
 <?php function registro($user='') { ?>
     <form  class="col-md-3 offset-md-3" action="" method="POST">
         <div class="mb-3">
-            <label for="usuario" class="form-label">Usuario</label>
-            <input type="text" class="form-control" id="usuario" name="usuario" value="<?= $user; ?>">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $user; ?>">
         </div>
+        <div class="mb-3">
+            <label for="apellidos" class="form-label">Apellidos: </label>
+            <input type="text" class="form-control" id="apellidos" name="apellidos" value="">
+        </div> 
         <div class="mb-3">
             <label for="password1" class="form-label">Password: </label>
             <input type="password" class="form-control" id="password1" name="password1" value="">
@@ -32,20 +35,16 @@ function recoge($var, $m = "")  {
             <input type="password" class="form-control" id="password2" name="password2" value="">
         </div> 
         <div class="mb-3">
-            <label for="tipo" class="form-label">Que tipo de Usuario eres?</label>
-            <select id="tipo" name="tipo" class="form-select">
-                <option>Cliente</option>
-                <option>Vendedor</option>
-                <!-- <option>Admin</option> -->
-          </select>
+            <label for="telefono" class="form-label">Telefono: </label>
+            <input type="text" class="form-control" id="telefono" name="telefono" value="">
+        </div> 
+        <div class="mb-3">
+            <label for="email" class="form-label">Email: </label>
+            <input type="email" class="form-control" id="email" name="email" value="">
         </div>
         <div class="mb-3">
-            <label for="mail" class="form-label">Email: </label>
-            <input type="email" class="form-control" id="mail" name="mail" value="">
-        </div>
-        <div class="mb-3">
-            <label for="password2" class="form-label">Password: </label>
-            <input type="password" class="form-control" id="password2" name="password2" value="">
+            <label for="direccion" class="form-label">Dirección: </label>
+            <input type="text" class="form-control" id="direccion" name="direccion" value="">
         </div> 
         <dev class='text-center'>
             <button type="submit" class="btn btn-primary" name="btnEnviar">Registrase</button>
@@ -55,7 +54,7 @@ function recoge($var, $m = "")  {
             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
         </dev>
     </form>
-<?php } // cierre de funcion de registro?> 
+<?php } // cierre de funcion de registro ?> 
 
 <?php function mostrarVariosProductos($productos) { ?>
 <!-- Section-->
@@ -94,3 +93,20 @@ function recoge($var, $m = "")  {
 
 
 <?php } // finde de la funcion mostrarVariosProductos ?>
+
+<!-- Funcion para registrar los usuarios -->
+<?php function login() { ?>
+    <form  class="col-md-3 offset-md-3" action="" method="POST">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email: </label>
+            <input type="email" class="form-control" id="email" name="email" value="">
+        </div>
+        <div class="mb-3">
+            <label for="password1" class="form-label">Password: </label>
+            <input type="password" class="form-control" id="password1" name="password1" value="">
+        </div> 
+        <dev class='text-center'>
+            <button type="submit" class="btn btn-primary" name="btnEnviar">Login</button>
+        </dev>      
+    </form>
+<?php } // cierre de funcion de registro ?> 

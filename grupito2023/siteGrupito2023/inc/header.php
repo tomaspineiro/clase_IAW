@@ -1,3 +1,12 @@
+<?php
+if (isset($_SESSION['carrito'])) {
+    $carrito = count($_SESSION['carrito']);
+} else {
+
+    $carrito = 0;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,11 +44,25 @@
                         </li> -->
                     </ul>
                     <div class="d-flex">
+                        <h4>
+                            <?php
+                            if (isset($nombre)) {
+                            
+                                echo "Hola $nombre";
+                            
+                            } else {
+                            
+                                echo 'Bien venido';
+                            
+                            }
+                            ?>
+                        </h4>
                         <a class="btn btn-outline-dark" href="login.php">Login</a>
-                        <a class="btn btn-outline-dark" href="carrito.php">
+                        <a class="btn btn-outline-dark" href="registry.php">registry</a>
+                        <a class="btn btn-outline-dark" href='carrito.php'>
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill"><?= $carrito; ?></span>
                         </a>
                     </div>
                 </div>
