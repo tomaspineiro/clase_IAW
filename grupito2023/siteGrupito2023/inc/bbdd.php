@@ -266,6 +266,7 @@ function insertarPedido($idUsuario, $carrito, $total) {
     $con = conectarDB();
 
     try {
+
         $con -> beginTransaction();
 
         //creamos la sentiecia sql
@@ -288,13 +289,15 @@ function insertarPedido($idUsuario, $carrito, $total) {
             $producto = selectProdSiteProducto($idProducto); // cambiar pun una funcion selectPrecioOferta($idProducto)
             
             $precio = $producto["precioOfercta"];
-        $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':password', $password);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':apellidos', $apellidos);
-        $stmt->bindParam(':direccion', $direccion);
-        $stmt->bindParam(':telefono', $telefono);
-
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':apellidos', $apellidos);
+            $stmt->bindParam(':direccion', $direccion);
+            $stmt->bindParam(':telefono', $telefono);
+        
+        }
+        
         //Ejecutamos la sentencia
         $stmt->execute();
     
