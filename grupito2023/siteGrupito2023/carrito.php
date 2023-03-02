@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-<<<<<<< Updated upstream
 <?php include('inc/bbdd.php'); ?>
 <?php include('inc/funciones.php'); ?>
 <?php
@@ -69,55 +68,4 @@ $titulo = "tu Compra";
         <?php } // cierre del if del carrito?>
     </div>
 </section>
-=======
-<?php include("./inc/bbdd.php"); ?>
-<?php include("./inc/funciones.php"); ?>
-<?php
-$nameSite="producto";
-if (isset($_SESSION['user'] ) ) {
-    
-    $nombre = $_SESSION['user']; 
-    
-} 
-
-?>
-<?php include("./inc/header.php"); ?>
-        <!-- Product section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <table class="table table-success table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col" colspan="3">Producto</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Precio unidad</th>
-                            <th scope="col">Precio total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (isset($_SESSION['carrito'])) {?>
-                                <?php foreach ($variable as $key => $value) { ?>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td colspan="3" >Mark</td>
-                                        <td><a class="btn" href="">+</a>1<a class="btn" href="">-</a></td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                <?php } ?>
-                        <?php } else { ?>
-                                <tr>
-                                    <th scope="row">-</th>
-                                    <td colspan="3" >-</td>
-                                    <td>0</td>
-                                    <td>0.00</td>
-                                    <td>0.00</td>
-                                </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </section>
->>>>>>> Stashed changes
 <?php include("inc/footer.php"); ?>
