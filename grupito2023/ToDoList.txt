@@ -46,15 +46,21 @@
 
 
 [usuario]
-- hacer la funciones de creacion de usauarios.
+
+- //$idUsuario = selecionarUsuario($email); tenemos que crear esta funcion para la site procesarPedido.php
 
 - verificacion de usuarios.
-
+ - boorar login y registrin cuando lalatestaS LOGEADO 
 - en el toquetear el headre, para que indique el usuario logueado
+- insertar Usuarios funciona mal
+
 
 [carrito]
 - general los pasos de creacion de insercion de pedidos
 - comprobar que el usuario no tiene la cuenta borrada.
+- 
+
+
 [carito]
 -el site producto.php tiene que tener linquedo a carito
 

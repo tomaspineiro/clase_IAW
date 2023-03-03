@@ -17,7 +17,7 @@ $titulo = "tu Compra";
 </header>
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
-        <?php if(isset($carrito)) { ?>
+        <?php if(isset($_SESSION['carrito'])) { ?>
         <table class="table">
             <thead>
                 <tr>
@@ -65,6 +65,9 @@ $titulo = "tu Compra";
         </div>
         <?php } else { // mostramos todos los prudos ?>
             <h1>No teien ningun producto en su carrito.</h1>
+            <a class="btn btn-outline-dark" href="index.php">
+                Volver al inicio
+            </a>
         <?php } // cierre del if del carrito?>
     </div>
 </section>

@@ -5,7 +5,11 @@ if (isset($_SESSION['carrito'])) {
 
     $carrito = 0;
 }
-
+if (isset($_SESSION['user'] ) ) {
+    
+    $nombre = $_SESSION['user']['nombre']; 
+    
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">

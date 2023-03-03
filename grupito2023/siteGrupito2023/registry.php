@@ -68,17 +68,6 @@ if (isset($_SESSION['user'] ) ) {
 
             }
 
-            /* if (seleccionarUsuario($user)) {
-                
-                $errores.= '<li>El usuario ya existe</li>';
-            
-            } elseif ($user == "" ) {
-
-                $errores.= '<li>El campo usuario no puede ir vacio.</li>';
-
-
-            } */
-
             if ($errores) {
 
                 echo "<lu>$errores</lu>";
@@ -87,19 +76,17 @@ if (isset($_SESSION['user'] ) ) {
             
             } else {
                 
-                # $password = password_hash($password1, PASSWORD_DEFAULT);
+                $password = password_hash($password1, PASSWORD_DEFAULT);
 
-                # $dato = instarUsuario($user, $password);
+                $idUser = instarUsuario($nombre, $password, $apellidos, $direccion, $telefono, $email);
 
-                $idUser = instarUsuario($nombre, $password1, $apellidos, $direccion, $telefono, $email);
+                header("location: login.php?idUser=$idUser");
+                exit;
 
-               
             }
-
            
         }
-    ?>
-    
+    ?>    
 </main>
 
 <?php include("inc/footer.php") ?>

@@ -106,7 +106,6 @@ function selectProdSiteProducto($idProducto) {
     return $row;
 }
 
-
 //funcion cuantas Productos tenemos en la vase de datos hay
 function listaProductosOnlen() {
 
@@ -285,7 +284,50 @@ function seleccionarUsuarios($email) {
     }
 
     desconectarBD($con);
+    
     return $row;
+
+}
+
+function instarUsuario($nombre, $password, $apellidos, $direccion, $telefono, $email) {
+
+    $con = conectarDB();
+
+    try {
+        
+        $sql = "INSERT INTO usuarios (nombre, password, email, apellidos, direccion, telefono) VALUES (:nombre, :password, :email, :apellidos, :direccion, :telefono)";
+        
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+        
+        // Vinculamos los valores 
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':apellidos', $apellidos);
+        $stmt->bindParam(':direccion', $direccion);
+        $stmt->bindParam(':telefono', $telefono);
+
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+
+    } catch(PDOException $e) {
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    // si ha fallado la insercion debuelbe 0
+    $idUser =$con->lastInsertId();
+
+    desconectarBD($con);
+
+    return $idUser;
 
 }
 
@@ -319,16 +361,7 @@ function insertarPedido($idUsuario, $carrito, $total) {
         foreach ($carrito as $idProducto => $cantidad) {
 
             $producto = selectProdSiteProducto($idProducto); // cambiar pun una funcion selectPrecioOferta($idProducto)
-            
-            $precio = $producto["precioOfercta"];
-            $stmt->bindParam(':nombre', $nombre);
-            $stmt->bindParam(':password', $password);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':apellidos', $apellidos);
-            $stmt->bindParam(':direccion', $direccion);
-            $stmt->bindParam(':telefono', $telefono);
-            
-
+                                 
             $sql2 = "INSERT INTO detallesPedidos (idPedido, idProducto, cantidad, precio) VALUES (:idPedido, :idProducto, :cantidad, :precio)";
 
             // Creamos y preparamos la senteica para compilarla 
@@ -364,4 +397,5 @@ function insertarPedido($idUsuario, $carrito, $total) {
     return $idUser;
 
 }
+
 ?>

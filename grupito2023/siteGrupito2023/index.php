@@ -3,11 +3,6 @@
 <?php include('inc/funciones.php'); ?>
 <?php
 $nameSite="home";
-if (isset($_SESSION['user'] ) ) {
-    
-    $nombre = $_SESSION['user']; 
-    
-} 
 
 // ESCOGIENDO LOS PRODUCTOS PARA MOSTRAR EN MEJORES OFERTAS
 $offset = 0;

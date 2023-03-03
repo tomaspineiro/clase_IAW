@@ -28,4 +28,13 @@ historico:
         usuarios: 0 ()
         estados: 5 (compeleta)
     }
+    
+#03/03/2023-14:19
+    - grupito2023.X.sql{
+        productos: 22 (=)
+        pedidos: X ()
+        detallesPedidos: X ()
+        usuarios: 2 ()
+        estados: 5 (compeleta)
+    }
 

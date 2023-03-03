@@ -38,25 +38,17 @@ if (isset($_REQUEST['idProducto'])) {
                         </div>
                         <p class="lead"><?= $producto['intoDescripcion']; ?></p>
                         <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <a class="btn btn-outline-dark flex-shrink-0" href="actualice.php?idProduto=<?= $idProducto;?>">
+                            <a class="btn btn-outline-dark flex-shrink-0" href="procesarCarrito.php?id=<?= $idProducto;?>&op=add">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
                             </a>
                         </div>
                     </div>
                 </div>
-                <p class="lead"><?= $producto['intoDescripcion']; ?></p>
-                <div class="d-flex">
-                    <a class="btn btn-outline-dark flex-shrink-0" href="procesarCarrito.php?id=<?= $producto['idProducto']; ?>&op=add">
-                        <i class="bi-cart-fill me-1"></i>
-                        Add to cart
-                    </a>
+                <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                    <p class="lead"><?= $producto['Descripcion']; ?></p>
                 </div>
             </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 align-items-center my-5">
-            <p class="lead"><?= $producto['Descripcion']; ?></p>
         </div>
     </div>
 </section>

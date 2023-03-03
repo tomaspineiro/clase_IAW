@@ -7,12 +7,12 @@ if (isset($_SESSION['user'] ) ) {
     
     $nombre = $_SESSION['user']; 
     
-} 
+}
 ?>
 <?php include("inc/header.php") ?>
 
 <main class="container">
-  
+ 
     <h1 class="col-md-3 offset-md-3">Login</h1>
     <?php
         if (!isset($_REQUEST['btnEnviar'])) {
@@ -22,48 +22,27 @@ if (isset($_SESSION['user'] ) ) {
         } else {
 
             $email = recoge('email');
-            $password1 = recoge('password1');
-            
-            $errores = '';
+            $inPassword = recoge('password1');
 
-            if ($password1 == "") {
+            $rowUser = seleccionarUsuarios($email);
 
-                $errores .= '<li>Los campos de contraseña tiene que estar cubiertos.</li>';
-
-            }
-
-            if (!seleccionarUsuarios($email)) {
+            if (!empty($rowUser) && password_verify($inPassword, $rowUser['password'])) {
                 
-                $errores .= '<li>El usuario no existe</li>';
-            
-            } elseif ($email == "" ) {
-
-                $errores .= '<li>El campo email no puede ir vacio.</li>';
-
-            }
-
-            if ($errores) {
-
-                echo "<lu>$errores</lu>";
+                $_SESSION['user']['nombre'] = $rowUser['nombre'];
+                $_SESSION['user']['emial'] = $email;
                 
-                login();
+                header("location: index.php");
+                exit;
             
             } else {
-
-                $row = seleccionarUsuarios($email);
-
-                if ($row['password'] == $password1) {
-                    
-                    $_SESSION['user'] = $row['nombre'];
-                    
-                    header("location: index.php");
-                    exit;
-                
-                }
-                           
-            }
-
-           
+                ?>
+            <div class="alert alert-danger" role="alert">
+                <h1>usuario o contraseña incorrecta</h1>
+            </div>
+            <?php
+                login();
+            } // comporbacion de que el usuario se loguedo          
+            
         }
     ?>
     
