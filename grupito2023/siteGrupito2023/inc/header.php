@@ -48,21 +48,21 @@ if (isset($_SESSION['user'] ) ) {
                         </li> -->
                     </ul>
                     <div class="d-flex">
-                        <h4>
-                            <?php
+                        <?php // if de si esta logedo el usuario o no. 
                             if (isset($nombre)) {
+                        ?>
+                            <h4>Hola <?= $nombre; ?></h4>
+                            <a class="btn btn-outline-dark" href="logout.php">Logout</a>
                             
-                                echo "Hola $nombre";
-                            
+                        <?php
                             } else {
+                        ?>
                             
-                                echo 'Bien venido';
-                            
-                            }
-                            ?>
-                        </h4>
-                        <a class="btn btn-outline-dark" href="login.php">Login</a>
-                        <a class="btn btn-outline-dark" href="registry.php">registry</a>
+                            <h4>Bien venido</h4>
+                            <a class="btn btn-outline-dark" href="login.php">Login</a>
+                            <a class="btn btn-outline-dark" href="registry.php">registry</a>
+                        <?php } ?>
+
                         <a class="btn btn-outline-dark" href='carrito.php'>
                             <i class="bi-cart-fill me-1"></i>
                             Cart

@@ -58,7 +58,7 @@ $titulo = "tu Compra";
             </tfoot>
         </table>
         <div class="d-flex">
-            <a class="btn btn-outline-dark" href="#">FINALIZAR</a>
+            <a class="btn btn-outline-dark" href="procesarPedido.php">FINALIZAR</a>
             <a class="btn btn-outline-dark" href="procesarCarrito.php?op=empty">
                 BORRAR
             </a>

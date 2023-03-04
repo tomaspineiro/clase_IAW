@@ -39,32 +39,21 @@
 [*Fronto*]
 
 - opcional: en el index que aparezcan los 8 mas vendidos 
-- pagina Confirmar pedido: que va llamar a la funcion de insercion de la tabla detalles de pedidos y pedido. 
 
 [productos]
 - no te olvides de que hay productos online 
-
 
 [usuario]
 
 - //$idUsuario = selecionarUsuario($email); tenemos que crear esta funcion para la site procesarPedido.php
 
-- verificacion de usuarios.
- - boorar login y registrin cuando lalatestaS LOGEADO 
-- en el toquetear el headre, para que indique el usuario logueado
-- insertar Usuarios funciona mal
-
-
-[carrito]
+carrito]
 - general los pasos de creacion de insercion de pedidos
 - comprobar que el usuario no tiene la cuenta borrada.
 - 
 
 
-[carito]
--el site producto.php tiene que tener linquedo a carito
 
-- Creamos una pagina carito.php, la maquetamos una tabla  con las columnas Productos(colspan=3), cantidad(para poner modificar los numeros tenemos que usar un <a href="">+/-</a>), precio y total. Tam
 
 
 

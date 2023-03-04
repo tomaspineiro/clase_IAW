@@ -29,6 +29,7 @@ if (isset($_SESSION['user'] ) ) {
             if (!empty($rowUser) && password_verify($inPassword, $rowUser['password'])) {
                 
                 $_SESSION['user']['nombre'] = $rowUser['nombre'];
+                $_SESSION['user']['idUser'] = $rowUser['idUser'];
                 $_SESSION['user']['emial'] = $email;
                 
                 header("location: index.php");

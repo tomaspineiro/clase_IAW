@@ -7,7 +7,7 @@ include("inc/bbdd.php");
 include("inc/funciones.php");
 include("inc/header.php");
 
-if (isset($_SESSION['carrito'] ) ) {
+if (!isset($_SESSION['carrito'] ) ) {
 
     header("location: index.php");
     exit;

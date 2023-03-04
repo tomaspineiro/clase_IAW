@@ -260,7 +260,7 @@ function seleccionarUsuarios($email) {
     try {
 
         //creamos la sentiecia sql
-        $sql = "SELECT password, nombre, idUser FROM usuarios WHERE email=:email";
+        $sql = "SELECT password, nombre, idUser FROM usuarios WHERE email=:email && admin=1";
 
         // Creamos y preparamos la senteica para compilarla 
         $stmt = $con->prepare($sql);
