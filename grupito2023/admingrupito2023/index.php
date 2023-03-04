@@ -31,7 +31,7 @@ if (!isset($_REQUEST['btnEnviar'])) {
 } else {
 
     $email = recoge('email');
-    $inPassword = recoge('password1');
+    $inPassword = recoge('password');
 
     $rowUser = seleccionarUsuarios($email);
 
@@ -41,7 +41,7 @@ if (!isset($_REQUEST['btnEnviar'])) {
         $_SESSION['user']['idUser'] = $rowUser['idUser'];
         $_SESSION['user']['emial'] = $email;
         
-        header("location: index.php");
+        header("location: inicio.php");
         exit;
     
     } else {
