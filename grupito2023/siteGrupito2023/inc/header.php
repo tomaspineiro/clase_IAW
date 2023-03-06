@@ -36,16 +36,7 @@ if (isset($_SESSION['user'] ) ) {
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link <?php if($nameSite=="home"){ echo "active";} ?>" aria-current="page" href="index.php">Home</a></li> <!-- if aqui -->
                         <li class="nav-item"><a class="nav-link <?php if($nameSite=="productos"){ echo "active";} ?>" href="productos.php">Productos:</a></li> <!-- if aqui -->
-                        <li class="nav-item"><a class="nav-link <?php if($nameSite=="nosotros"){ echo "active";} ?>" href="#!">Nosotros:</a></li> <!-- if aqui -->
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li> -->
+                        <li class="nav-item"><a class="nav-link <?php if($nameSite=="nosotros"){ echo "active";} ?>" href="#!">Nosotros:</a></li> 
                     </ul>
                     <div class="d-flex">
                         <?php // if de si esta logedo el usuario o no. 

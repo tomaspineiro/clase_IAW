@@ -13,7 +13,6 @@ if (!isset($_SESSION['carrito'] ) ) {
     exit;
     
 } 
-$idUsuario = $_SESSION["usuario"]
 ?>
 <!-- Header-->
 <header class="bg-dark py-5">
@@ -24,33 +23,40 @@ $idUsuario = $_SESSION["usuario"]
             </div>
         </div>
 </header>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <?php
+        if(!isset($_SESSION['user'])){
+        ?>
+            <h2 class="py-5">Tienes que estar logeado ara confrimar pedido.</h2>
+            <a class="btn" href="login.php">Login</a>
+        <?php 
+        } else {
 
-<?php
-    if(empty($idUsuario)){
-?>
-    <h2 class="py-5">Tienes que estar logeado ara confrimar pedido.</h2>
-    <a class="btn" href="login.php">Login</a>
-<?php 
-} else {
+            $idUsuario = $_SESSION['user']['idUser'];
 
-    $carrito = $_SESSION['carrito'];
-    
-    $total = $_SESSION['total'];
+            $carrito = $_SESSION['carrito'];
+            
+            $total = $_SESSION['total'];
+        
+            $idPedidio = insertarPedido($idUsuario, $carrito, $total);
 
-    //$idUsuario = selecionarUsuario($email);
-    
-    $idPedidio = insertarPedido($idUsuario, $carrito, $total);
+            if($idPedidio){
+            ?>
+                    <h2 class='py-5'>Tu pedido <?= $idPedidio; ?> ha sido procesado correctamente.</h2>
+                    <a class="btn btn-outline-dark" href="index.php">Home</a>
+            <?php
+                unset($_SESSION['carrito']);
+                unset($_SESSION['tatal']);
+            } else {
+            ?>
+                <h2 class="py-5 alert alert-danger"> Tu pedido NO se ha producido. Vuelve a intentarlo.</h2>
+                <a class="btn btn-outline-dark" href="carrito.php">Volver a intentar</a>
 
-    if($idPedidio){
-    ?>
-            <h2 class='py-5'>Tu pedido <?= $idPedidio; ?> ha sido procesado correctamente.</h2>
-    <?php
-        unset($_SESSION['carrito']);
-        unset($_SESSION['tatal']);
-    } else {
-    ?>
-        <h2 class="py-5 alert alert-danger"> Tu pedido NO se ha producido. Vuelve a intentarlo.</h2>
-    <?php
-    }
-}
-?>
+            <?php
+            }
+        }
+        ?>
+    </div>
+</section>
+<?php include("inc/footer.php"); ?>

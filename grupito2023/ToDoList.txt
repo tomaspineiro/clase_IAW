@@ -35,6 +35,7 @@
 
 - En la site de la tabla usuarios tenemo que crear un botton crear uusario administrador. 
 
+- Falta un <a></a> para ver los detalles de cada pedido, en la tabla de pedidos, con la extetructura marcada.
 
 [*Fronto*]
 

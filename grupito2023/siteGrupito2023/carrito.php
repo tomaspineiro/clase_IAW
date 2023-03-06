@@ -54,6 +54,7 @@ $titulo = "tu Compra";
                 <tr>
                     <th colspan="6">Total:</th>
                     <td><?= $total; ?></td>
+                    <?php $_SESSION['total'] = $total; ?>
                 </tr>
             </tfoot>
         </table>

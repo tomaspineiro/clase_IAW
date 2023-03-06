@@ -250,6 +250,42 @@ function seleccionarProductoCarrito($idProducto) {
     return $row;
 }
 
+function selectPrecioOferta($idProducto) {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT precioOferta FROM productos WHERE idProducto=:idProducto";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':idProducto', $idProducto);
+        
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al selecionar una row: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //cerramos la sesion
+    desconectarBD($con);
+
+    //devilvemos la tarea. 
+    return $row;
+}
 ##########################################
 ##### funciones de la tabla usuarios #####
 ##########################################
@@ -337,6 +373,7 @@ function instarUsuario($nombre, $password, $apellidos, $direccion, $telefono, $e
 
 //Funcion insertarPedido
 function insertarPedido($idUsuario, $carrito, $total) {
+
     $con = conectarDB();
 
     try {
@@ -344,7 +381,7 @@ function insertarPedido($idUsuario, $carrito, $total) {
         $con -> beginTransaction();
 
         //creamos la sentiecia sql
-        $sql = "INSERT INTO usuarios (nombre, password, email, apellidos, direccion, telefono) VALUES (:nombre, :password, :email, :apellidos, :direccion, :telefono)";
+        $sql = "INSERT INTO pedidos (idUsuario, costeTotal) VALUES (:idUsuario, :total)";
 
         // Creamos y preparamos la senteica para compilarla 
         $stmt = $con->prepare($sql);
@@ -360,27 +397,28 @@ function insertarPedido($idUsuario, $carrito, $total) {
 
         foreach ($carrito as $idProducto => $cantidad) {
 
-            $producto = selectProdSiteProducto($idProducto); // cambiar pun una funcion selectPrecioOferta($idProducto)
-                                 
+            $productoPrecioOferta = floatval(selectPrecioOferta($idProducto));
+                        
             $sql2 = "INSERT INTO detallesPedidos (idPedido, idProducto, cantidad, precio) VALUES (:idPedido, :idProducto, :cantidad, :precio)";
 
             // Creamos y preparamos la senteica para compilarla 
-            $stmt = $con->prepare($sql);
+            $stmt = $con->prepare($sql2);
 
             // Vinculamos los valores 
             $stmt->bindParam(':idPedido', $idPedido);
             $stmt->bindParam(':idProducto', $idProducto);
             $stmt->bindParam(':cantidad', $cantidad);
-            $stmt->bindParam(':precio', $precio);
+            $stmt->bindParam(':precio', $productoPrecioOferta);
             
             $stmt->execute();
 
         }
         
-        //Ejecutamos la sentencia
-        $stmt->execute();
+        $con -> commit();
     
     } catch(PDOException $e){
+        
+        $con -> rollback();
 
         echo "Error: Error al insertar en la BD: " . $e->getMessage();
 
@@ -390,11 +428,9 @@ function insertarPedido($idUsuario, $carrito, $total) {
 
     }
 
-    // si ha fallado la insercion debuelbe 0
-    $idUser =$con->lastInsertId();
-
     desconectarBD($con);
-    return $idUser;
+
+    return $idPedido;
 
 }
 
