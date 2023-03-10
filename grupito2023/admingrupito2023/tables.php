@@ -6,16 +6,10 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"> Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Tabla de Pedidos</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -27,7 +21,7 @@
                                             <th>Estado</th>
                                             <th>Coste Total</th>
                                             <th>Direcion</th>
-                                            
+                                            <th>Detalles</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -37,7 +31,7 @@
                                             <th>Estado</th>
                                             <th>Coste Total</th>
                                             <th>Direcion</th>
-                                            
+                                            <th>Detalles</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -54,7 +48,7 @@
                                             <td><?= $pedido['estado']; ?></td>
                                             <td><?= $pedido['costeTotal']; ?></td>
                                             <td><?= $pedido['usuario']; ?></td>
-                                            
+                                            <td><a href="detallesPedido.php?idPedido=<?= $pedido['idPedido']; ?>" class="">Detalle</a></td>
                                         </tr>
                                         <?php } // end del listado de pedidos. ?>
                                     </tbody>
