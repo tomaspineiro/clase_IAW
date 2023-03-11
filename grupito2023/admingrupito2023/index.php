@@ -6,14 +6,7 @@ $titulo='Login'
 <?php include('inc/funciones.php'); ?>
 
 <?php include('inc/head.php'); ?>
-<?php
-if(isset($_SESSION['user'])) {
-     
-    header("location: inicio.php");
-    exit;
-     
-} 
-?>
+
 <body class="bg-gradient-primary">
 
     <div class="container">

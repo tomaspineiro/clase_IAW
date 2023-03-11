@@ -55,7 +55,7 @@ if(!isset($_SESSION['user'])) {
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.php">
+                <a class="nav-link" href="tablaPedidos.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Pedidos</span></a>
             </li>
@@ -111,7 +111,6 @@ if(!isset($_SESSION['user'])) {
                                 </form>
                             </div>
                         </li>
-
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">

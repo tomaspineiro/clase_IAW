@@ -376,7 +376,22 @@ function listarPedidos() {
     try {
 
         //creamos la sentiecia sql
-        $sql = "SELECT p.idPedido AS idPedido, p.fecha AS fecha, e.estado AS estado, p.costeTotal AS costeTotal, p.idUsuario AS usuario  FROM pedidos AS p JOIN estados AS e ON p.idEstado=e.idEstado";
+        $sql = 'SELECT 
+                    p.idPedido AS idPedido, 
+                    p.fecha AS fecha, 
+                    e.estado AS estado, 
+                    p.costeTotal AS costeTotal, 
+                    u.direccion AS direccion 
+                FROM 
+                    pedidos AS p 
+                JOIN 
+                    estados AS e 
+                ON 
+                    p.idEstado=e.idEstado
+                JOIN
+                    usuarios AS u
+                ON 
+                    p.idUsuario=u.idUser';
 
         // Creamos y preparamos la senteica para compilarla 
         $stmt = $con->prepare($sql);
