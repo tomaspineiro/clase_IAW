@@ -1,0 +1,5 @@
+librerias disponibles para PDF:
+    -FPDF (esta esta guay para poner con el logo de la empresa)
+    -HTML2PDF
+    -DOMPDF(La que estamos usando)
+

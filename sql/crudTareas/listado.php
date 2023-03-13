@@ -7,21 +7,8 @@ if (!isset($_SESSION["usuario"])){
   exit;
 }
 
-$row_count = 6;
-if(isset($_REQUEST["pag"])) {
-  
-  $pag = recoge("pag"); 
-  $offset = ( $pag - 1) * $row_count; 
-} else {
-  
-  $pag = 1;
-  $offset = 0;
-}
-
-$tareas = seleccionarTareasPaginadas($offset, $row_count);
-$numeroRow = NumeroDeTareas()['numeroRow'];
-
-$numeroPag = ceil($numeroRow/$row_count); 
+$tareas =seleccionarTodasTareas();
+ 
 
 ?>
 
@@ -35,9 +22,9 @@ $numeroPag = ceil($numeroRow/$row_count);
       <a href="./insertar.php" class="btn btn-secondary">Insertar</a>
 
       <a href="./logout.php" class="btn btn-secondary text-end">Salir</a>
-      <a href="./fileCV.php" class="btn btn-secondary text-end">CV</a>
+      <a href="./generarPDF.php" class="btn btn-secondary text-end">PDF</a>
   </div>
-  <table class="table">
+  <table class="table" id="tabla-tareas">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -69,86 +56,23 @@ $numeroPag = ceil($numeroRow/$row_count);
 
     </tbody>
   </table>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <?php if (($pag) && ($pag != 1)) {?>
-      <li class="page-item">
-        <a class="page-link" href="./listado.php?pag=<?= $pag - 1; ?>" aria-label="Previous">
-          <span aria-hidden="true">
-            &laquo;
-          </span>
-        </a>
-      </li>
-      <?php } ?>
-      
-      <?php if ($pag  > 1) {?>
-      <li class="page-item">
-        <a class="page-link" href="listado.php?pag=1">
-          1
-        </a>
-      </li>
-      <?php } ?>
-      
-    <?php
-    if ($pag >  2 ) {
-    ?>
-        <li class="page-item">
-          <span class="page-link" href="#">
-            ...
-          </span>
-        </li>
-    <?php 
-    } 
-    ?>
-    <?php 
-    for ($i=($pag); ($i < ($pag+4)) && ($i < $numeroPag); $i++) { 
-    ?>
-      <li class="page-item">
-        <a class="page-link" href="listado.php?pag=<?= $i; ?>">
-          <?= $i; ?>
-        </a>
-      </li>
-    <?php
-    }
-    ?>
-      <?php if ($pag < ( $numeroPag - 2) ) {?>
-        <li class="page-item">
-          <span class="page-link" href="#">
-            ...
-          </span>
-        </li>
-      <?php } ?>
-      <?php if ($pag == $numeroPag) {?>
-        
-        <li class="page-item">
-          <a class="page-link" href="listado.php?pag=<?= $numeroPag - 2; ?>">
-            <?= $numeroPag - 2; ?>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="listado.php?pag=<?= $numeroPag - 1; ?>">
-            <?= $numeroPag - 1; ?>
-          </a>
-        </li>
-      <?php } ?>
-      
-      <li class="page-item">
-        <a class="page-link" href="listado.php?pag=<?= $numeroPag; ?>">
-          <?= $numeroPag; ?>
-        </a>
-      </li>
-      <?php if ($pag != $numeroPag) {?>
-      <li class="page-item">
-        <a class="page-link" href="listado.php?pag=<?= $pag + 1; ?>" aria-label="Next">
-          <span aria-hidden="true">
-            &raquo;
-          </span>
-        </a>
-      </li>
-      <?php } ?>
-    </ul>
-  </nav>
-
+  
 </main>
+<script>
+  var table = document.querySelector("#tabla-tareas");
+
+  var dataTable = new DataTable(table, {
+    searchable : true,
+    perPage: 6, 
+    perPageSelect: [3, 6, 9, 12],
+
+    labels: {
+      placeholder: "Buscar tarea...",
+      perPage: "{Select}",
+      noRows: "Tareas no encontrada",
+      info: "Tareas de {start} a {end} de {rows} tareas"
+    }
+  });
+</script>
 
 <?php include("inc/footer.php") ?>
