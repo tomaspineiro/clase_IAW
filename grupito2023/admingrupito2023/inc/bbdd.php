@@ -420,4 +420,45 @@ function listarPedidos() {
     //devilvemos la tarea. 
     return $row;
 }
+
+##########################################
+##### funciones de la tabla DetallesPedidos: #####
+##########################################
+function ListarDetallesPedido($idPedido) {
+   // esta sin montar los comandos  
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = 'SELECT idProducto FROM detallesPedidos WHERE idPedido=:idPedido';
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':idPedido', $idPedido);
+        
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+        $row = $stmt->fetchALL(PDO::FETCH_ASSOC);
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al selecionar una row: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //cerramos la sesion
+    desconectarBD($con);
+
+    //devilvemos la tarea. 
+    return $row;
+}
+
 ?>

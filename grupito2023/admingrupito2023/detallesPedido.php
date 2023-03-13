@@ -1,8 +1,12 @@
 <?php $titulo="Detalles de Pedidos"; ?>
 <?php include('./inc/header.php'); ?>
 <?php
-
 $idPedido = recoge('idPedido');
+
+$row = ListarDetallesPedido($idPedido);
+print_r($row);
+exit;
+
 ?>
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -13,7 +17,23 @@ $idPedido = recoge('idPedido');
                 <h6 class="m-0 font-weight-bold text-center">Pedido: <?= $idPedido; ?></h6>
             </div>
             <div class="card-body">
-            
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Nombre:</li>
+                                <li class="list-group-item">Apellidos:</li>
+                                <li class="list-group-item">Telefono:</li>
+                                <li class="list-group-item">Correo:</li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <ul sta>
+                                <li>Dirección:</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

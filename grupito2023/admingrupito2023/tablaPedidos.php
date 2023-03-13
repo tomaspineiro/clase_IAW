@@ -39,7 +39,6 @@
 
                         foreach ($listaPedidos as $pedido) {
                         ?>
-                        <!-- falta un <a></a> para ver los de talles de cada pedido  -->
                         <tr>
                             <td><?= $pedido['idPedido']; ?></td>
                             <td><?= $pedido['fecha']; ?></td>
