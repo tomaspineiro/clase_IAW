@@ -268,7 +268,7 @@ function selectPrecioOferta($idProducto) {
         //Ejecutamos la sentencia
         $stmt->execute();
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $precioOferta = $stmt->fetchColumn();
     
     }catch(PDOException $e){
 
@@ -284,8 +284,9 @@ function selectPrecioOferta($idProducto) {
     desconectarBD($con);
 
     //devilvemos la tarea. 
-    return $row;
+    return $precioOferta;
 }
+
 ##########################################
 ##### funciones de la tabla usuarios #####
 ##########################################
@@ -396,9 +397,10 @@ function insertarPedido($idUsuario, $carrito, $total) {
         $idPedido = $con ->lastInsertId();
 
         foreach ($carrito as $idProducto => $cantidad) {
+           
 
-            $productoPrecioOferta = floatval(selectPrecioOferta($idProducto));
-                        
+            $productoPrecioOferta = selectPrecioOferta($idProducto);
+
             $sql2 = "INSERT INTO detallesPedidos (idPedido, idProducto, cantidad, precio) VALUES (:idPedido, :idProducto, :cantidad, :precio)";
 
             // Creamos y preparamos la senteica para compilarla 

@@ -7,6 +7,7 @@ include("inc/bbdd.php");
 include("inc/funciones.php");
 include("inc/header.php");
 
+
 if (!isset($_SESSION['carrito'] ) ) {
 
     header("location: index.php");
@@ -39,11 +40,11 @@ if (!isset($_SESSION['carrito'] ) ) {
             
             $total = $_SESSION['total'];
         
-            $idPedidio = insertarPedido($idUsuario, $carrito, $total);
+            $idPedido = insertarPedido($idUsuario, $carrito, $total);
 
-            if($idPedidio){
+            if($idPedido) {
             ?>
-                    <h2 class='py-5'>Tu pedido <?= $idPedidio; ?> ha sido procesado correctamente.</h2>
+                    <h2 class='py-5'>Tu pedido <?= $idPedido; ?> ha sido procesado correctamente.</h2>
                     <a class="btn btn-outline-dark" href="index.php">Home</a>
             <?php
                 unset($_SESSION['carrito']);

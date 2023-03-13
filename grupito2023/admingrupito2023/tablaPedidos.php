@@ -45,7 +45,7 @@
                             <td><?= $pedido['estado']; ?></td>
                             <td><?= $pedido['costeTotal']; ?></td>
                             <td><?= $pedido['direccion']; ?></td>
-                            <td><a href="detallesPedido.php?idPedido=<?= $pedido['idPedido']; ?>" class="">Detalle</a></td>
+                            <td><a href="detallesPedido.php?idPedido=<?= $pedido['idPedido']; ?>&idUsuario=<?= $pedido['idUsuario']; ?>&fecha=<?= $pedido['fecha']; ?>" class="">Detalle</a></td>
                         </tr>
                         <?php } // end del listado de pedidos. ?>
                     </tbody>

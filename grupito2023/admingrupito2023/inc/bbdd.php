@@ -106,7 +106,7 @@ function selectProdSiteProducto($idProducto) {
     return $row;
 }
 
-//funcion cuantas Productos tenemos en la vase de datos hay
+// funcion cuantas Productos tenemos en la vase de datos hay
 function listaProductosOnlen() {
 
     $con = conectarDB();
@@ -322,6 +322,42 @@ function seleccionarUsuarios($email) {
 
 }
 
+function seleccionarUsuarioTODO($idUsuario) {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT * FROM usuarios WHERE idUser=:idUsuario";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':idUsuario', $idUsuario);
+
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    desconectarBD($con);
+    
+    return $row;
+
+}
+
 function instarUsuario($nombre, $password, $apellidos, $direccion, $telefono, $email) {
 
     $con = conectarDB();
@@ -364,6 +400,37 @@ function instarUsuario($nombre, $password, $apellidos, $direccion, $telefono, $e
 
 }
 
+function listarUsuarios() {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT * FROM usuarios WHERE online=1";
+       
+        //Ejecutamos la sentencia
+        $stmt = $con->query($sql);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); // fetchAll para cuendo biene mas de una varible 
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al selacionar la tabla: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //cerramos la sesion
+    desconectarBD($con);
+
+    //devilvemos las tareas. 
+    return $rows;
+}
+
 ##########################################
 ##### funciones de la tabla Pedidos: #####
 ##########################################
@@ -381,7 +448,8 @@ function listarPedidos() {
                     p.fecha AS fecha, 
                     e.estado AS estado, 
                     p.costeTotal AS costeTotal, 
-                    u.direccion AS direccion 
+                    u.direccion AS direccion,
+                    p.idUsuario AS idUsuario
                 FROM 
                     pedidos AS p 
                 JOIN 
@@ -431,7 +499,7 @@ function ListarDetallesPedido($idPedido) {
     try {
 
         //creamos la sentiecia sql
-        $sql = 'SELECT idProducto FROM detallesPedidos WHERE idPedido=:idPedido';
+        $sql = 'SELECT idProducto, cantidad, precio FROM detallesPedidos WHERE idPedido=:idPedido';
 
         // Creamos y preparamos la senteica para compilarla 
         $stmt = $con->prepare($sql);

@@ -2,10 +2,10 @@
 <?php include('./inc/header.php'); ?>
 <?php
 $idPedido = recoge('idPedido');
+$idUsuario = recoge('idUsuario');
+$fecha = recoge('fecha');
 
-$row = ListarDetallesPedido($idPedido);
-print_r($row);
-exit;
+$rowUser = seleccionarUsuarioTODO($idUsuario);
 
 ?>
     <!-- Begin Page Content -->
@@ -14,22 +14,22 @@ exit;
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-center">Pedido: <?= $idPedido; ?></h6>
+                <h6 class="m-0 font-weight-bold text-center">Pedido: <?= $idPedido; ?> / Fecha: <?= $fecha; ?></h6>
             </div>
             <div class="card-body">
                 <div class="container">
                     <div class="row align-items-start">
                         <div class="col">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Nombre:</li>
-                                <li class="list-group-item">Apellidos:</li>
-                                <li class="list-group-item">Telefono:</li>
-                                <li class="list-group-item">Correo:</li>
+                                <li class="list-group-item">Nombre: <?= $rowUser['nombre']; ?></li>
+                                <li class="list-group-item">Apellidos: <?= $rowUser['apellidos']; ?></li>
+                                <li class="list-group-item">Telefono: <?= $rowUser['telefono']; ?></li>
+                                <li class="list-group-item">Correo: <?= $rowUser['email']; ?></li>
                             </ul>
                         </div>
                         <div class="col">
                             <ul sta>
-                                <li>Dirección:</li>
+                                <li>Dirección: <?= $rowUser['direccion']; ?></li>
                             </ul>
                         </div>
                     </div>
@@ -56,17 +56,20 @@ exit;
                     <tbody>
                         <?php
                         
-                        $listaPedidos = listarPedidos();
+                        $listaProductosPedido = ListarDetallesPedido($idPedido) ;
 
-                        foreach ($listaPedidos as $pedido) {
+                        foreach ($listaProductosPedido as $producto) {
+
+                            $productoInfo = selectProdSiteProducto($producto['idProducto']);
+
+                            $costeTotalProducto = $producto['precio'] * $producto['cantidad'];
                         ?>
-                        <!-- falta un <a></a> para ver los de talles de cada pedido  -->
-                        <tr>
-                            <td><?= $pedido['idPedido']; ?></td>
-                            <td><?= $pedido['fecha']; ?></td>
-                            <td><?= $pedido['estado']; ?></td>
-                            <td><?= $pedido['costeTotal']; ?></td>
-                        </tr>
+                            <tr>
+                                <td><?= $producto['idProducto']; ?></td>
+                                <td><?= $productoInfo['nombre']; ?></td>
+                                <td><?= $producto['cantidad']; ?></td>
+                                <td><?= $costeTotalProducto; ?></td>
+                            </tr>
                         <?php } // end del listado de pedidos. ?>
                     </tbody>
                 </table>

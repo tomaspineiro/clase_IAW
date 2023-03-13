@@ -59,7 +59,11 @@ if(!isset($_SESSION['user'])) {
                     <i class="fas fa-fw fa-table"></i>
                     <span>Pedidos</span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="tablaUsuarios.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Usuarios</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
