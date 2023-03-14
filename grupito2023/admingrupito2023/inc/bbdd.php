@@ -139,46 +139,6 @@ function listaProductosOnlen() {
     return $rows;
 }
 
-// funcion de de ver las  paginadas 
-function seleccionarProductosPaginadas($offset, $row_count) {
-
-    $con = conectarDB();
-    
-    try {
-
-        //creamos la sentiecia sql
-        $sql = "SELECT idProducto, nombre, imagenP, precio, precioOferta FROM productos WHERE online=1 LIMIT :offset, :row_count";
-
-        // Creamos y preparamos la senteica para compilarla 
-        $stmt = $con->prepare($sql);
-
-        // Vinculamos los valores 
-        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-        $stmt->bindParam(':row_count', $row_count, PDO::PARAM_INT);
-        
-        //Ejecutamos la sentencia
-        $stmt->execute();
-
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); // fetchAll para cuendo biene mas de una varible 
-        
-    }catch(PDOException $e){
-
-        echo "Error: Error al selacionar la tabla: " . $e->getMessage();
-
-        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
-
-        exit;
-
-    }
-
-    //cerramos la sesion
-    desconectarBD($con);
-
-    //devolvemos las tareas, de la pagina que queramos. 
-    return $rows;
-
-}
-
 //funcion cuantas Productos tenemos en la vase de datos hay
 function cantidadProductosOnlen() {
 
@@ -529,4 +489,40 @@ function ListarDetallesPedido($idPedido) {
     return $row;
 }
 
+#########################################
+##### funciones de la tabla Estados #####
+#########################################
+function todosEstados() {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT * FROM estados";
+
+       
+        //Ejecutamos la sentencia
+        $stmt = $con->query($sql);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); // fetchAll para cuendo biene mas de una varible 
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al selacionar la tabla: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //cerramos la sesion
+    desconectarBD($con);
+
+    //devilvemos las tareas. 
+    return $rows;
+}
 ?>
+
+
