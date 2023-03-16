@@ -1,18 +1,3 @@
-<?php session_start(); ?>
-<?php include('./inc/funciones.php'); ?>
-<?php include('./inc/bbdd.php'); ?>
-<?php
-if(!isset($_SESSION['user'])) {
-     
-    header("location: index.php");
-    exit;
-     
-} else {
-    $nameUser= $_SESSION['user']['nombre'];
-}
-    
-?>
-
 <?php include('inc/head.php'); ?>
 
 <body id="page-top">
@@ -39,20 +24,6 @@ if(!isset($_SESSION['user'])) {
                 Tablas de WEB
             </div>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="tablaPedidos.php">
@@ -63,6 +34,16 @@ if(!isset($_SESSION['user'])) {
                 <a class="nav-link" href="tablaUsuarios.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Usuarios</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tablaProductos.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Productos</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tablaEstados.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Estados</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -116,23 +97,15 @@ if(!isset($_SESSION['user'])) {
                             </div>
                         </li>
 
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $nameUser?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                        <div>
+                            <h4 class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $nameUser?></h4>
+                            <a class="btn" href="logout.php">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
                             </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
+                        </div>                       
+                          
+                      
 
                     </ul>
 

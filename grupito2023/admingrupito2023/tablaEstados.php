@@ -12,7 +12,7 @@ if(!isset($_SESSION['user'])) {
 }
     
 ?>
-<?php $titulo="Pedidos"; ?>
+<?php $titulo="Estados"; ?>
 <?php include('./inc/header.php'); ?>
 
 <!-- Begin Page Content -->
@@ -25,32 +25,33 @@ if(!isset($_SESSION['user'])) {
         </div>
         <div class="card-body">
             <div class="table-responsive">
+                <a class="btn btn-outline-primary" href="nuevoEstado.php">Aadir Estado</a>
                 <table class="table table-bordered" id="table" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID Pedido</th>
-                            <th>Fecha</th>
-                            <th>Estado</th>
-                            <th>Coste Total</th>
-                            <th>Direcion</th>
-                            <th>Detalles</th>
+                            <th>ID Estado</th>
+                            <th>Nombre</th>
+                            <th>activo</th>
+                            <th>modificar</th>
+                            <th>borrar</th>
+                            <th>activar</th>
                         </tr>
                     </thead>
                    
                     <tbody>
                         <?php
                         
-                        $listaPedidos = listarPedidos();
+                        $listaEstados = todosEstados();
 
-                        foreach ($listaPedidos as $pedido) {
+                        foreach ($listaEstados as $estado) {
                         ?>
                         <tr>
-                            <td><?= $pedido['idPedido']; ?></td>
-                            <td><?= $pedido['fecha']; ?></td>
-                            <td><?= $pedido['estado']; ?></td>
-                            <td><?= $pedido['costeTotal']; ?></td>
-                            <td><?= $pedido['direccion']; ?></td>
-                            <td><a href="detallesPedido.php?idPedido=<?= $pedido['idPedido']; ?>&idUsuario=<?= $pedido['idUsuario']; ?>&fecha=<?= $pedido['fecha']; ?>" class="">Detalle</a></td>
+                            <td><?= $estado['idEstado']; ?></td>
+                            <td><?= $estado['estado']; ?></td>
+                            <td><?= $estado['activo']; ?></td>
+                            <td><a href="editarEstado.php?idEstado=<?= $estado['idEstado']; ?>" class="btn btn-secondary">Detalle</a></td>
+                            <td><a href="borrarEstado.php?idEstado=<?= $estado['idEstado']; ?>" class="btn btn-danger">drop</a></td>
+                            <td><a href="activarEstado.php?idEstado=<?= $estado['idEstado']; ?>" class="btn btn-success">activar</a></td>
                         </tr>
                         <?php } // end del listado de pedidos. ?>
                     </tbody>
@@ -58,7 +59,6 @@ if(!isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
-
 </div>
 <!-- /.container-fluid -->
 

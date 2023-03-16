@@ -12,7 +12,7 @@ if(!isset($_SESSION['user'])) {
 }
     
 ?>
-<?php $titulo="Pedidos"; ?>
+<?php $titulo="Productos"; ?>
 <?php include('./inc/header.php'); ?>
 
 <!-- Begin Page Content -->
@@ -21,18 +21,18 @@ if(!isset($_SESSION['user'])) {
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tabla de Pedidos</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Tabla de Productos</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="table" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID Pedido</th>
-                            <th>Fecha</th>
-                            <th>Estado</th>
-                            <th>Coste Total</th>
-                            <th>Direcion</th>
+                            <th>ID producto</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Precio Oferta</th>
+                            <th>online</th>
                             <th>Detalles</th>
                         </tr>
                     </thead>
@@ -40,19 +40,21 @@ if(!isset($_SESSION['user'])) {
                     <tbody>
                         <?php
                         
-                        $listaPedidos = listarPedidos();
+                        $listaProductos = seleccionarTodasProductos();
 
-                        foreach ($listaPedidos as $pedido) {
+                        foreach ($listaProductos as $producto) {
                         ?>
                         <tr>
-                            <td><?= $pedido['idPedido']; ?></td>
-                            <td><?= $pedido['fecha']; ?></td>
-                            <td><?= $pedido['estado']; ?></td>
-                            <td><?= $pedido['costeTotal']; ?></td>
-                            <td><?= $pedido['direccion']; ?></td>
-                            <td><a href="detallesPedido.php?idPedido=<?= $pedido['idPedido']; ?>&idUsuario=<?= $pedido['idUsuario']; ?>&fecha=<?= $pedido['fecha']; ?>" class="">Detalle</a></td>
+                            <td><?= $producto['idProducto']; ?></td>
+                            <td><?= $producto['nombre']; ?></td>
+                            <td><?= $producto['precio']; ?></td>
+                            <td><?= $producto['precioOferta']; ?></td>
+                            <td><?= $producto['online']; ?></td>
+                            <td><a href="detallesProducto.php?idProducto=<?= $producto['idProducto']; ?>" class="btn btn-secondary">Detalle</a></td>
+                            <td><a href="borrarProducto.php?idEstado=<?= $estado['idEstado']; ?>" class="btn btn-danger">drop</a></td>
+                            <td><a href="activarProducto.php?idEstado=<?= $estado['idEstado']; ?>" class="btn btn-success">activar</a></td>
                         </tr>
-                        <?php } // end del listado de pedidos. ?>
+                        <?php } // end del listado de Productos. ?>
                     </tbody>
                 </table>
             </div>

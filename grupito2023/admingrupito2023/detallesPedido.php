@@ -1,3 +1,17 @@
+<?php session_start(); ?>
+<?php include('./inc/funciones.php'); ?>
+<?php include('./inc/bbdd.php'); ?>
+<?php
+if(!isset($_SESSION['user'])) {
+     
+    header("location: index.php");
+    exit;
+     
+} else {
+    $nameUser= $_SESSION['user']['nombre'];
+}
+    
+?>
 <?php $titulo="Detalles de Pedidos"; ?>
 <?php include('./inc/header.php'); ?>
 <?php
@@ -37,12 +51,12 @@ $rowsEstados = todosEstados();
                                 <ul sta>
                                     <li>Dirección: <?= $rowUser['direccion']; ?></li>
                                 </ul>
-                                <select class="form-select" aria-label="select example" name="estado" id="estado >
+                                <select class="form-select" aria-label="select example" name="estado" id="estado" >
                                     <option selected><?= $estadoActual; ?></option>
                                     <?php
                                     foreach ($rowsEstados as $estado){
                                     ?>
-                                    <option value="<?= $estado['idEstado']?>"><?= $estado['estado']; ?></option>
+                                        <option value="<?= $estado['idEstado']?>"><?= $estado['estado']; ?></option>
                                     <?php } // END del foreach de estados?>
                                 </select>
 

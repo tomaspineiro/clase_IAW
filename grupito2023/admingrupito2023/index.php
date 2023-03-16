@@ -1,10 +1,7 @@
 <?php session_start(); ?>
-<?php
-$titulo='Login'
-?>
-<?php include('inc/bbdd.php'); ?>
-<?php include('inc/funciones.php'); ?>
-
+<?php include('./inc/funciones.php'); ?>
+<?php include('./inc/bbdd.php'); ?>
+<?php $titulo='Login'; ?>
 <?php include('inc/head.php'); ?>
 
 <body class="bg-gradient-primary">
@@ -53,17 +50,12 @@ if (!isset($_REQUEST['btnEnviar'])) {
         <h1>usuario o contraseña incorrecta</h1>
     </div>
 <?php
+        
         login();
-    } // comporbacion de que el usuario se loguedo          
-    
+
+    } // comporbacion de que el usuario se loguedo 
 }
 ?>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

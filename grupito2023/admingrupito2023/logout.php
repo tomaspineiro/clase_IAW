@@ -4,7 +4,9 @@
 
 if(isset($_SESSION['user'])) {
      
-    unset($_SESSION['user']);
+    unset($_SESSION['user']['nombre']);
+    unset($_SESSION['user']['idUser']);
+    unset($_SESSION['user']['emial']);
     
 } 
 

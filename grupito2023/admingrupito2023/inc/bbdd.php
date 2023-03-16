@@ -523,6 +523,191 @@ function todosEstados() {
     //devilvemos las tareas. 
     return $rows;
 }
+
+function instarEstado($estado) {
+
+    $con = conectarDB();
+
+    try {
+        
+        $sql = "INSERT INTO estados (estado) VALUES (:estado)";
+        
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+        
+        // Vinculamos los valores 
+        $stmt->bindParam(':estado', $estado);
+        
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+    } catch(PDOException $e) {
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    // si ha fallado la insercion debuelbe 0
+    $idEstado =$con->lastInsertId();
+
+    desconectarBD($con);
+
+    return $idEstado;
+
+}
+
+function comprovacionEstados($estado) {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "SELECT idEstado FROM estados WHERE estado=:estado";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':estado', $estado);
+        
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al selacionar la tabla: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    //cerramos la sesion
+    desconectarBD($con);
+
+    //devilvemos las tareas. 
+    return $row;
+}
+
+function dropEstado($idEstado) {
+
+    $con = conectarDB();
+
+    try {
+        
+        $sql = "UPDATE estados SET activo=0 WHERE idEstado=:idEstado;";
+        
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+        
+        // Vinculamos los valores 
+        $stmt->bindParam(':idEstado', $idEstado);
+    
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+
+    } catch(PDOException $e) {
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    // si ha fallado la insercion debuelbe 0
+    $idUser =$con->lastInsertId();
+
+    desconectarBD($con);
+
+    return $idUser;
+
+}
+
+function activarEstado($idEstado) {
+
+    $con = conectarDB();
+
+    try {
+        
+        $sql = "UPDATE estados SET activo=1 WHERE idEstado=:idEstado;";
+        
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+        
+        // Vinculamos los valores 
+        $stmt->bindParam(':idEstado', $idEstado);
+    
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+
+    } catch(PDOException $e) {
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    // si ha fallado la insercion debuelbe 0
+    $idUser =$con->lastInsertId();
+
+    desconectarBD($con);
+
+    return $idUser;
+
+}
+
+function editarEstado($idEstado, $estado) {
+
+    $con = conectarDB();
+    
+    try {
+
+        //creamos la sentiecia sql
+        $sql = "UPDATE estados SET estado=:estado WHERE idEstado=:idEstado;";
+
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+
+        // Vinculamos los valores 
+        $stmt->bindParam(':idEstado', $idEstado);
+        $stmt->bindParam(':estado', $estado);
+
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    }catch(PDOException $e){
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    desconectarBD($con);
+    
+    return $row;
+
+}
+
 ?>
 
 
