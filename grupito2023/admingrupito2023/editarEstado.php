@@ -16,9 +16,9 @@ if(!isset($_SESSION['user'])) {
 }
 
 $idEstado = recoge("idEstado");
-$estado = editarEstado($idEstado);
+$estado = selecionarEstado($idEstado);
 
-function formularioEstados($estado) {
+function formularioEstados($estado1) {
 ?>
 <form class="row g-3">
     <div class="col-auto">
@@ -26,7 +26,7 @@ function formularioEstados($estado) {
         
     </div>
     <div class="col-auto">
-        <input type="text" class="form-control" id="nuevoEstado" name="nuevoEstado" value="<?= $estado; ?>"> 
+        <input type="text" class="form-control" id="nuevoEstado" name="nuevoEstado" value="<?= $estado1; ?>"> 
     </div>
     <div class="col-auto">
         <button type="submit" class="btn btn-primary mb-3" name="enviar" id="envia">crear</button>

@@ -318,6 +318,48 @@ function activarProdcuto($idProducto) {
 
 }
 
+function instarProducto($nombre, $descripcion, $intoDescripción, $precio, $precioOferta) {
+
+    $con = conectarDB();
+
+    try {
+        
+        $sql = "INSERT INTO productos (nombre, intoDescripción, descripcion, imagenP, imagenG, precio, precioOferta) VALUES (:nombre, :intoDescripción, :descripcion, :imagenP, :imagenG, :precio, :precioOferta)";
+        
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+        
+        // Vinculamos los valores 
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':intoDescripción', $intoDescripción);
+        $stmt->bindParam(':descripcion', $descripcion);
+        $stmt->bindParam(':imagenP', $imagenP);
+        $stmt->bindParam(':imagenG', $imagenG);
+        $stmt->bindParam(':precio', $precio);
+        $stmt->bindParam(':precioOferta', $precioOferta);
+
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+
+    } catch(PDOException $e) {
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    // si ha fallado la insercion debuelbe 0
+    $idUser =$con->lastInsertId();
+
+    desconectarBD($con);
+
+    return $idUser;
+
+}
 ##########################################
 ##### funciones de la tabla usuarios #####
 ##########################################
@@ -782,7 +824,42 @@ function editarEstado($idEstado, $estado) {
     return $row;
 
 }
-
+function selecionarEstado($idEstado) {
+    // esta sin montar los comandos  
+     $con = conectarDB();
+     
+     try {
+ 
+         //creamos la sentiecia sql
+         $sql = 'SELECT * FROM estados WHERE idEstado=:idEstado';
+ 
+         // Creamos y preparamos la senteica para compilarla 
+         $stmt = $con->prepare($sql);
+ 
+         // Vinculamos los valores 
+         $stmt->bindParam(':idEstado', $idEstado);
+         
+         //Ejecutamos la sentencia
+         $stmt->execute();
+ 
+         $row = $stmt->fetch(PDO::FETCH_ASSOC);
+     
+     }catch(PDOException $e){
+ 
+         echo "Error: Error al selecionar una row: " . $e->getMessage();
+ 
+         file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+ 
+         exit;
+ 
+     }
+ 
+     //cerramos la sesion
+     desconectarBD($con);
+ 
+     //devilvemos la tarea. 
+     return $row;
+ }
 ?>
 
 

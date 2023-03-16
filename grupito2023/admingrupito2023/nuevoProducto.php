@@ -42,6 +42,14 @@ function formularioProducto($nombre="", $descripcion="", $intoDescripción="", $
             <label for="precioOferta" class="form-label"><h5>Precio Oferta:</h5></label>
             <input type="text" class="form-control" id="precio" name="precioOferta" value="<?= $precioOferta; ?>">
         </div>
+        <div class="mb-3">
+            <label for="imagenP" class="form-label"><h5>Imagen Pequeña:</h5></label>
+            <input type="file" class="form-control" id="imagenP"name="imagenP">
+        </div>
+        <div class="mb-3">
+            <label for="imagenG" class="form-label"><h5>Imagen Grande:</h5></label>
+            <input type="file" class="form-control" id="imagenG" name="imagenG">
+        </div>
         <div>
             <button type="submit" class="btn btn-primary" name="btnEnviar">Enviar</button>
             <a href="./tablaPrductos.php" class="btn btn-secondary">cancelar</a>
@@ -64,18 +72,95 @@ if (!isset($_REQUEST['enviar'])) {
 
 } else {
 
-    $estadoNew = recoge('nuevoEstado');
+    $nombre = recoge('nombre');
+    $intoDescripción = recoge('intoDescripción');
+    $descripcion = recoge('descripcion');
+    $precio = recoge('precio');
+    $precioOferta = recoge('precioOferta');
     
     $errores = "";
 
-    if ($estadoNew == '') {
-        $errores .= "<li>Tiene que tener algo escrito</li>";
+    if ($nombre == '') {
+        $errores .= "<li>Tiene que tener algo escrito en el nombre</li>";
     }
 
-    if (comprovacionEstados($estadoNew)) {
-        $errores .= "<li>Ya existe el estado.</li>";
+    if ($intoDescripción == '') {
+        $errores .= "<li>Tiene que tener algo escrito en el intoDescripción</li>";
     }
 
+    if ($descripcion == '') {
+        $errores .= "<li>Tiene que tener algo escrito en el descripcion</li>";
+    }
+
+    if ($precio == '') {
+        $errores .= "<li>Tiene que tener un precio</li>";
+    }
+
+    if ($precioOferta == '') {
+        $errores .= "<li>Tiene que tener un precio oferta</li>";
+    }
+
+    if (($errores == '')  && (isset($_FILES['imagenP'])) && (isset($_FILES['imagenG']))) {
+        $nombreIMG = trim($nombre);
+
+        $pathFile ="../siteGrupito2023/img";
+
+        $pathGuardar = "img/";
+
+        $imgP = $_FILES['imagenP']['name'];
+        $imgG = $_FILES['imagenG']['name'];
+        
+
+        $imgPCmps = explode(".", $imgP);
+        $imgGCmps = explode(".", $imgG);
+        
+        $imgGExtension = strtolower(end($imgGCmps));
+        $imgPExtension = strtolower(end($imgPCmps));
+
+        $allowedIMGExtensions = array('jpg, png');
+
+        $nombrePathIMG =  $pathFile .  $nombreIMG . 'P' .'.'. $imgPExtension;
+
+        $pathGuardarP = $pathGuardar .  $nombreIMG . 'P' .'.'. $imgPExtension;
+
+        if (!in_array($imgPExtension, $allowedIMGExtensions)) {
+
+            $errores .= "<li>Solo se permiten  .jpg y .png, img p</li>";
+
+        }else {
+                    
+            if (move_uploaded_file($_FILES['imagenP']['tmp_name'], $nombrePathIMG )){
+                
+                $corecto .= "<li>El archivo ha sido cargado correctamente.</li>";
+            
+            }else{
+            
+                $errores .= "<li>Ocurrió algún error al subir el fichero. No pudo guardarse.</li>";
+            
+            }
+        }
+
+        $nombrePathIMG =  $pathFile .  $nombreIMG . 'G' .'.'. $imgGExtension;
+
+        $pathGuardarG = $pathGuardar .  $nombreIMG . 'G' .'.'. $imgGExtension;
+
+        if (!in_array($imgGExtension, $allowedIMGExtensions)) {
+
+            $errores .= "<li>Solo se permiten  .jpg y .png, img g</li>";
+
+        } else {
+                    
+            if (move_uploaded_file($_FILES['imagenG']['tmp_name'], $nombrePathIMG )){
+                
+                $corecto .= "<li>El archivo ha sido cargado correctamente.</li>";
+            
+            }else{
+            
+                $errores .= "<li>Ocurrió algún error al subir el fichero. No pudo guardarse.</li>";
+            
+            }
+        }
+   
     if ($errores != "") {
 ?>
     <div class="alert alert-danger" role="alert">
@@ -85,12 +170,14 @@ if (!isset($_REQUEST['enviar'])) {
     </div>
 
 <?php
-        formularioEstados();
+        
+        formularioProducto($nombre, $descripcion, $intoDescripción, $precio, $precioOferta);
 
-    } else {
+   } else {
 
         $idEstado = instarEstado($estadoNew);
         if (isset($idEstado)) {
+
 ?>
             <div class="alert alert-success" role="alert">
                 <p>El estado <?= $estadoNew; ?>, se a insertado correctamet.</p>
@@ -101,14 +188,15 @@ if (!isset($_REQUEST['enviar'])) {
         } else {
 ?>
             <div class="alert alert-success" role="alert">
-                <p>Al insertar el estado, <?= $estadoNew; ?>, se a producido un erro vuelve a intetarlo.</p>
+                <p>Al insertar el producto se a producido un error, vuelve a intetarlo.</p>
             </div>
 <?php
-            formularioEstados();
+            formularioProducto($nombre, $descripcion, $intoDescripción, $precio, $precioOferta);
         }
     }
+
 }
-?>
+?> 
         </div>
     </div>
     <!-- /.container-fluid -->
