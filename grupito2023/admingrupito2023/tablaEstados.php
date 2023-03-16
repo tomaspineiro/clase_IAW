@@ -25,7 +25,7 @@ if(!isset($_SESSION['user'])) {
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <a class="btn btn-outline-primary" href="nuevoEstado.php">Aadir Estado</a>
+                <a class="btn btn-outline-primary" href="nuevoEstado.php">Añadir Estado</a>
                 <table class="table table-bordered" id="table" width="100%" cellspacing="0">
                     <thead>
                         <tr>

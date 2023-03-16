@@ -25,6 +25,7 @@ if(!isset($_SESSION['user'])) {
         </div>
         <div class="card-body">
             <div class="table-responsive">
+            <a class="btn btn-outline-primary" href="nuevoProducto.php">Añadir Producto</a>
                 <table class="table table-bordered" id="table" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -34,6 +35,8 @@ if(!isset($_SESSION['user'])) {
                             <th>Precio Oferta</th>
                             <th>online</th>
                             <th>Detalles</th>
+                            <th>Drop</th>
+                            <th>Activar</th>
                         </tr>
                     </thead>
                    
@@ -51,8 +54,8 @@ if(!isset($_SESSION['user'])) {
                             <td><?= $producto['precioOferta']; ?></td>
                             <td><?= $producto['online']; ?></td>
                             <td><a href="detallesProducto.php?idProducto=<?= $producto['idProducto']; ?>" class="btn btn-secondary">Detalle</a></td>
-                            <td><a href="borrarProducto.php?idEstado=<?= $estado['idEstado']; ?>" class="btn btn-danger">drop</a></td>
-                            <td><a href="activarProducto.php?idEstado=<?= $estado['idEstado']; ?>" class="btn btn-success">activar</a></td>
+                            <td><a href="borrarProducto.php?idProducto=<?= $producto['idProducto']; ?>" class="btn btn-danger">Drop</a></td>
+                            <td><a href="activarProducto.php?idProducto=<?= $producto['idProducto']; ?>" class="btn btn-success">Activar</a></td>
                         </tr>
                         <?php } // end del listado de Productos. ?>
                     </tbody>

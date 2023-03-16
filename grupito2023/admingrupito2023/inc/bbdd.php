@@ -243,6 +243,81 @@ function seleccionarProductoCarrito($idProducto) {
     return $row;
 }
 
+
+function dropProducto($idProducto) {
+
+    $con = conectarDB();
+
+    try {
+        
+        $sql = "UPDATE productos SET online=0 WHERE idProducto=:idProducto;";
+        
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+        
+        // Vinculamos los valores 
+        $stmt->bindParam(':idProducto', $idProducto);
+    
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+
+    } catch(PDOException $e) {
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    // si ha fallado la insercion debuelbe 0
+    $idProducto =$con->lastInsertId();
+
+    desconectarBD($con);
+
+    return $idProducto;
+
+}
+
+function activarProdcuto($idProducto) {
+
+    $con = conectarDB();
+
+    try {
+        
+        $sql = "UPDATE productos SET online=1 WHERE idProducto=:idProducto;";
+        
+        // Creamos y preparamos la senteica para compilarla 
+        $stmt = $con->prepare($sql);
+        
+        // Vinculamos los valores 
+        $stmt->bindParam(':idProducto', $idProducto);
+    
+        //Ejecutamos la sentencia
+        $stmt->execute();
+
+
+    } catch(PDOException $e) {
+
+        echo "Error: Error al insertar en la BD: " . $e->getMessage();
+
+        file_put_contents("PDOErrors.txt", "\r\n" . date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+
+        exit;
+
+    }
+
+    // si ha fallado la insercion debuelbe 0
+    $idUser =$con->lastInsertId();
+
+    desconectarBD($con);
+
+    return $idUser;
+
+}
+
 ##########################################
 ##### funciones de la tabla usuarios #####
 ##########################################
